@@ -22,6 +22,7 @@
 
 # misc
 .DS_Store
+_pasada_home_raw.html
 *.pem
 
 # debug
