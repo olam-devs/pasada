@@ -4,6 +4,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ButtonLink } from "@/components/ui/Button";
 import { getAllJobSlugs, getJobBySlug, getJobs } from "@/lib/jobs";
+import { getSiteSettings } from "@/lib/settings";
 import { ArrowLeft } from "lucide-react";
 
 export async function generateStaticParams() {
@@ -18,12 +19,10 @@ export default async function JobDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const job = await getJobBySlug(slug);
+  const [job, settings] = await Promise.all([getJobBySlug(slug), getSiteSettings()]);
   if (!job) notFound();
 
-  const applyHref = job.applyEmail
-    ? `mailto:${job.applyEmail}?subject=Application: ${encodeURIComponent(job.title)}`
-    : "mailto:info@pasada.or.tz";
+  const applyHref = `mailto:${job.applyEmail ?? settings.careersEmail}?subject=Application: ${encodeURIComponent(job.title)}`;
 
   return (
     <PageShell eyebrow="Careers" title={job.title}>

@@ -13,6 +13,9 @@ export type ProjectItem = {
   tag?: string;
   category?: string;
   categorySlug?: string;
+  status: "Ongoing" | "Completed";
+  partner?: string;
+  duration?: string;
   imageUrl: string;
   galleryUrls: string[];
   videoUrl?: string;
@@ -21,137 +24,93 @@ export type ProjectItem = {
   sortOrder?: number;
 };
 
+function textBlock(text: string, style: "normal" | "h2" | "h3" = "normal") {
+  return {
+    _type: "block" as const,
+    style,
+    children: [{ _type: "span" as const, text, marks: [] }],
+    markDefs: [],
+  };
+}
+
 const SAMPLE: ProjectItem[] = [
   {
     _id: "p1",
-    title: "ACHIEVE – PACT",
-    slug: "achieve-pact",
+    title: "Afya Thabiti Project (AMREF)",
+    slug: "afya-thabiti-amref",
     summary:
-      "PASADA implements community-level activities supporting health and wellbeing as a sub-grantee partner.",
-    tag: "Community",
-    category: "Community",
-    categorySlug: "community",
+      "A five-year project (Oct 2023-Sep 2028) supporting the Government of Tanzania to deliver comprehensive HIV and TB prevention, care and treatment services across 19 health facilities in Dar es Salaam.",
+    tag: "HIV & TB",
+    category: "Health",
+    categorySlug: "health",
+    status: "Ongoing",
+    partner: "Amref Health Africa Tanzania",
+    duration: "October 2023 - September 2028",
     imageUrl: "https://pasada.or.tz/uploads/project-featured-photo-8.jpg",
-    galleryUrls: [
-      "https://pasada.or.tz/uploads/project-featured-photo-8.jpg",
-      "https://pasada.or.tz/uploads/service-1.jpg",
-    ],
+    galleryUrls: ["https://pasada.or.tz/uploads/project-featured-photo-8.jpg"],
     sortOrder: 1,
     featured: true,
     content: [
-      {
-        _type: "block",
-        style: "h2",
-        children: [{ _type: "span", text: "Program overview" }],
-        markDefs: [],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "ACHIEVE – PACT supports community-level activities that strengthen prevention, care, and referral pathways. PASADA works alongside partners to deliver outreach, education, and client follow-up in priority areas.",
-          },
-        ],
-        markDefs: [],
-      },
-      {
-        _type: "block",
-        style: "h3",
-        children: [{ _type: "span", text: "Key activities" }],
-        markDefs: [],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        listItem: "bullet",
-        level: 1,
-        children: [{ _type: "span", text: "Community sensitization and health education sessions" }],
-        markDefs: [],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        listItem: "bullet",
-        level: 1,
-        children: [{ _type: "span", text: "Linkage to care and treatment support" }],
-        markDefs: [],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        listItem: "bullet",
-        level: 1,
-        children: [{ _type: "span", text: "Supportive follow-up for clients and caregivers" }],
-        markDefs: [],
-      },
+      textBlock("Project overview", "h2"),
+      textBlock(
+        "The Afya Thabiti Project is implemented by Amref Health Africa Tanzania as the prime partner, in collaboration with PASADA, with the partnership commencing in January 2026 and continuing to date. The project supports the Government of Tanzania in delivering comprehensive HIV and TB prevention, care, and treatment services.",
+      ),
+      textBlock(
+        "It is implemented in Dar es Salaam across 19 health facilities under the Dar es Salaam Archdiocese, in all five councils of the region, in collaboration with the Ministry of Health, the President's Office - Regional Administration and Local Government (PO-RALG), and the respective Regional and Council Health Management Teams (R/CHMTs).",
+      ),
+      textBlock(
+        "Through its interventions, the project contributes to Tanzania's commitment to ending AIDS as a public health threat by 2030, in line with the UNAIDS 95-95-95 targets.",
+      ),
     ],
   },
   {
     _id: "p2",
-    title: "Integrated Approach in TB – GLRA",
-    slug: "integrated-tb-glra",
+    title: "Afya Hatua Project (THPS)",
+    slug: "afya-hatua-thps",
     summary:
-      "Integrating TB with diabetes, Covid-19, malnutrition and leprosy to improve community health outcomes.",
-    tag: "Health",
+      "A five-year initiative (2021-2026) supporting comprehensive HIV and TB prevention, care and treatment services across 6 health facilities in Pwani region.",
+    tag: "HIV & TB",
     category: "Health",
     categorySlug: "health",
-    imageUrl: "https://pasada.or.tz/uploads/project-featured-photo-10.jpg",
-    galleryUrls: ["https://pasada.or.tz/uploads/project-featured-photo-10.jpg"],
+    status: "Ongoing",
+    partner: "Tanzania Health Promotion Support (THPS)",
+    duration: "2021-2026 (PASADA partnership from October 2023)",
+    imageUrl: "https://pasada.or.tz/uploads/service-3.jpg",
+    galleryUrls: ["https://pasada.or.tz/uploads/service-3.jpg"],
     sortOrder: 2,
     featured: true,
     content: [
-      {
-        _type: "block",
-        style: "h2",
-        children: [{ _type: "span", text: "Integrated health approach" }],
-        markDefs: [],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "This project strengthens TB outcomes by integrating screening, education, and referrals with related conditions. Community engagement improves early detection and adherence to care.",
-          },
-        ],
-        markDefs: [],
-      },
+      textBlock("Project overview", "h2"),
+      textBlock(
+        "The Afya Hatua Project is implemented through a collaboration between THPS as the prime partner and PASADA, with the partnership commencing in October 2023 and continuing to date. The project is implemented in Pwani region across 6 health facilities under the Dar es Salaam Archdiocese, in collaboration with the Ministry of Health, PO-RALG, and the respective R/CHMTs.",
+      ),
+      textBlock("Targets", "h3"),
+      textBlock(
+        "The implementation aims to ensure that 95% of people living with HIV know their status, 95% of those diagnosed receive sustained antiretroviral therapy (ART), and 95% of individuals on treatment achieve viral suppression.",
+      ),
     ],
   },
   {
     _id: "p3",
-    title: "READY – REPPSI",
-    slug: "ready-reppsi",
+    title: "GLRA - Integrated TB Approach",
+    slug: "glra-integrated-tb",
     summary:
-      "Supporting adolescents and young people living with or most affected by HIV to build resilience.",
-    tag: "Youth",
-    category: "Youth",
-    categorySlug: "youth",
-    imageUrl: "https://pasada.or.tz/uploads/project-featured-photo-9.jpg",
-    galleryUrls: ["https://pasada.or.tz/uploads/project-featured-photo-9.jpg"],
+      "Integrating TB screening and care with diabetes, Covid-19, malnutrition and leprosy services to improve community health outcomes.",
+    tag: "TB",
+    category: "Health",
+    categorySlug: "health",
+    status: "Ongoing",
+    partner: "GLRA (German Leprosy and TB Relief Association)",
+    duration: "1 June 2025 - 1 May 2027",
+    imageUrl: "https://pasada.or.tz/uploads/project-featured-photo-10.jpg",
+    galleryUrls: ["https://pasada.or.tz/uploads/project-featured-photo-10.jpg"],
     sortOrder: 3,
     featured: true,
     content: [
-      {
-        _type: "block",
-        style: "h2",
-        children: [{ _type: "span", text: "Youth resilience" }],
-        markDefs: [],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "READY – REPPSI supports adolescents and young people with tailored counseling, peer support, and linkage to services—reducing barriers to care and strengthening wellbeing.",
-          },
-        ],
-        markDefs: [],
-      },
+      textBlock("Integrated health approach", "h2"),
+      textBlock(
+        "This project strengthens TB outcomes by integrating screening, education, and referrals with related conditions such as diabetes, Covid-19, malnutrition and leprosy. Community engagement improves early detection and adherence to care.",
+      ),
     ],
   },
   {
@@ -163,66 +122,113 @@ const SAMPLE: ProjectItem[] = [
     tag: "OVC",
     category: "OVC",
     categorySlug: "ovc",
+    status: "Ongoing",
+    duration: "April 2026 - March 2029",
     imageUrl: "https://pasada.or.tz/uploads/project-featured-photo-12.jpg",
     galleryUrls: ["https://pasada.or.tz/uploads/project-featured-photo-12.jpg"],
     sortOrder: 4,
     content: [
-      {
-        _type: "block",
-        style: "h2",
-        children: [{ _type: "span", text: "Supporting vulnerable families" }],
-        markDefs: [],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "PASADA supports OVC and caregivers through community follow-up, psychosocial support, referrals and practical guidance—strengthening protection, wellbeing and access to services.",
-          },
-        ],
-        markDefs: [],
-      },
+      textBlock("Supporting vulnerable families", "h2"),
+      textBlock(
+        "PASADA supports OVC and caregivers through community follow-up, psychosocial support, referrals and practical guidance, strengthening protection, wellbeing and access to services.",
+      ),
     ],
   },
   {
     _id: "p5",
-    title: "APOPO – SUA",
+    title: "APOPO - SUA",
     slug: "apopo-sua",
     summary:
       "Research using innovative detection methods to improve TB diagnosis from samples that appeared negative.",
     tag: "Research",
     category: "Research",
     categorySlug: "research",
+    status: "Ongoing",
+    partner: "Sokoine University of Agriculture (SUA) / APOPO",
+    duration: "2010 to date",
     imageUrl: "https://pasada.or.tz/uploads/project-featured-photo-13.jpg",
     galleryUrls: ["https://pasada.or.tz/uploads/project-featured-photo-13.jpg"],
     sortOrder: 5,
     content: [
-      {
-        _type: "block",
-        style: "h2",
-        children: [{ _type: "span", text: "Innovation and research" }],
-        markDefs: [],
-      },
-      {
-        _type: "block",
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            text: "Research partnerships can strengthen diagnostic pathways and improve outcomes. PASADA collaborates on approaches that enhance detection and referral—supporting public health goals through evidence-informed practice.",
-          },
-        ],
-        markDefs: [],
-      },
+      textBlock("Innovation and research", "h2"),
+      textBlock(
+        "This long-running research partnership strengthens diagnostic pathways and improves outcomes, using innovative detection methods to improve TB diagnosis from samples that initially appeared negative, supporting public health goals through evidence-informed practice.",
+      ),
+    ],
+  },
+  {
+    _id: "p6",
+    title: "Afya Jumuishi Project (MDH)",
+    slug: "afya-jumuishi-mdh",
+    summary:
+      "A five-year initiative (2021-2026) supporting the Government of Tanzania to deliver comprehensive HIV and TB prevention, care and treatment services; PASADA's partnership ran October 2024-December 2025.",
+    tag: "HIV & TB",
+    category: "Health",
+    categorySlug: "health",
+    status: "Completed",
+    partner: "Management and Development for Health (MDH)",
+    duration: "October 2024 - December 2025",
+    imageUrl: "https://pasada.or.tz/uploads/service-4.jpg",
+    galleryUrls: ["https://pasada.or.tz/uploads/service-4.jpg"],
+    sortOrder: 6,
+    content: [
+      textBlock("Project overview", "h2"),
+      textBlock(
+        "The Afya Jumuishi Project was implemented through a collaboration between Management and Development for Health (MDH) as the prime partner and PASADA, supporting the Government of Tanzania in delivering comprehensive HIV and TB prevention, care, and treatment services.",
+      ),
+    ],
+  },
+  {
+    _id: "p7",
+    title: "Kizazi Hodari Southern Zone (Deloitte)",
+    slug: "kizazi-hodari-deloitte",
+    summary:
+      "A USAID-funded, five-year project (2022-2026) improving the health, wellbeing and protection of orphans and vulnerable children (OVC) and youth across 58 councils in 11 regions of southern Tanzania.",
+    tag: "OVC",
+    category: "OVC",
+    categorySlug: "ovc",
+    status: "Completed",
+    partner: "Deloitte Consulting Limited (USAID)",
+    duration: "2022-2026",
+    imageUrl: "https://pasada.or.tz/uploads/service-7.jpg",
+    galleryUrls: ["https://pasada.or.tz/uploads/service-7.jpg"],
+    sortOrder: 7,
+    content: [
+      textBlock("Project overview", "h2"),
+      textBlock(
+        "USAID Kizazi Hodari Southern Zone supported the Government of Tanzania to improve the health, wellbeing, and protection of OVC and youth in high HIV-burden communities across Mtwara, Iringa, Njombe, Ruvuma, Lindi, Morogoro, Pwani, Songwe, Rukwa, Katavi and Mjini Magharibi Zanzibar.",
+      ),
+      textBlock(
+        "Activities were delivered through families and communities, engaging Community Case Workers (CCWs), Lead Case Workers (LCWs) and National Integrated Case Management System (NICMS) Assigned Officers, coordinated with the health workforce and PEPFAR clinical partners to improve bi-directional referrals between clinical and community services.",
+      ),
+    ],
+  },
+  {
+    _id: "p8",
+    title: "ACHIEVE - PACT",
+    slug: "achieve-pact",
+    summary:
+      "PASADA implemented community-level activities supporting HIV prevention, care and referral pathways as a sub-grantee partner.",
+    tag: "Community",
+    category: "Community",
+    categorySlug: "community",
+    status: "Completed",
+    partner: "PACT",
+    imageUrl: "https://pasada.or.tz/uploads/project-featured-photo-9.jpg",
+    galleryUrls: ["https://pasada.or.tz/uploads/project-featured-photo-9.jpg"],
+    sortOrder: 8,
+    content: [
+      textBlock("Program overview", "h2"),
+      textBlock(
+        "ACHIEVE - PACT supported community-level activities that strengthened prevention, care, and referral pathways. PASADA worked alongside partners to deliver outreach, education, and client follow-up in priority areas.",
+      ),
     ],
   },
 ];
 
 const listQuery = groq`
   *[_type == "project"] | order(sortOrder asc, title asc) {
-    _id, title, "slug": slug.current, summary, tag, sortOrder, featured,
+    _id, title, "slug": slug.current, summary, tag, sortOrder, featured, status, partner, duration,
     "category": category->title, "categorySlug": category->slug.current,
     mainImage, gallery, "videoUrl": video.asset->url
   }
@@ -230,7 +236,7 @@ const listQuery = groq`
 
 const detailQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
-    _id, title, "slug": slug.current, summary, tag, sortOrder, featured,
+    _id, title, "slug": slug.current, summary, tag, sortOrder, featured, status, partner, duration,
     "category": category->title, "categorySlug": category->slug.current,
     mainImage, gallery, content, "videoUrl": video.asset->url
   }
@@ -261,6 +267,9 @@ function mapRow(row: {
   tag?: string;
   category?: string;
   categorySlug?: string;
+  status?: string;
+  partner?: string;
+  duration?: string;
   mainImage?: unknown;
   gallery?: unknown[];
   videoUrl?: string;
@@ -284,6 +293,9 @@ function mapRow(row: {
     tag: row.tag ?? row.category,
     category: row.category,
     categorySlug: row.categorySlug,
+    status: row.status === "Completed" ? "Completed" : "Ongoing",
+    partner: row.partner,
+    duration: row.duration,
     imageUrl,
     galleryUrls,
     videoUrl: row.videoUrl,
@@ -336,7 +348,8 @@ export async function getProjectCategories() {
     return [
       { _id: "pc1", title: "Community", slug: "community" },
       { _id: "pc2", title: "Health", slug: "health" },
-      { _id: "pc3", title: "Youth", slug: "youth" },
+      { _id: "pc3", title: "OVC", slug: "ovc" },
+      { _id: "pc4", title: "Research", slug: "research" },
     ];
   }
   try {

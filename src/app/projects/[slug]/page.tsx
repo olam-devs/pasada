@@ -8,6 +8,7 @@ import {
   getProjectBySlug,
   getProjects,
 } from "@/lib/projects";
+import { cn } from "@/lib/cn";
 
 export async function generateStaticParams() {
   const projects = await getProjects();
@@ -27,6 +28,25 @@ export default async function ProjectDetailPage({
   return (
     <PageShell eyebrow="Projects" title={project.title} heroImageSrc={project.imageUrl}>
       <AnimatedSection>
+        <div className="mb-2 flex flex-wrap items-center gap-2">
+          <span
+            className={cn(
+              "inline-block rounded-full px-3 py-1 text-xs font-semibold ring-1",
+              project.status === "Ongoing"
+                ? "bg-emerald-50 text-emerald-700 ring-emerald-300"
+                : "bg-zinc-100 text-zinc-600 ring-zinc-300",
+            )}
+          >
+            {project.status}
+          </span>
+          {project.partner ? (
+            <span className="text-sm text-zinc-700">Partner: {project.partner}</span>
+          ) : null}
+          {project.duration ? (
+            <span className="text-sm text-zinc-700">Duration: {project.duration}</span>
+          ) : null}
+        </div>
+
         <DetailLayout
           backHref="/projects"
           backLabel="All projects"

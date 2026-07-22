@@ -49,7 +49,15 @@ function FormCard({
   );
 }
 
-export function InvolvementForms() {
+export function InvolvementForms({
+  volunteerEmail = "volunteer@pasada.or.tz",
+  partnerEmail = "info@pasada.or.tz",
+  donateEmail = "info@pasada.or.tz",
+}: {
+  volunteerEmail?: string;
+  partnerEmail?: string;
+  donateEmail?: string;
+}) {
   const [active, setActive] = useState<Tab>("volunteer");
 
   return (
@@ -80,7 +88,7 @@ export function InvolvementForms() {
         >
           <form
             className="mt-6 grid gap-4 sm:grid-cols-2"
-            action="mailto:info@pasada.or.tz"
+            action={`mailto:${volunteerEmail}`}
             method="post"
             encType="text/plain"
           >
@@ -136,7 +144,7 @@ export function InvolvementForms() {
         >
           <form
             className="mt-6 grid gap-4 sm:grid-cols-2"
-            action="mailto:info@pasada.or.tz"
+            action={`mailto:${partnerEmail}`}
             method="post"
             encType="text/plain"
           >
@@ -187,7 +195,7 @@ export function InvolvementForms() {
         >
           <form
             className="mt-6 grid gap-4 sm:grid-cols-2"
-            action="mailto:info@pasada.or.tz"
+            action={`mailto:${donateEmail}`}
             method="post"
             encType="text/plain"
           >

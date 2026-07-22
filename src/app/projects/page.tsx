@@ -1,6 +1,6 @@
 import { PageShell } from "@/components/site/PageShell";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { CategoryGrid } from "@/components/content/CategoryGrid";
+import { ProjectStatusTabs } from "@/components/content/ProjectStatusTabs";
 import { getProjectCategories, getProjects } from "@/lib/projects";
 import { media } from "@/lib/media";
 
@@ -16,8 +16,9 @@ export default async function ProjectsPage() {
     slug: p.slug,
     summary: p.summary,
     imageUrl: p.imageUrl,
-    badge: p.tag ?? p.category,
+    badge: p.status,
     categorySlug: p.categorySlug,
+    status: p.status,
   }));
 
   return (
@@ -29,17 +30,12 @@ export default async function ProjectsPage() {
       <AnimatedSection>
         <p className="max-w-3xl text-sm leading-7 text-zinc-800">
           PASADA works with partners on community-based initiatives that strengthen
-          prevention, care and resilience. Open any project for photos, videos and
-          full details.
+          prevention, care and resilience. Filter by status or category, and open
+          any project for full details.
         </p>
       </AnimatedSection>
 
-      <CategoryGrid
-        items={items}
-        categories={categories}
-        basePath="/projects"
-        allLabel="All projects"
-      />
+      <ProjectStatusTabs items={items} categories={categories} basePath="/projects" />
     </PageShell>
   );
 }

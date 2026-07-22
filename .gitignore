@@ -24,6 +24,7 @@
 .DS_Store
 _pasada_home_raw.html
 *.pem
+run-dev.bat
 
 # debug
 npm-debug.log*

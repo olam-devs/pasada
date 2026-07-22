@@ -21,17 +21,23 @@ const nav = [
     match: (p: string) => p.startsWith("/testimonials"),
   },
   { href: "/jobs", label: "Careers", match: (p: string) => p.startsWith("/jobs") },
+  { href: "/tenders", label: "Tenders", match: (p: string) => p.startsWith("/tenders") },
   {
     href: "/get-involved",
     label: "Get involved",
     match: (p: string) => p.startsWith("/get-involved"),
+  },
+  {
+    href: "/whistleblower",
+    label: "Whistle-blower",
+    match: (p: string) => p.startsWith("/whistleblower"),
   },
   { href: "/contact", label: "Contact", match: (p: string) => p.startsWith("/contact") },
 ] as const;
 
 function navLinkClass(active: boolean) {
   return cn(
-    "rounded-full px-3 py-2 text-sm font-medium transition-colors",
+    "rounded-full px-2 py-2 text-[13px] font-medium transition-colors whitespace-nowrap",
     active
       ? "bg-[var(--primary)] text-white shadow-sm"
       : "text-zinc-800 hover:bg-zinc-100 hover:text-zinc-950",
@@ -57,7 +63,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2">
           <span className="relative h-9 w-10 overflow-hidden rounded-xl bg-white ring-1 ring-[var(--border)]">
             <Image
-              src="https://pasada.or.tz/uploads/logo.jpg"
+              src="/brand/logo.jpg"
               alt="PASADA logo"
               fill
               className="object-cover"
@@ -75,7 +81,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-0.5 xl:flex">
           {nav.map((item) => {
             const active = item.match(pathname);
             return (
@@ -114,7 +120,7 @@ export function Header() {
           </ButtonLink>
 
           <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full ring-1 ring-[var(--border)] hover:bg-zinc-50 lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full ring-1 ring-[var(--border)] hover:bg-zinc-50 xl:hidden"
             aria-label="Open menu"
             aria-expanded={open}
             onClick={() => setOpen(true)}

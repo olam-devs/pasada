@@ -6,19 +6,36 @@ export type SiteSettings = {
   maxFeaturedPosts: number;
   maxFeaturedProjects: number;
   maxFeaturedServices: number;
+  donationEmail: string;
+  careersEmail: string;
+  volunteerEmail: string;
+  whistleblowerChannel1Url: string;
+  whistleblowerChannel2Url: string;
 };
 
 const defaults: SiteSettings = {
   maxFeaturedPosts: 3,
   maxFeaturedProjects: 3,
   maxFeaturedServices: 6,
+  donationEmail: "info@pasada.or.tz",
+  careersEmail: "recruitment@pasada.or.tz",
+  volunteerEmail: "volunteer@pasada.or.tz",
+  whistleblowerChannel1Url:
+    "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAob4kyZUME5RVlRHVlZUWEVKUE42TEw2OEFMRDhFMy4u",
+  whistleblowerChannel2Url:
+    "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__qiYUi9UQUpVNDhPWk1QQTNRVkY5TFZBNjdXUElUWi4u",
 };
 
 const query = groq`
   *[_type == "siteSettings"][0] {
     maxFeaturedPosts,
     maxFeaturedProjects,
-    maxFeaturedServices
+    maxFeaturedServices,
+    donationEmail,
+    careersEmail,
+    volunteerEmail,
+    whistleblowerChannel1Url,
+    whistleblowerChannel2Url
   }
 `;
 

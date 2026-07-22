@@ -26,7 +26,7 @@ export const metadata: Metadata = {
       "Care, hope, and community impact—supporting people infected and affected by HIV and AIDS in Tanzania.",
     type: "website",
   },
-  icons: [{ rel: "icon", url: "/brand/favicon.png" }],
+  icons: [{ rel: "icon", url: "/brand/logo.jpg" }],
 };
 
 export default function RootLayout({

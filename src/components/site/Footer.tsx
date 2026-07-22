@@ -8,8 +8,10 @@ const links = [
   { href: "/projects", label: "Projects" },
   { href: "/get-involved", label: "Get involved" },
   { href: "/jobs", label: "Careers" },
+  { href: "/tenders", label: "Tenders" },
   { href: "/contact", label: "Contact" },
   { href: "/blog", label: "Blog" },
+  { href: "/whistleblower", label: "Whistle-blower / Tupe taarifa" },
 ] as const;
 
 export function Footer() {

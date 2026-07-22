@@ -25,6 +25,38 @@ export const siteSettings = defineType({
       initialValue: "info@pasada.or.tz",
     }),
     defineField({
+      name: "donationEmail",
+      title: "Donations email/gateway",
+      type: "string",
+      initialValue: "info@pasada.or.tz",
+    }),
+    defineField({
+      name: "careersEmail",
+      title: "Careers email",
+      type: "string",
+      initialValue: "recruitment@pasada.or.tz",
+    }),
+    defineField({
+      name: "volunteerEmail",
+      title: "Volunteers email",
+      type: "string",
+      initialValue: "volunteer@pasada.or.tz",
+    }),
+    defineField({
+      name: "whistleblowerChannel1Url",
+      title: "Whistle-blower / Tupe taarifa — Channel 1 URL",
+      type: "url",
+      initialValue:
+        "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAob4kyZUME5RVlRHVlZUWEVKUE42TEw2OEFMRDhFMy4u",
+    }),
+    defineField({
+      name: "whistleblowerChannel2Url",
+      title: "Whistle-blower / Tupe taarifa — Channel 2 URL",
+      type: "url",
+      initialValue:
+        "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__qiYUi9UQUpVNDhPWk1QQTNRVkY5TFZBNjdXUElUWi4u",
+    }),
+    defineField({
       name: "phone",
       title: "Phone",
       type: "string",

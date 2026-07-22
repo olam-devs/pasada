@@ -4,8 +4,10 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { InvolvementForms } from "@/components/forms/InvolvementForms";
 import { ButtonLink } from "@/components/ui/Button";
 import { Briefcase } from "lucide-react";
+import { getSiteSettings } from "@/lib/settings";
 
-export default function GetInvolvedPage() {
+export default async function GetInvolvedPage() {
+  const settings = await getSiteSettings();
   return (
     <PageShell
       eyebrow="Get involved"
@@ -21,7 +23,11 @@ export default function GetInvolvedPage() {
       </AnimatedSection>
 
       <div className="mt-8">
-        <InvolvementForms />
+        <InvolvementForms
+          volunteerEmail={settings.volunteerEmail}
+          partnerEmail={settings.donationEmail}
+          donateEmail={settings.donationEmail}
+        />
       </div>
 
       <AnimatedSection>

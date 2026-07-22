@@ -35,6 +35,26 @@ export const project = defineType({
       type: "reference",
       to: [{ type: "projectCategory" }],
     }),
+    defineField({
+      name: "status",
+      title: "Project status",
+      type: "string",
+      options: { list: ["Ongoing", "Completed"] },
+      initialValue: "Ongoing",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "partner",
+      title: "Implementing / funding partner",
+      description: "e.g. Amref Health Africa Tanzania",
+      type: "string",
+    }),
+    defineField({
+      name: "duration",
+      title: "Project duration",
+      description: "e.g. October 2023 – September 2028",
+      type: "string",
+    }),
     ...sortableFeaturedFields.map((f) => defineField(f)),
     defineField({
       name: "tag",
@@ -80,11 +100,12 @@ export const project = defineType({
       subtitle: "category.title",
       media: "mainImage",
       featured: "featured",
+      status: "status",
     },
-    prepare({ title, subtitle, media, featured }) {
+    prepare({ title, subtitle, media, featured, status }) {
       return {
         title: featured ? `★ ${title}` : title,
-        subtitle,
+        subtitle: [status, subtitle].filter(Boolean).join(" · "),
         media,
       };
     },
