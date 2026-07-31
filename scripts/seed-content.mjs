@@ -43,6 +43,17 @@ function block(text, style = "normal") {
   };
 }
 
+function bullet(text) {
+  return {
+    _type: "block",
+    style: "normal",
+    listItem: "bullet",
+    level: 1,
+    children: [{ _type: "span", text, marks: [] }],
+    markDefs: [],
+  };
+}
+
 const projectCategories = [
   { _id: "projectCategory.health", _type: "projectCategory", title: "Health", slug: { _type: "slug", current: "health" } },
   { _id: "projectCategory.ovc", _type: "projectCategory", title: "OVC", slug: { _type: "slug", current: "ovc" } },
@@ -430,6 +441,225 @@ const services = [
   },
 ];
 
+const serviceCategories = [
+  { _id: "serviceCategory.clinical", _type: "serviceCategory", title: "Clinical", slug: { _type: "slug", current: "clinical" } },
+];
+
+const blogCategories = [
+  { _id: "category.events", _type: "category", title: "Events", slug: { _type: "slug", current: "events" } },
+  { _id: "category.awareness", _type: "category", title: "Awareness", slug: { _type: "slug", current: "awareness" } },
+  { _id: "category.partnerships", _type: "category", title: "Partnerships", slug: { _type: "slug", current: "partnerships" } },
+  { _id: "category.community", _type: "category", title: "Community", slug: { _type: "slug", current: "community" } },
+];
+
+const posts = [
+  {
+    _id: "post.womens-day-2023",
+    _type: "post",
+    title: "PASADA Women's Day Celebration 2023",
+    slug: { _type: "slug", current: "womens-day-2023" },
+    category: { _type: "reference", _ref: "category.events" },
+    sortOrder: 1,
+    featured: true,
+    publishedAt: "2023-03-08T00:00:00.000Z",
+    excerpt:
+      "Celebrating achievements and advancing dignity, health and opportunity for women and girls-through community outreach and supportive services.",
+    content: [
+      block("Celebrating women and community strength", "h2"),
+      block(
+        "International Women's Day is an opportunity to celebrate achievements while reaffirming our commitment to dignity and health for women and girls. PASADA activities focus on practical support, community education and respectful care.",
+      ),
+      block("Highlights", "h3"),
+      bullet("Health education and stigma reduction conversations"),
+      bullet("Client-centered referrals and follow-up support"),
+      bullet("Women's health awareness and early screening information"),
+    ],
+  },
+  {
+    _id: "post.aids-day-2022",
+    _type: "post",
+    title: "PASADA AIDS Day 2022",
+    slug: { _type: "slug", current: "aids-day-2022" },
+    category: { _type: "reference", _ref: "category.awareness" },
+    sortOrder: 2,
+    featured: true,
+    publishedAt: "2022-12-01T00:00:00.000Z",
+    excerpt:
+      "Solidarity, education and advocacy toward a world free from stigma and discrimination-strengthening community understanding and support.",
+    content: [
+      block("Why AIDS Day matters", "h2"),
+      block(
+        "World AIDS Day is a moment to unite, remember, and act. PASADA uses this day to strengthen awareness, encourage testing, and support those living with or affected by HIV.",
+      ),
+      block("Focus areas", "h3"),
+      block(
+        "Our messaging emphasizes dignity, confidentiality, and practical steps that families can take-while addressing stigma and misinformation.",
+      ),
+      bullet("HIV testing and counseling awareness"),
+      bullet("Linkage to care and treatment support"),
+      bullet("Psychosocial support for clients and caregivers"),
+    ],
+  },
+  {
+    _id: "post.health-summit-2023",
+    _type: "post",
+    title: "Tanzania Health Summit 2023",
+    slug: { _type: "slug", current: "health-summit-2023" },
+    category: { _type: "reference", _ref: "category.partnerships" },
+    sortOrder: 3,
+    publishedAt: "2023-07-01T00:00:00.000Z",
+    excerpt:
+      "A milestone gathering that strengthened collaboration, practical solutions, and community-centered approaches to public health.",
+    content: [
+      block("Collaboration for better outcomes", "h2"),
+      block(
+        "The summit brought together partners working across prevention, care, and community programming. PASADA's work centers on dignity-supporting clients, caregivers and communities with services that are compassionate and accessible.",
+      ),
+    ],
+  },
+  {
+    _id: "post.community-outreach-2024",
+    _type: "post",
+    title: "Community outreach in Dar es Salaam",
+    slug: { _type: "slug", current: "community-outreach-2024" },
+    category: { _type: "reference", _ref: "category.community" },
+    sortOrder: 4,
+    publishedAt: "2024-02-14T00:00:00.000Z",
+    excerpt:
+      "Field teams sharing health education, testing awareness, and compassionate follow-up support-building trust one household at a time.",
+    content: [
+      block("Outreach that builds trust", "h2"),
+      block(
+        "Community outreach helps families access accurate information and timely referrals. PASADA teams support stigma reduction, encourage health-seeking behavior, and follow up with clients and caregivers who need additional support.",
+      ),
+    ],
+  },
+];
+
+const testimonialCategories = [
+  { _id: "testimonialCategory.clients", _type: "testimonialCategory", title: "Clients", slug: { _type: "slug", current: "clients" } },
+  { _id: "testimonialCategory.caregivers", _type: "testimonialCategory", title: "Caregivers", slug: { _type: "slug", current: "caregivers" } },
+  { _id: "testimonialCategory.volunteers", _type: "testimonialCategory", title: "Volunteers", slug: { _type: "slug", current: "volunteers" } },
+  { _id: "testimonialCategory.partners", _type: "testimonialCategory", title: "Partners", slug: { _type: "slug", current: "partners" } },
+];
+
+function testimonial(id, categoryRef, quote, name, role, sortOrder, featured) {
+  const doc = {
+    _id: `testimonial.${id}`,
+    _type: "testimonial",
+    category: { _type: "reference", _ref: categoryRef },
+    quote,
+    name,
+    role,
+    sortOrder,
+  };
+  if (featured) doc.featured = true;
+  return doc;
+}
+
+const testimonials = [
+  testimonial("t1", "testimonialCategory.clients", "PASADA helped my family access care with dignity and without judgement. The support gave us strength during a difficult season.", "Community Member", "Client support", 1, true),
+  testimonial("t1b", "testimonialCategory.clients", "From the first visit I felt welcomed. Staff explained every step with patience and treated us with respect.", "Family member", "Outpatient support", 2, true),
+  testimonial("t1c", "testimonialCategory.clients", "Medication support and counseling were coordinated in one place. That made it easier for us to stay on treatment.", "Client", "Integrated care", 3),
+  testimonial("t1d", "testimonialCategory.clients", "We were never turned away because of faith or background. PASADA serves everyone with the same compassion.", "Parent", "Family support", 4),
+  testimonial("t1e", "testimonialCategory.clients", "Home visits helped when transport was difficult. The team listened and adjusted support to our situation.", "Community member", "Home-based care", 5),
+  testimonial("t1f", "testimonialCategory.clients", "Peer support groups reminded us we are not alone. Sharing experiences gave us courage to keep going.", "Support group participant", "Peer support", 6),
+
+  testimonial("t2", "testimonialCategory.caregivers", "The counseling services gave me hope and practical guidance. I felt listened to and respected throughout the process.", "Caregiver", "Psychosocial support", 10, true),
+  testimonial("t2b", "testimonialCategory.caregivers", "Training and supervision at PASADA helped me support clients with confidence and compassion every day.", "Home-based caregiver", "Care team", 11),
+  testimonial("t2c", "testimonialCategory.caregivers", "Clear protocols and respectful supervision help us deliver safe, dignified care in the community.", "Field caregiver", "Community care", 12),
+  testimonial("t2d", "testimonialCategory.caregivers", "When cases are complex, the team coordinates quickly so clients do not fall through the gaps.", "Case support worker", "Care coordination", 13),
+  testimonial("t2e", "testimonialCategory.caregivers", "Spiritual and emotional support is offered gently-clients choose what helps them without pressure.", "Pastoral care volunteer", "Holistic support", 14),
+  testimonial("t2f", "testimonialCategory.caregivers", "Regular reflection sessions help us process difficult days and return to clients with renewed empathy.", "Counselor", "Mental health", 15),
+
+  testimonial("t3", "testimonialCategory.volunteers", "PASADA's outreach programs make health information easier to understand and act on. The community response has been encouraging.", "Volunteer", "Community sensitization", 20, true),
+  testimonial("t3b", "testimonialCategory.volunteers", "Volunteering here connected me to people who care deeply about dignity and health in our neighborhoods.", "Community volunteer", "Outreach", 21),
+  testimonial("t3c", "testimonialCategory.volunteers", "Door-to-door awareness sessions helped families learn about prevention and where to seek help early.", "Outreach volunteer", "Health education", 22),
+  testimonial("t3d", "testimonialCategory.volunteers", "I help organize events and welcome visitors-small tasks that make the center feel warm and open.", "Youth volunteer", "Events & welcome", 23),
+  testimonial("t3e", "testimonialCategory.volunteers", "Translating information into Swahili during sessions helped more people participate and ask questions.", "Language volunteer", "Community dialogue", 24),
+  testimonial("t3f", "testimonialCategory.volunteers", "Weekend clinics need many hands; volunteering showed me how teamwork keeps services running smoothly.", "Clinical volunteer", "Service support", 25),
+
+  testimonial("t4", "testimonialCategory.partners", "Working with PASADA strengthened referral pathways and community trust. Their team is responsive and committed to dignity in service delivery.", "Program Partner", "Collaboration", 30),
+  testimonial("t4b", "testimonialCategory.partners", "Our joint programs reached more families because PASADA coordinates referrals and follow-up with care.", "Faith-based partner", "Referral network", 31),
+  testimonial("t4c", "testimonialCategory.partners", "Shared data and regular meetings help us align outreach and avoid duplicating efforts in the same wards.", "NGO collaborator", "Program alignment", 32),
+  testimonial("t4d", "testimonialCategory.partners", "PASADA's documentation standards made reporting to donors transparent and focused on client outcomes.", "Funding partner", "Accountability", 33),
+  testimonial("t4e", "testimonialCategory.partners", "Hospital linkages improved when PASADA escorts clients and shares care plans with clinical teams.", "Health facility partner", "Referrals", 34),
+  testimonial("t4f", "testimonialCategory.partners", "Archdiocese parishes appreciate clear communication-PASADA keeps partners informed and involved.", "Parish partner", "Faith community", 35),
+];
+
+const jobs = [
+  {
+    _id: "job.community-health-outreach-officer",
+    _type: "job",
+    title: "Community Health Outreach Officer",
+    slug: { _type: "slug", current: "community-health-outreach-officer" },
+    department: "Programs",
+    location: "Dar es Salaam",
+    employmentType: "Full-time",
+    postedAt: "2026-01-15",
+    summary:
+      "Support field outreach, client follow-up, and community education activities across PASADA service areas.",
+    responsibilities: [
+      "Coordinate community sensitization sessions",
+      "Support referral pathways and client follow-up",
+      "Prepare activity reports and program data",
+    ],
+    requirements: [
+      "Diploma or degree in public health or related field",
+      "Experience in community-based HIV programs",
+      "Strong communication in Kiswahili and English",
+    ],
+    applyEmail: "recruitment@pasada.or.tz",
+    isActive: true,
+  },
+  {
+    _id: "job.counselor-htc-psychosocial",
+    _type: "job",
+    title: "Counselor (HTC & Psychosocial Support)",
+    slug: { _type: "slug", current: "counselor-htc-psychosocial" },
+    department: "Clinical Services",
+    location: "Dar es Salaam",
+    employmentType: "Full-time",
+    postedAt: "2026-02-01",
+    summary:
+      "Provide compassionate HIV testing & counseling and psychosocial support for clients and families.",
+    responsibilities: [
+      "Conduct confidential HTC sessions",
+      "Provide psychosocial support and referrals",
+      "Maintain accurate client documentation",
+    ],
+    requirements: [
+      "Certification in counseling or social work",
+      "Experience in HIV/AIDS service delivery",
+      "Commitment to dignity, confidentiality, and ethics",
+    ],
+    applyEmail: "recruitment@pasada.or.tz",
+    isActive: true,
+  },
+];
+
+const tenders = [
+  {
+    _id: "tender.tender-for-delivery-of-car-hire-service",
+    _type: "tender",
+    title: "Tender for Delivery of Car Hire Service",
+    slug: { _type: "slug", current: "tender-for-delivery-of-car-hire-service" },
+    tenderNumber: "PASADA/T/2026/01",
+    status: "Closed",
+    publishedAt: "2026-01-10",
+    deadline: "2026-01-31T17:00:00+03:00",
+    summary:
+      "PASADA invited competent and licensed car hire service providers to submit bids for the provision of vehicle hire services.",
+    content: [
+      block("Scope of the tender", "h2"),
+      block(
+        "Interested and eligible car hire companies were invited to submit technical and financial proposals for the provision of vehicle hire services to support PASADA's program activities.",
+      ),
+    ],
+    contactEmail: "info@pasada.or.tz",
+  },
+];
+
 const siteSettingsPatch = {
   donationEmail: "info@pasada.or.tz",
   careersEmail: "recruitment@pasada.or.tz",
@@ -443,14 +673,30 @@ const siteSettingsPatch = {
 async function run() {
   console.log(`Seeding Sanity project ${projectId}/${dataset} ...`);
 
+  const allDocs = [
+    ...projectCategories,
+    ...projects,
+    ...services,
+    ...serviceCategories,
+    ...blogCategories,
+    ...posts,
+    ...testimonialCategories,
+    ...testimonials,
+    ...jobs,
+    ...tenders,
+  ];
+
   const tx = client.transaction();
-  for (const doc of [...projectCategories, ...projects, ...services]) {
+  for (const doc of allDocs) {
     tx.createOrReplace(doc);
   }
   await tx.commit();
-  console.log(
-    `Upserted ${projectCategories.length} project categories, ${projects.length} projects, ${services.length} services.`,
-  );
+  console.log(`Upserted ${allDocs.length} documents:`);
+  console.log(`  - ${projectCategories.length} project categories, ${projects.length} projects`);
+  console.log(`  - ${serviceCategories.length} service categories, ${services.length} services`);
+  console.log(`  - ${blogCategories.length} blog categories, ${posts.length} blog posts`);
+  console.log(`  - ${testimonialCategories.length} testimonial categories, ${testimonials.length} testimonials`);
+  console.log(`  - ${jobs.length} jobs, ${tenders.length} tenders`);
 
   const existingSettings = await client.fetch('*[_type == "siteSettings"][0]{_id}');
   if (existingSettings?._id) {
