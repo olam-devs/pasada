@@ -25,6 +25,7 @@
 _pasada_home_raw.html
 *.pem
 run-dev.bat
+run-prod.bat
 
 # debug
 npm-debug.log*

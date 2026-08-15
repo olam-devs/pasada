@@ -12,6 +12,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: {
     default: "PASADA Tanzania | Care, Hope & Community Impact",
