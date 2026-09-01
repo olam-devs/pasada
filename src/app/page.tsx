@@ -266,7 +266,7 @@ export default async function Home() {
                 Voices from clients, caregivers, volunteers and partners.
               </p>
             </div>
-            <div className="lg:col-span-3">
+            <div className="min-w-0 lg:col-span-3">
               <TestimonialsCarousel
                 items={featuredTestimonials.map((t) => ({
                   quote: t.quote,
