@@ -45,7 +45,7 @@ export function DetailLayout({
         </span>
       ) : null}
 
-      <p className="mt-6 max-w-3xl text-base leading-8 text-zinc-800">{summary}</p>
+      <p className="mt-6 max-w-none text-base leading-8 text-zinc-800">{summary}</p>
 
       <div className="mt-8 overflow-hidden rounded-2xl border-2 border-[var(--primary)]">
         <div className="relative aspect-[16/9] bg-zinc-100">
