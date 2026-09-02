@@ -1,4 +1,5 @@
 import { siteSettings } from "@/sanity/schemaTypes/siteSettings";
+import { aboutPage } from "@/sanity/schemaTypes/aboutPage";
 import { page } from "@/sanity/schemaTypes/page";
 import { service } from "@/sanity/schemaTypes/service";
 import { project } from "@/sanity/schemaTypes/project";
@@ -13,6 +14,7 @@ import { testimonialCategory } from "@/sanity/schemaTypes/testimonialCategory";
 
 export const schemaTypes = [
   siteSettings,
+  aboutPage,
   page,
   category,
   projectCategory,

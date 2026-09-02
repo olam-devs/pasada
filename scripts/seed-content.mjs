@@ -660,6 +660,66 @@ const tenders = [
   },
 ];
 
+function span(text, marks = []) {
+  return { _type: "span", text, marks };
+}
+
+function richBlock(children, style = "normal") {
+  return { _type: "block", style, markDefs: [], children };
+}
+
+const aboutPageDoc = {
+  _id: "aboutPage",
+  _type: "aboutPage",
+  heroEyebrow: "About PASADA",
+  heroTitle: "A faith-based organization serving all with dignity",
+  intro: [
+    richBlock([
+      span(
+        "Pastoral Activities and Services for people with AIDS Dar es Salaam Archdiocese (PASADA (T)) is a faith-based Organization operating under the Roman Catholic Archdiocese of Dar es Salaam. PASADA was formed in ",
+      ),
+      span("August 1992", ["strong"]),
+      span(
+        " when a small group of people with HIV gathered to seek mutual aid and support.",
+      ),
+    ]),
+    richBlock([
+      span("Although sponsored by the Roman Catholic Church, the services offered by PASADA are available to "),
+      span("all individuals without discrimination", ["strong"]),
+      span(" and are provided "),
+      span("free of charge", ["strong"]),
+      span("."),
+    ]),
+  ],
+  missionText:
+    "Responding to the call of faith, PASADA (T) strives to provide and maintain quality, caring and compassionate services and support to people infected and affected by HIV and AIDS in Tanzania—with particular attention to the poorest and the neediest—through a holistic approach with the light of the Gospel, emphasizing justice, solidarity, sustainability and efficiency.",
+  visionText:
+    "A society in which all people can live life to their full potential with dignity and respect.",
+  coreValues: [
+    { _key: "justice", title: "Justice", description: "Fair access to care for the poorest and neediest.", icon: "scale" },
+    { _key: "solidarity", title: "Solidarity", description: "Walking together with families and communities.", icon: "users" },
+    { _key: "sustainability", title: "Sustainability", description: "Programs built for long-term community resilience.", icon: "target" },
+    { _key: "efficiency", title: "Efficiency", description: "Responsible stewardship of resources and partnerships.", icon: "sparkles" },
+    { _key: "compassion", title: "Compassion", description: "Client-centered support rooted in dignity.", icon: "heart" },
+    { _key: "respect", title: "Respect", description: "Confidential, non-judgmental service for all.", icon: "eye" },
+  ],
+  focusAreas: [
+    "HIV testing and counseling",
+    "Home-based and palliative care",
+    "Comprehensive HIV care and treatment support",
+    "PMTCT screening",
+    "Cervical cancer screening",
+    "NCD screening",
+    "Support to OVC and caregivers",
+    "Psychosocial support and counseling",
+    "Community sensitization and education",
+    "Capacity development",
+  ],
+  ctaTitle: "Get inspired—take action",
+  ctaText:
+    "Donors, volunteers and partners help us strengthen community wellbeing and bring hope to families.",
+};
+
 const siteSettingsPatch = {
   donationEmail: "info@pasada.or.tz",
   careersEmail: "recruitment@pasada.or.tz",
@@ -684,6 +744,7 @@ async function run() {
     ...testimonials,
     ...jobs,
     ...tenders,
+    aboutPageDoc,
   ];
 
   const tx = client.transaction();
@@ -697,6 +758,7 @@ async function run() {
   console.log(`  - ${blogCategories.length} blog categories, ${posts.length} blog posts`);
   console.log(`  - ${testimonialCategories.length} testimonial categories, ${testimonials.length} testimonials`);
   console.log(`  - ${jobs.length} jobs, ${tenders.length} tenders`);
+  console.log(`  - 1 about page`);
 
   const existingSettings = await client.fetch('*[_type == "siteSettings"][0]{_id}');
   if (existingSettings?._id) {

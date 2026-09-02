@@ -6,6 +6,8 @@ export type SiteSettings = {
   maxFeaturedPosts: number;
   maxFeaturedProjects: number;
   maxFeaturedServices: number;
+  email: string;
+  phone: string;
   donationEmail: string;
   careersEmail: string;
   volunteerEmail: string;
@@ -17,6 +19,8 @@ const defaults: SiteSettings = {
   maxFeaturedPosts: 3,
   maxFeaturedProjects: 3,
   maxFeaturedServices: 6,
+  email: "info@pasada.or.tz",
+  phone: "+255 22 286 6618",
   donationEmail: "info@pasada.or.tz",
   careersEmail: "recruitment@pasada.or.tz",
   volunteerEmail: "volunteer@pasada.or.tz",
@@ -31,6 +35,8 @@ const query = groq`
     maxFeaturedPosts,
     maxFeaturedProjects,
     maxFeaturedServices,
+    email,
+    phone,
     donationEmail,
     careersEmail,
     volunteerEmail,
