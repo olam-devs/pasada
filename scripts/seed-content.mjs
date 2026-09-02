@@ -1,6 +1,7 @@
 // One-off / re-runnable seed script: pushes real PASADA content into Sanity.
 // Usage: node scripts/seed-content.mjs   (reads SANITY_API_WRITE_TOKEN from .env.local)
 import { createClient } from "@sanity/client";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -34,11 +35,16 @@ const client = createClient({
   useCdn: false,
 });
 
+function key() {
+  return crypto.randomUUID().replace(/-/g, "").slice(0, 12);
+}
+
 function block(text, style = "normal") {
   return {
     _type: "block",
+    _key: key(),
     style,
-    children: [{ _type: "span", text, marks: [] }],
+    children: [{ _type: "span", _key: key(), text, marks: [] }],
     markDefs: [],
   };
 }
@@ -46,10 +52,11 @@ function block(text, style = "normal") {
 function bullet(text) {
   return {
     _type: "block",
+    _key: key(),
     style: "normal",
     listItem: "bullet",
     level: 1,
-    children: [{ _type: "span", text, marks: [] }],
+    children: [{ _type: "span", _key: key(), text, marks: [] }],
     markDefs: [],
   };
 }
@@ -661,11 +668,11 @@ const tenders = [
 ];
 
 function span(text, marks = []) {
-  return { _type: "span", text, marks };
+  return { _type: "span", _key: key(), text, marks };
 }
 
 function richBlock(children, style = "normal") {
-  return { _type: "block", style, markDefs: [], children };
+  return { _type: "block", _key: key(), style, markDefs: [], children };
 }
 
 const aboutPageDoc = {
