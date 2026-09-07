@@ -47,7 +47,7 @@ export default async function JobDetailPage({
           </span>
         </div>
 
-        <p className="mt-6 max-w-3xl text-base leading-8 text-zinc-800">
+        <p className="mt-6 max-w-none text-base leading-8 text-zinc-800">
           {job.summary}
         </p>
 

@@ -39,7 +39,7 @@ export function PageShell({
                 />
               </div>
               <div
-                className="absolute inset-0 bg-gradient-to-t from-white via-white/75 to-white/25"
+                className="absolute inset-0 bg-gradient-to-t from-white from-0% via-white/25 via-30% to-transparent to-60%"
                 aria-hidden="true"
               />
             </>

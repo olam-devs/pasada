@@ -20,7 +20,7 @@ export default async function TestimonialsPage() {
       heroImageSrc={media.hero.blog}
     >
       <AnimatedSection>
-        <p className="max-w-3xl text-sm leading-7 text-zinc-800">
+        <p className="max-w-none text-sm leading-7 text-zinc-800">
           Stories and reflections from clients, caregivers, volunteers and
           partners who have walked with PASADA. Pick a category to see its quote
           cards, or choose <strong>All voices</strong> to browse every story

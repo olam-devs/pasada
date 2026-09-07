@@ -27,7 +27,7 @@ export default async function ServicesPage() {
       heroImageSrc={media.hero.services}
     >
       <AnimatedSection>
-        <p className="max-w-3xl text-sm leading-7 text-zinc-800">
+        <p className="max-w-none text-sm leading-7 text-zinc-800">
           Holistic services for people infected and affected by HIV and AIDS—open
           each service for detailed information and photo galleries.
         </p>

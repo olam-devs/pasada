@@ -26,7 +26,7 @@ export default async function TendersPage() {
       heroImageSrc={media.hero.careers}
     >
       <AnimatedSection>
-        <p className="max-w-3xl text-sm leading-7 text-zinc-800">
+        <p className="max-w-none text-sm leading-7 text-zinc-800">
           PASADA publishes open procurement opportunities here. Review the tender
           details and submit your bid before the closing deadline.
         </p>

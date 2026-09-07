@@ -17,7 +17,7 @@ export default async function BlogPage() {
       heroImageSrc={media.hero.blog}
     >
       <AnimatedSection>
-        <p className="max-w-3xl text-sm leading-7 text-zinc-800">
+        <p className="max-w-none text-sm leading-7 text-zinc-800">
           News, events, and community stories. Browse by category, read structured
           articles, and watch short videos when available.
         </p>

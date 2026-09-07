@@ -15,7 +15,7 @@ export default async function GetInvolvedPage() {
       heroImageSrc={media.hero.getInvolved}
     >
       <AnimatedSection>
-        <p className="max-w-3xl text-sm leading-7 text-zinc-800">
+        <p className="max-w-none text-sm leading-7 text-zinc-800">
           Choose how you want to support PASADA. Complete the form for
           volunteering, partnerships, or donations—all fields use high-contrast
           styling so your responses are easy to read.

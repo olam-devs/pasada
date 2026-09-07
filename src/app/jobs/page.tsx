@@ -16,7 +16,7 @@ export default async function JobsPage() {
       heroImageSrc={media.hero.careers}
     >
       <AnimatedSection>
-        <p className="max-w-3xl text-sm leading-7 text-zinc-800">
+        <p className="max-w-none text-sm leading-7 text-zinc-800">
           Explore open roles at PASADA. Open each listing for role details and
           application guidance.
         </p>
