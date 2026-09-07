@@ -313,18 +313,6 @@ function normalizeTestimonial(t: Testimonial): Testimonial {
   return categorySlug ? { ...t, categorySlug } : t;
 }
 
-/** Sanity rows may lack categories; always keep rich sample quotes per category. */
-function mergeWithSample(remote: Testimonial[]): Testimonial[] {
-  const byId = new Map<string, Testimonial>();
-  for (const t of remote.map(normalizeTestimonial)) {
-    byId.set(t._id, t);
-  }
-  for (const t of SAMPLE) {
-    if (!byId.has(t._id)) byId.set(t._id, t);
-  }
-  return filterList([...byId.values()]);
-}
-
 function mapCategory(row: {
   _id: string;
   title: string;
@@ -437,8 +425,8 @@ export async function getTestimonials(opts?: { featuredOnly?: boolean; limit?: n
   if (!sanityConfigured) return filterList(SAMPLE, opts);
   try {
     const rows = await sanityClient.fetch<Parameters<typeof mapRow>[0][]>(listQuery);
-    const merged = rows?.length ? mergeWithSample(rows.map(mapRow)) : SAMPLE;
-    return filterList(merged, opts);
+    const list = rows?.length ? rows.map(mapRow).map(normalizeTestimonial) : SAMPLE;
+    return filterList(list, opts);
   } catch {
     return filterList(SAMPLE, opts);
   }
