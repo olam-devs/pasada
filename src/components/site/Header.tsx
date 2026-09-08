@@ -11,7 +11,7 @@ import { cn } from "@/lib/cn";
 
 const nav = [
   { href: "/", label: "Home", match: (p: string) => p === "/" },
-  { href: "/about", label: "About", match: (p: string) => p.startsWith("/about") },
+  { href: "/about", label: "About Us", match: (p: string) => p.startsWith("/about") },
   { href: "/services", label: "Services", match: (p: string) => p.startsWith("/services") },
   { href: "/projects", label: "Projects", match: (p: string) => p.startsWith("/projects") },
   { href: "/blog", label: "Blog", match: (p: string) => p.startsWith("/blog") },

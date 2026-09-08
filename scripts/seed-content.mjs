@@ -757,12 +757,19 @@ async function run() {
     aboutPageDoc,
   ];
 
+  // createIfNotExists (not createOrReplace): once a document exists, an admin
+  // may have edited and published it from Studio. This script must never
+  // silently stomp on that. Re-running it only fills in documents that are
+  // still missing (e.g. a brand-new environment, or a new doc added here
+  // later) - it does not "refresh" or "fix up" existing ones. If a doc
+  // genuinely needs a one-off correction, patch it directly and deliberately,
+  // never via a full reseed.
   const tx = client.transaction();
   for (const doc of allDocs) {
-    tx.createOrReplace(doc);
+    tx.createIfNotExists(doc);
   }
   await tx.commit();
-  console.log(`Upserted ${allDocs.length} documents:`);
+  console.log(`Ensured ${allDocs.length} documents exist (existing ones left untouched):`);
   console.log(`  - ${projectCategories.length} project categories, ${projects.length} projects`);
   console.log(`  - ${serviceCategories.length} service categories, ${services.length} services`);
   console.log(`  - ${blogCategories.length} blog categories, ${posts.length} blog posts`);
