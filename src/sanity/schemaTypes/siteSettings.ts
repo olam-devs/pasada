@@ -31,6 +31,24 @@ export const siteSettings = defineType({
       initialValue: "info@pasada.or.tz",
     }),
     defineField({
+      name: "donationMobileProvider",
+      title: "Donation — Mobile Money provider",
+      type: "string",
+      initialValue: "Mpesa",
+    }),
+    defineField({
+      name: "donationMobileNumber",
+      title: "Donation — Mobile Money number",
+      type: "string",
+      initialValue: "350 232 115",
+    }),
+    defineField({
+      name: "donationMobileReference",
+      title: "Donation — Mobile Money reference",
+      type: "string",
+      initialValue: "PASADA DONATION",
+    }),
+    defineField({
       name: "careersEmail",
       title: "Careers email",
       type: "string",

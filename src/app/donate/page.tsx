@@ -1,8 +1,11 @@
 import { PageShell } from "@/components/site/PageShell";
 import { ButtonLink } from "@/components/ui/Button";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { getSiteSettings } from "@/lib/settings";
 
-export default function DonatePage() {
+export default async function DonatePage() {
+  const settings = await getSiteSettings();
+
   return (
     <PageShell
       eyebrow="Donate"
@@ -21,31 +24,17 @@ export default function DonatePage() {
           <div className="rounded-2xl bg-white p-6 ring-1 ring-[var(--border)]">
             <div className="text-sm font-semibold">Donation options</div>
             <p className="mt-2 text-sm leading-6 text-zinc-700">
-              Replace the details below with your preferred methods (Mobile
-              Money, bank accounts, partner portals). We’ll also make this page
-              easy to update as PASADA’s donation methods evolve.
+              Send your donation via Mobile Money using the details below.
             </p>
 
-            <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl bg-zinc-50 p-4 ring-1 ring-[var(--border)]">
-                <div className="text-sm font-semibold">Mobile Money</div>
-                <div className="mt-2 text-sm text-zinc-700">
-                  Provider: (TBD)
-                  <br />
-                  Number: (TBD)
-                  <br />
-                  Reference: PASADA DONATION
-                </div>
-              </div>
-              <div className="rounded-xl bg-zinc-50 p-4 ring-1 ring-[var(--border)]">
-                <div className="text-sm font-semibold">Bank Transfer</div>
-                <div className="mt-2 text-sm text-zinc-700">
-                  Bank: (TBD)
-                  <br />
-                  Account: (TBD)
-                  <br />
-                  SWIFT: (TBD)
-                </div>
+            <div className="mt-5 max-w-sm rounded-xl bg-zinc-50 p-4 ring-1 ring-[var(--border)]">
+              <div className="text-sm font-semibold">Mobile Money</div>
+              <div className="mt-2 text-sm text-zinc-700">
+                Provider: {settings.donationMobileProvider}
+                <br />
+                Number: {settings.donationMobileNumber}
+                <br />
+                Reference: {settings.donationMobileReference}
               </div>
             </div>
           </div>
@@ -72,4 +61,3 @@ export default function DonatePage() {
     </PageShell>
   );
 }
-

@@ -729,6 +729,9 @@ const aboutPageDoc = {
 
 const siteSettingsPatch = {
   donationEmail: "info@pasada.or.tz",
+  donationMobileProvider: "Mpesa",
+  donationMobileNumber: "350 232 115",
+  donationMobileReference: "PASADA DONATION",
   careersEmail: "recruitment@pasada.or.tz",
   volunteerEmail: "volunteer@pasada.or.tz",
   whistleblowerChannel1Url:

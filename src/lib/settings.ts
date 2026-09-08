@@ -9,6 +9,9 @@ export type SiteSettings = {
   email: string;
   phone: string;
   donationEmail: string;
+  donationMobileProvider: string;
+  donationMobileNumber: string;
+  donationMobileReference: string;
   careersEmail: string;
   volunteerEmail: string;
   whistleblowerChannel1Url: string;
@@ -22,6 +25,9 @@ const defaults: SiteSettings = {
   email: "info@pasada.or.tz",
   phone: "+255 22 286 6618",
   donationEmail: "info@pasada.or.tz",
+  donationMobileProvider: "Mpesa",
+  donationMobileNumber: "350 232 115",
+  donationMobileReference: "PASADA DONATION",
   careersEmail: "recruitment@pasada.or.tz",
   volunteerEmail: "volunteer@pasada.or.tz",
   whistleblowerChannel1Url:
@@ -38,6 +44,9 @@ const query = groq`
     email,
     phone,
     donationEmail,
+    donationMobileProvider,
+    donationMobileNumber,
+    donationMobileReference,
     careersEmail,
     volunteerEmail,
     whistleblowerChannel1Url,
