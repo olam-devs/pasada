@@ -11,7 +11,7 @@ export const sanityConfig = defineConfig({
   dataset: sanityEnv.NEXT_PUBLIC_SANITY_DATASET || "production",
   plugins: [structureTool({
     structure: (S) => S.list().title("Content").items([
-      S.listItem().id("homePage").title("Homepage").child(
+      S.listItem().id("homePage").title("Homepage & slideshow").child(
         S.document().schemaType("homePage").documentId("homePage"),
       ),
       S.listItem().id("servicesPage").title("Services page").child(

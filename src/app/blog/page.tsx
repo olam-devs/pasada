@@ -15,6 +15,7 @@ export default async function BlogPage() {
       eyebrow="Stories & updates"
       title="Latest from PASADA"
       heroImageSrc={media.hero.blog}
+      heroImageAlt="Illustration of news, stories and community updates"
     >
       <AnimatedSection>
         <p className="max-w-none text-sm leading-7 text-zinc-800">

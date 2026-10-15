@@ -13,6 +13,7 @@ export default async function GetInvolvedPage() {
       eyebrow="Get involved"
       title="Donate, volunteer, partner—be part of the impact"
       heroImageSrc={media.hero.getInvolved}
+      heroImageAlt="Illustration of hands supporting a heart together"
     >
       <AnimatedSection>
         <p className="max-w-none text-sm leading-7 text-zinc-800">

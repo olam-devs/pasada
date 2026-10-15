@@ -23,7 +23,8 @@ export const homePage = defineType({
   title: "Homepage",
   type: "document",
   groups: [
-    { name: "hero", title: "Intro & slideshow", default: true },
+    { name: "slideshow", title: "Slideshow", default: true },
+    { name: "hero", title: "Introduction" },
     { name: "highlights", title: "Highlights & mission" },
     { name: "services", title: "Services section" },
     { name: "projects", title: "Projects section" },
@@ -41,8 +42,9 @@ export const homePage = defineType({
     textField("heroSecondaryLabel", "Secondary button label", "hero"),
     linkField("heroSecondaryHref", "Secondary button destination", "hero"),
     defineField({
-      name: "slides", title: "Slideshow images", group: "hero", type: "array",
-      description: "Upload/select photos and drag to reorder. Publishing this list replaces the original slideshow. Until then, the existing slideshow stays visible.",
+      name: "slides", title: "Slideshow images — displayed in this order", group: "slideshow", type: "array",
+      description: "The first image in this list appears first on the homepage. Drag a slide using its handle to move it earlier or later, then click Publish. You can also add, replace or remove images here.",
+      options: { sortable: true },
       validation: (rule) => rule.min(1).max(20),
       of: [{
         type: "object", name: "heroSlide", title: "Slide",
@@ -54,7 +56,7 @@ export const homePage = defineType({
         preview: { select: { title: "alt", media: "image" } },
       }],
     }),
-    defineField({ name: "slideInterval", title: "Seconds between slides", group: "hero", type: "number", validation: (rule) => rule.required().min(2).max(30) }),
+    defineField({ name: "slideInterval", title: "Seconds between slides", group: "slideshow", type: "number", validation: (rule) => rule.required().min(2).max(30) }),
     defineField({
       name: "highlights", title: "Highlight cards", group: "highlights", type: "array",
       validation: (rule) => rule.required().min(1).max(6),

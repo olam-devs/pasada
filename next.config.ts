@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [{ source: "/studiogo", destination: "/studio/structure/homePage", permanent: false }];
+  },
   images: {
     remotePatterns: [
       {

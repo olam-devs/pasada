@@ -17,7 +17,8 @@ export default async function TestimonialsPage() {
     <PageShell
       eyebrow="Testimonials"
       title="Voices from the community"
-      heroImageSrc={media.hero.blog}
+      heroImageSrc={media.hero.testimonials}
+      heroImageAlt="Illustration of community voices and shared stories"
     >
       <AnimatedSection>
         <p className="max-w-none text-sm leading-7 text-zinc-800">

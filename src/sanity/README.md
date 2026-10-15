@@ -4,9 +4,10 @@ Open `/studio` and sign in with a Sanity account that belongs to this project.
 
 ## Homepage
 
-Select **Homepage** at the top of the Content menu. Tabs cover:
+Select **Homepage & slideshow** at the top of the Content menu. `/studiogo` opens this entry directly. Tabs cover:
 
-- **Intro & slideshow**: badge, heading, introduction, button labels/destinations, slideshow images and seconds between slides.
+- **Slideshow** (first tab): images in display order and seconds between slides. Drag the handles, then Publish.
+- **Introduction**: badge, heading, introduction and button labels/destinations.
 - **Highlights & mission**: highlight cards and the homepage mission box.
 - **Services / Projects / Stories sections**: homepage headings and links.
 - **Support banner**: heading, description and buttons.
@@ -36,6 +37,8 @@ The website reads published content directly from Sanity without an additional A
 
 ## Page photos and inquiry forms
 
-Inner pages use a compact split header with the title and a framed photo, followed immediately by content. Careers and Tenders use listing layouts without main pictures. Gallery entries that repeat the main asset are omitted from the detail view.
+Inner pages use a compact split header with the title and framed artwork, followed immediately by content. Contact, Get Involved, Testimonials and Blog use original themed vector illustrations in `public/illustrations`. Careers and Tenders use listing layouts without main pictures. Gallery entries that repeat the main asset are omitted from the detail view.
+
+Testimonial categories use symbols instead of photographs. Set **Testimonial categories → Category symbol** to select people, a heart, helping hand, handshake or conversation. Unset symbols follow the category slug; unknown categories use a conversation symbol. Older category images are retained in content but are no longer displayed.
 
 Contact and Get Involved forms prepare an encoded subject and message, then show a send-method chooser: Gmail in a browser, Outlook.com, work/school Outlook, or the device's configured mail app. Visitors review and send from their own account; the website does not send email or ask visitors to repeat their sender address. A mailto link cannot open an app when no mail handler is configured. Browser choices and a copyable message provide alternatives.
