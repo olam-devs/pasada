@@ -15,7 +15,7 @@ export default async function WhistleblowerPage() {
   return (
     <PageShell
       eyebrow="Whistle-blower policy"
-      title="Tupe taarifa — report a concern safely"
+      title="Tupe taarifa. Report a concern safely"
       heroImageSrc={media.hero.contact}
     >
       <AnimatedSection>

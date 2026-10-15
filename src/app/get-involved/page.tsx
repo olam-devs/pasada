@@ -11,7 +11,7 @@ export default async function GetInvolvedPage() {
   return (
     <PageShell
       eyebrow="Get involved"
-      title="Donate, volunteer, partner—be part of the impact"
+      title="Donate, volunteer or partner. Be part of the impact"
       heroImageSrc={media.hero.getInvolved}
       heroImageAlt="Illustration of hands supporting a heart together"
     >
