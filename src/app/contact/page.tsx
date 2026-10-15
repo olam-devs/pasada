@@ -49,7 +49,7 @@ export default async function ContactPage() {
           <div className="rounded-2xl border-2 border-black bg-white p-6 shadow-sm sm:p-8">
             <div className="text-lg font-semibold text-black">Send a message</div>
             <p className="mt-2 text-sm leading-6 text-zinc-800">
-              Tell us how we can help. Continue to your email app to review and send your message to PASADA.
+              Tell us how we can help, then choose Gmail, Outlook or your device’s email app to review and send your message.
             </p>
 
             <ContactForm recipient={settings.email} />

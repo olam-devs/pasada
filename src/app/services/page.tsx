@@ -4,6 +4,8 @@ import { CategoryGrid } from "@/components/content/CategoryGrid";
 import { getServiceCategories, getServices } from "@/lib/services";
 import { getServicesPage } from "@/lib/services-page";
 
+export const dynamic = "force-dynamic";
+
 export default async function ServicesPage() {
   const [services, categories, page] = await Promise.all([
     getServices(),

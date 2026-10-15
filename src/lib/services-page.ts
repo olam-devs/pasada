@@ -17,7 +17,7 @@ export async function getServicesPage() {
     const row = await sanityClient.fetch<ServicesPageRow | null>(
       '*[_type == "servicesPage" && _id == "servicesPage"][0]',
       {},
-      { perspective: "published", next: { revalidate: 60 } },
+      { perspective: "published", cache: "no-store" },
     );
     if (!row) return fallback;
     return {

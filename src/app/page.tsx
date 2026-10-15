@@ -15,6 +15,9 @@ import { getBlogPosts } from "@/lib/blog";
 import { getHomePage } from "@/lib/home-page";
 import { getTestimonials } from "@/lib/testimonials";
 
+// Featured service pictures must reflect the current published CMS content.
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const [settings, home] = await Promise.all([getSiteSettings(), getHomePage()]);
   const [featuredProjects, featuredServices, featuredPosts, featuredTestimonials] =
