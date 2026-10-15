@@ -2,12 +2,13 @@ import { PageShell } from "@/components/site/PageShell";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { CategoryGrid } from "@/components/content/CategoryGrid";
 import { getServiceCategories, getServices } from "@/lib/services";
-import { media } from "@/lib/media";
+import { getServicesPage } from "@/lib/services-page";
 
 export default async function ServicesPage() {
-  const [services, categories] = await Promise.all([
+  const [services, categories, page] = await Promise.all([
     getServices(),
     getServiceCategories(),
+    getServicesPage(),
   ]);
 
   const items = services.map((s) => ({
@@ -22,14 +23,14 @@ export default async function ServicesPage() {
 
   return (
     <PageShell
-      eyebrow="Services"
-      title="Comprehensive support services"
-      heroImageSrc={media.hero.services}
+      eyebrow={page.heroEyebrow}
+      title={page.heroTitle}
+      heroImageSrc={page.mainImageUrl}
+      heroImageAlt={page.mainImageAlt}
     >
       <AnimatedSection>
         <p className="max-w-none text-sm leading-7 text-zinc-800">
-          Holistic services for people infected and affected by HIV and AIDS—open
-          each service for detailed information and photo galleries.
+          {page.intro}
         </p>
       </AnimatedSection>
 
@@ -37,7 +38,7 @@ export default async function ServicesPage() {
         items={items}
         categories={categories}
         basePath="/services"
-        allLabel="All services"
+        allLabel={page.allLabel}
       />
     </PageShell>
   );

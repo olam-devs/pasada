@@ -3,10 +3,16 @@
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
 import { PasadaImage } from "@/components/ui/PasadaImage";
-import { isLogoImage } from "@/lib/media";
+import type { HeroSlide } from "@/lib/home-page";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export function HeroSlideshow({ images }: { images: string[] }) {
+export function HeroSlideshow({
+  slides,
+  intervalSeconds = 5.5,
+}: {
+  slides: HeroSlide[];
+  intervalSeconds?: number;
+}) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [index, setIndex] = useState(0);
 
@@ -25,9 +31,10 @@ export function HeroSlideshow({ images }: { images: string[] }) {
 
   useEffect(() => {
     if (!emblaApi) return;
-    const timer = setInterval(() => emblaApi.scrollNext(), 5500);
+    if (slides.length < 2) return;
+    const timer = setInterval(() => emblaApi.scrollNext(), intervalSeconds * 1000);
     return () => clearInterval(timer);
-  }, [emblaApi]);
+  }, [emblaApi, intervalSeconds, slides.length]);
 
   return (
     <div className="relative">
@@ -35,16 +42,17 @@ export function HeroSlideshow({ images }: { images: string[] }) {
       <div className="relative overflow-hidden rounded-3xl border-2 border-[var(--primary)] bg-zinc-100 shadow-lg ring-1 ring-black/5">
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex">
-            {images.map((src) => {
-              const logoSlide = isLogoImage(src);
+            {slides.map((slide, i) => {
+              const logoSlide = slide.fit === "contain";
               return (
-                <div key={src} className="relative min-w-0 flex-[0_0_100%]">
+                <div key={slide._key} className="relative min-w-0 flex-[0_0_100%]">
                   <PasadaImage
-                    src={src}
-                    alt={logoSlide ? "PASADA logo" : "PASADA community and health programs"}
+                    src={slide.src}
+                    alt={slide.alt}
                     width={1200}
                     height={900}
-                    priority
+                    priority={i === 0}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className={
                       logoSlide
                         ? "h-[360px] w-full bg-white object-contain p-10 sm:h-[440px] sm:p-14"
@@ -57,36 +65,40 @@ export function HeroSlideshow({ images }: { images: string[] }) {
           </div>
         </div>
 
-        <button
-          type="button"
-          onClick={scrollPrev}
-          className="absolute left-3 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-black shadow ring-1 ring-black/10 hover:bg-white"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <button
-          type="button"
-          onClick={scrollNext}
-          className="absolute right-3 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-black shadow ring-1 ring-black/10 hover:bg-white"
-          aria-label="Next slide"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-
-        <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2">
-          {images.map((src, i) => (
+        {slides.length > 1 ? (
+          <>
             <button
-              key={src}
               type="button"
-              aria-label={`Go to slide ${i + 1}`}
-              onClick={() => emblaApi?.scrollTo(i)}
-              className={`h-2 rounded-full transition-all ${
-                i === index ? "w-8 bg-[var(--primary)]" : "w-2 bg-white/80 ring-1 ring-black/20"
-              }`}
-            />
-          ))}
-        </div>
+              onClick={scrollPrev}
+              className="absolute left-3 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-black shadow ring-1 ring-black/10 hover:bg-white"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={scrollNext}
+              className="absolute right-3 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-black shadow ring-1 ring-black/10 hover:bg-white"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+
+            <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+              {slides.map((slide, i) => (
+                <button
+                  key={slide._key}
+                  type="button"
+                  aria-label={`Go to slide ${i + 1}`}
+                  onClick={() => emblaApi?.scrollTo(i)}
+                  className={`h-2 rounded-full transition-all ${
+                    i === index ? "w-8 bg-[var(--primary)]" : "w-2 bg-white/80 ring-1 ring-black/20"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        ) : null}
       </div>
     </div>
   );

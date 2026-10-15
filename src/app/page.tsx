@@ -12,11 +12,11 @@ import { getSiteSettings } from "@/lib/settings";
 import { getProjects } from "@/lib/projects";
 import { getServices } from "@/lib/services";
 import { getBlogPosts } from "@/lib/blog";
-import { media } from "@/lib/media";
+import { getHomePage } from "@/lib/home-page";
 import { getTestimonials } from "@/lib/testimonials";
 
 export default async function Home() {
-  const settings = await getSiteSettings();
+  const [settings, home] = await Promise.all([getSiteSettings(), getHomePage()]);
   const [featuredProjects, featuredServices, featuredPosts, featuredTestimonials] =
     await Promise.all([
     getProjects({ featuredOnly: true, limit: settings.maxFeaturedProjects }),
@@ -41,58 +41,45 @@ export default async function Home() {
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-xs font-medium text-blue-900 ring-1 ring-blue-200">
                   <Sparkles className="h-4 w-4" aria-hidden="true" />
-                  Faith-led care for community wellbeing in Tanzania
+                  {home.heroEyebrow}
                 </div>
 
                 <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight text-zinc-950 sm:text-5xl">
-                  Embracing support, building hope for people affected by HIV &amp;
-                  AIDS
+                  {home.heroTitle}
                 </h1>
                 <p className="mt-4 max-w-xl text-pretty text-base leading-7 text-zinc-700 sm:text-lg">
-                  PASADA (T) provides quality, caring, compassionate services and
-                  support—prioritizing the poorest and most vulnerable through a
-                  holistic approach rooted in dignity and respect.
+                  {home.heroDescription}
                 </p>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <ButtonLink href="/donate" size="lg" className="justify-center">
-                    Donate to save lives <ArrowRight className="h-4 w-4" />
+                  <ButtonLink href={home.heroPrimaryHref} size="lg" className="justify-center">
+                    {home.heroPrimaryLabel} <ArrowRight className="h-4 w-4" />
                   </ButtonLink>
                   <ButtonLink
-                    href="/get-involved"
+                    href={home.heroSecondaryHref}
                     variant="secondary"
                     size="lg"
                     className="justify-center"
                   >
-                    Volunteer with us
+                    {home.heroSecondaryLabel}
                   </ButtonLink>
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 gap-4 rounded-2xl border-2 border-[var(--primary)] bg-white/80 p-4 backdrop-blur sm:grid-cols-3">
-                  {[
-                    {
-                      icon: <Stethoscope className="h-4 w-4" aria-hidden="true" />,
-                      title: "Care & treatment",
-                      desc: "Client-centered services and follow-up support.",
-                    },
-                    {
-                      icon: <Users className="h-4 w-4" aria-hidden="true" />,
-                      title: "Community impact",
-                      desc: "Education, outreach and stigma reduction.",
-                    },
-                    {
-                      icon: <HandHeart className="h-4 w-4" aria-hidden="true" />,
-                      title: "Compassion",
-                      desc: "Holistic support rooted in dignity and respect.",
-                    },
-                  ].map((c) => (
-                    <div key={c.title} className="rounded-xl p-3">
+                  {home.highlights.map((c) => (
+                    <div key={c._key} className="rounded-xl p-3">
                       <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-900 ring-1 ring-blue-100">
-                        {c.icon}
+                        {c.icon === "community" ? (
+                          <Users className="h-4 w-4" aria-hidden="true" />
+                        ) : c.icon === "compassion" ? (
+                          <HandHeart className="h-4 w-4" aria-hidden="true" />
+                        ) : (
+                          <Stethoscope className="h-4 w-4" aria-hidden="true" />
+                        )}
                       </div>
                       <div className="mt-2 text-sm font-semibold">{c.title}</div>
                       <div className="mt-1 text-xs leading-5 text-zinc-600">
-                        {c.desc}
+                        {c.description}
                       </div>
                     </div>
                   ))}
@@ -101,12 +88,11 @@ export default async function Home() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.1}>
-              <HeroSlideshow images={[...media.hero.home]} />
+              <HeroSlideshow slides={home.slides} intervalSeconds={home.slideInterval} />
               <div className="pointer-events-none relative z-10 -mt-2 hidden rounded-2xl border-2 border-black bg-white/95 p-4 text-sm shadow-lg sm:block sm:max-w-xs">
-                <div className="font-semibold text-black">Mission</div>
+                <div className="font-semibold text-black">{home.missionTitle}</div>
                 <div className="mt-1 text-zinc-800">
-                  Quality, caring, compassionate services for those infected and
-                  affected—especially the poorest and neediest.
+                  {home.missionText}
                 </div>
               </div>
             </AnimatedSection>
@@ -120,17 +106,17 @@ export default async function Home() {
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <div className="text-xs font-semibold tracking-wide text-[var(--brand-blue)]">
-                  What we do
+                  {home.servicesEyebrow}
                 </div>
                 <h2 className="mt-2 text-3xl font-semibold tracking-tight">
-                  Comprehensive support services
+                  {home.servicesTitle}
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-700">
-                  Featured services supporting community wellbeing, prevention and care.
+                  {home.servicesDescription}
                 </p>
               </div>
-              <ButtonLink href="/services" variant="secondary">
-                View all services <ArrowRight className="h-4 w-4" />
+              <ButtonLink href={home.servicesLinkHref} variant="secondary">
+                {home.servicesLinkLabel} <ArrowRight className="h-4 w-4" />
               </ButtonLink>
             </div>
           </AnimatedSection>
@@ -145,7 +131,7 @@ export default async function Home() {
                 imageUrl={s.imageUrl}
                 badge={s.category}
                 index={i}
-                cta="Learn more"
+                cta={home.servicesCardLabel}
               />
             ))}
           </div>
@@ -158,14 +144,14 @@ export default async function Home() {
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <div className="text-xs font-semibold tracking-wide text-[var(--brand-blue)]">
-                  Impact in action
+                  {home.projectsEyebrow}
                 </div>
                 <h2 className="mt-2 text-3xl font-semibold tracking-tight">
-                  Projects that bring hope
+                  {home.projectsTitle}
                 </h2>
               </div>
-              <ButtonLink href="/projects" variant="secondary">
-                Explore projects <ArrowRight className="h-4 w-4" />
+              <ButtonLink href={home.projectsLinkHref} variant="secondary">
+                {home.projectsLinkLabel} <ArrowRight className="h-4 w-4" />
               </ButtonLink>
             </div>
           </AnimatedSection>
@@ -193,14 +179,14 @@ export default async function Home() {
               <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
                   <div className="text-xs font-semibold tracking-wide text-[var(--brand-blue)]">
-                    Latest stories
+                    {home.storiesEyebrow}
                   </div>
                   <h2 className="mt-2 text-3xl font-semibold tracking-tight">
-                    News &amp; community updates
+                    {home.storiesTitle}
                   </h2>
                 </div>
-                <ButtonLink href="/blog" variant="secondary">
-                  All stories <ArrowRight className="h-4 w-4" />
+                <ButtonLink href={home.storiesLinkHref} variant="secondary">
+                  {home.storiesLinkLabel} <ArrowRight className="h-4 w-4" />
                 </ButtonLink>
               </div>
             </AnimatedSection>
@@ -214,7 +200,7 @@ export default async function Home() {
                   imageUrl={post.imageUrl}
                   badge={post.category}
                   index={i}
-                  cta="Read story"
+                  cta={home.storiesCardLabel}
                 />
               ))}
             </div>
@@ -228,23 +214,23 @@ export default async function Home() {
             <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">
               <div>
                 <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
-                  Help us bring smiles, hope and save lives
+                  {home.supportTitle}
                 </h2>
                 <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-800">
-                  Donors, partners and volunteers make our work possible.
+                  {home.supportDescription}
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-                <ButtonLink href="/donate" size="lg" className="justify-center">
-                  Donate
+                <ButtonLink href={home.supportPrimaryHref} size="lg" className="justify-center">
+                  {home.supportPrimaryLabel}
                 </ButtonLink>
                 <ButtonLink
-                  href="/contact"
+                  href={home.supportSecondaryHref}
                   variant="secondary"
                   size="lg"
                   className="justify-center"
                 >
-                  Talk to us <ArrowRight className="h-4 w-4" />
+                  {home.supportSecondaryLabel} <ArrowRight className="h-4 w-4" />
                 </ButtonLink>
               </div>
             </div>
@@ -257,17 +243,19 @@ export default async function Home() {
           <div className="grid items-start gap-8 lg:grid-cols-5">
             <div className="lg:col-span-2">
               <div className="text-xs font-semibold tracking-wide text-[var(--primary)]">
-                Community trust
+                {home.testimonialsEyebrow}
               </div>
               <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-950">
-                Stories that inspire hope
+                {home.testimonialsTitle}
               </h2>
               <p className="mt-3 text-sm leading-7 text-zinc-700">
-                Voices from clients, caregivers, volunteers and partners.
+                {home.testimonialsDescription}
               </p>
             </div>
             <div className="min-w-0 lg:col-span-3">
               <TestimonialsCarousel
+                title={home.testimonialsCarouselTitle}
+                subtitle={home.testimonialsCarouselSubtitle}
                 items={featuredTestimonials.map((t) => ({
                   quote: t.quote,
                   name: t.name,
@@ -275,8 +263,8 @@ export default async function Home() {
                 }))}
               />
               <div className="mt-4 text-sm font-semibold text-[var(--primary)]">
-                <Link href="/testimonials" className="hover:underline">
-                  Read more testimonials →
+                <Link href={home.testimonialsLinkHref} className="hover:underline">
+                  {home.testimonialsLinkLabel} →
                 </Link>
               </div>
             </div>

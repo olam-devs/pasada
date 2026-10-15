@@ -8,11 +8,13 @@ export function PageShell({
   title,
   eyebrow,
   heroImageSrc,
+  heroImageAlt,
   children,
 }: {
   title: string;
   eyebrow?: string;
   heroImageSrc?: string;
+  heroImageAlt?: string;
   children: React.ReactNode;
 }) {
   const logoHero = heroImageSrc ? isLogoImage(heroImageSrc) : false;
@@ -27,7 +29,7 @@ export function PageShell({
               <div className="absolute inset-0">
                 <PasadaImage
                   src={heroImageSrc}
-                  alt={logoHero ? "PASADA logo" : ""}
+                  alt={heroImageAlt || (logoHero ? "PASADA logo" : "")}
                   fill
                   priority
                   className={
