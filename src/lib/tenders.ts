@@ -92,7 +92,7 @@ function mapRow(row: {
     title: row.title,
     slug: row.slug,
     tenderNumber: row.tenderNumber,
-    status: row.status === "Closed" ? "Closed" : "Open",
+    status: row.status === "Closed" || (row.deadline && new Date(row.deadline).getTime() < Date.now()) ? "Closed" : "Open",
     publishedAt: row.publishedAt,
     deadline: row.deadline,
     summary: row.summary ?? "",
@@ -116,10 +116,11 @@ export async function getTenders(): Promise<TenderItem[]> {
   if (!sanityConfigured) return sortTenders(SAMPLE);
   try {
     const rows = await sanityClient.fetch<Parameters<typeof mapRow>[0][]>(listQuery);
-    if (!rows?.length) return sortTenders(SAMPLE);
+    if (!rows?.length) return [];
     return sortTenders(rows.map(mapRow));
-  } catch {
-    return sortTenders(SAMPLE);
+  } catch (error) {
+    console.error("Unable to load procurement notices", error);
+    return [];
   }
 }
 
@@ -132,9 +133,9 @@ export async function getTenderBySlug(slug: string): Promise<TenderItem | null> 
       { slug },
     );
     if (row) return mapRow(row);
-    return sample ?? null;
+    return null;
   } catch {
-    return sample ?? null;
+    return null;
   }
 }
 

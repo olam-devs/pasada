@@ -111,7 +111,7 @@ function mapRow(row: Row): AboutPageContent {
     heroEyebrow: row.heroEyebrow ?? FALLBACK.heroEyebrow,
     heroTitle: row.heroTitle ?? FALLBACK.heroTitle,
     mainImageUrl: row.mainImage
-      ? urlFor(row.mainImage as Parameters<typeof urlFor>[0]).width(1200).height(800).fit("crop").url()
+      ? urlFor(row.mainImage as Parameters<typeof urlFor>[0]).width(2400).url()
       : FALLBACK.mainImageUrl,
     intro: row.intro?.length ? row.intro : FALLBACK.intro,
     missionText: row.missionText ?? FALLBACK.missionText,

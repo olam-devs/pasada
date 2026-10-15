@@ -251,9 +251,7 @@ const categoriesQuery = groq`
 function imageFromSanity(mainImage?: unknown, fallback?: string) {
   if (mainImage) {
     return urlFor(mainImage as Parameters<typeof urlFor>[0])
-      .width(1200)
-      .height(800)
-      .fit("crop")
+      .width(2400)
       .url();
   }
   return fallback ?? media.hero.projects;

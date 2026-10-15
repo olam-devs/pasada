@@ -304,9 +304,7 @@ function mapPost(
 ): BlogPostDetail {
   const imageUrl = row.mainImage
     ? urlFor(row.mainImage as Parameters<typeof urlFor>[0])
-        .width(1200)
-        .height(800)
-        .fit("crop")
+        .width(2400)
         .url()
     : fallbackImg ?? media.hero.blog;
 

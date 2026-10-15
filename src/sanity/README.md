@@ -27,3 +27,15 @@ For a specific service's card/detail picture, select **Services → the service 
 Click **Publish** to make content available to the public website. The website revalidates published content on a 60-second interval; allow a short delay and refresh after publishing. Draft changes stay in Studio until published. No rebuild is needed for routine content edits.
 
 Homepage and Services page are single entries; use the menu entries rather than creating duplicate documents. Existing website content remains as a fallback until replacements are published.
+
+## A changed picture is not appearing
+
+Saved drafts do not appear on the public website. Open the service, check its Main image, and click **Publish**. Allow the 60-second revalidation interval, then refresh the page. A service's Main image controls that service's card and detail page; the large Services overview picture is managed in **Services page**.
+
+The website reads published content directly from Sanity without an additional API CDN cache. Services without an uploaded picture use the same fallback picture on both the card and detail page.
+
+## Page photos and inquiry forms
+
+Inner pages show their main photo once, without cropping it to a banner. Careers and Tenders use listing layouts without main pictures. Gallery entries that repeat the main asset are omitted from the detail view.
+
+Contact and Get Involved forms prepare a mailto draft with an encoded subject and message. Visitors review and send it in their configured email app; the website does not send email or ask visitors to repeat their sender address. A prepared draft also remains available to reopen or copy if the email app does not launch.

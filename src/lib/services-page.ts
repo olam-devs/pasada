@@ -3,7 +3,6 @@ import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { sanityClient } from "@/sanity/client";
 import { sanityConfigured } from "@/sanity/env";
 import { servicesPageDefaults } from "@/lib/page-defaults";
-import { media } from "@/lib/media";
 import { urlFor } from "@/lib/sanity-image";
 
 type ServicesPageRow = Partial<typeof servicesPageDefaults> & {
@@ -12,7 +11,7 @@ type ServicesPageRow = Partial<typeof servicesPageDefaults> & {
 };
 
 export async function getServicesPage() {
-  const fallback = { ...servicesPageDefaults, mainImageUrl: media.hero.services as string, mainImageAlt: "" };
+  const fallback = { ...servicesPageDefaults, mainImageUrl: "/images/services-clinic.jpg", mainImageAlt: "Treatment room at PASADA with a clinical bed and medical equipment" };
   if (!sanityConfigured) return fallback;
   try {
     const row = await sanityClient.fetch<ServicesPageRow | null>(
@@ -27,7 +26,7 @@ export async function getServicesPage() {
       intro: row.intro ?? fallback.intro,
       allLabel: row.allLabel ?? fallback.allLabel,
       mainImageAlt: row.mainImageAlt ?? fallback.mainImageAlt,
-      mainImageUrl: row.mainImage ? urlFor(row.mainImage).width(1920).height(800).fit("crop").url() : fallback.mainImageUrl,
+      mainImageUrl: row.mainImage ? urlFor(row.mainImage).width(2400).url() : fallback.mainImageUrl,
     };
   } catch (error) {
     console.error("Unable to load Services page content from Sanity", error);

@@ -60,7 +60,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-white/80 backdrop-blur">
       <Container className="flex h-16 items-center justify-between gap-3">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex shrink-0 items-center gap-2">
           <span className="relative h-9 w-10 overflow-hidden rounded-xl bg-white ring-1 ring-[var(--border)]">
             <Image
               src="/brand/logo.jpg"
@@ -81,7 +81,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-0.5 xl:flex">
+        <nav className="hidden items-center gap-0.5 2xl:flex">
           {nav.map((item) => {
             const active = item.match(pathname);
             return (
@@ -97,8 +97,8 @@ export function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <div className="hidden items-center gap-3 text-xs text-zinc-600 xl:flex">
+        <div className="flex shrink-0 items-center gap-2">
+          <div className="hidden items-center gap-3 text-xs text-zinc-600 2xl:flex">
             <a
               href="tel:+255222866618"
               className="inline-flex items-center gap-1 rounded-full px-2 py-1 hover:bg-zinc-100"
@@ -120,7 +120,7 @@ export function Header() {
           </ButtonLink>
 
           <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full ring-1 ring-[var(--border)] hover:bg-zinc-50 xl:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full ring-1 ring-[var(--border)] hover:bg-zinc-50 2xl:hidden"
             aria-label="Open menu"
             aria-expanded={open}
             onClick={() => setOpen(true)}
@@ -131,7 +131,7 @@ export function Header() {
       </Container>
 
       {open ? (
-        <div className="lg:hidden">
+        <div className="2xl:hidden">
           <div
             className="fixed inset-0 z-50 bg-black/25"
             onClick={() => setOpen(false)}

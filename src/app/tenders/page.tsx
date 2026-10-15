@@ -1,87 +1,52 @@
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
-import { media } from "@/lib/media";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { ButtonLink } from "@/components/ui/Button";
 import { getTenders } from "@/lib/tenders";
-import { FileText, Calendar } from "lucide-react";
-import { cn } from "@/lib/cn";
+import { ArrowUpRight, FileText, Calendar } from "lucide-react";
 
 function formatDate(value?: string) {
-  if (!value) return undefined;
-  return new Date(value).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
+  return value ? new Date(value).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "Africa/Dar_es_Salaam" }) : "See tender notice";
 }
 
 export default async function TendersPage() {
   const tenders = await getTenders();
-
+  const open = tenders.filter((tender) => tender.status === "Open");
+  const closed = tenders.filter((tender) => tender.status === "Closed");
   return (
-    <PageShell
-      eyebrow="Tenders"
-      title="Current tenders and procurement opportunities"
-      heroImageSrc={media.hero.careers}
-    >
-      <AnimatedSection>
-        <p className="max-w-none text-sm leading-7 text-zinc-800">
-          PASADA publishes open procurement opportunities here. Review the tender
-          details and submit your bid before the closing deadline.
-        </p>
-      </AnimatedSection>
-
-      <div className="mt-8 grid gap-5 lg:grid-cols-2">
-        {tenders.map((tender) => (
-          <article
-            key={tender._id}
-            className={cn(
-              "rounded-2xl border-2 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg",
-              tender.status === "Open" ? "border-[var(--primary)]" : "border-zinc-300 opacity-80",
-            )}
-          >
-            <div className="flex items-start justify-between gap-3">
-              <h2 className="text-lg font-semibold text-black">
-                <Link href={`/tenders/${tender.slug}`}>{tender.title}</Link>
-              </h2>
-              <span
-                className={cn(
-                  "shrink-0 rounded-full px-3 py-1 text-xs font-semibold ring-1",
-                  tender.status === "Open"
-                    ? "bg-red-50 text-[var(--primary)] ring-[var(--primary)]"
-                    : "bg-zinc-100 text-zinc-600 ring-zinc-300",
-                )}
-              >
-                {tender.status}
-              </span>
-            </div>
-            <p className="mt-3 text-sm leading-6 text-zinc-800">{tender.summary}</p>
-            <div className="mt-4 flex flex-wrap gap-4 text-xs font-medium text-zinc-700">
-              {tender.tenderNumber ? (
-                <span className="inline-flex items-center gap-1">
-                  <FileText className="h-3.5 w-3.5" aria-hidden="true" />
-                  {tender.tenderNumber}
-                </span>
-              ) : null}
-              {tender.deadline ? (
-                <span className="inline-flex items-center gap-1">
-                  <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
-                  Deadline: {formatDate(tender.deadline)}
-                </span>
-              ) : null}
-            </div>
-            <div className="mt-5">
-              <ButtonLink href={`/tenders/${tender.slug}`} variant="secondary">
-                View tender details
-              </ButtonLink>
-            </div>
-          </article>
-        ))}
-
-        {!tenders.length ? (
-          <p className="text-sm text-zinc-700">No tenders are currently open. Please check back soon.</p>
-        ) : null}
+    <PageShell eyebrow="Procurement & tenders" title="Opportunities to work with PASADA">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div>
+          <p className="max-w-2xl text-base leading-8 text-zinc-600">Find procurement notices, tender documents and submission details. Review the full notice for eligibility, requirements and closing dates.</p>
+          <div className="mt-8 flex flex-wrap gap-3 border-b border-zinc-200 pb-6 text-sm">
+            <a href="#open-tenders" className="rounded-full bg-red-50 px-4 py-2 font-semibold text-red-800">Open notices · {open.length}</a>
+            <a href="#closed-tenders" className="rounded-full bg-zinc-100 px-4 py-2 font-medium text-zinc-600">Closed notices · {closed.length}</a>
+          </div>
+          {([{ id: "open-tenders", title: "Open tenders", items: open }, { id: "closed-tenders", title: "Closed tenders", items: closed }]).map((group) => (
+            <section key={group.id} id={group.id} className="mt-8 scroll-mt-24" aria-labelledby={`${group.id}-heading`}>
+              <h2 id={`${group.id}-heading`} className="mb-5 text-xl font-semibold">{group.title}</h2>
+              <div className="space-y-4">
+                {group.items.map((tender) => (
+                  <article key={tender._id} className="rounded-2xl border border-zinc-200 bg-white p-6 transition hover:border-blue-200 hover:shadow-md sm:p-7">
+                    <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
+                      <span className="inline-flex items-center gap-1.5 font-medium text-zinc-500"><FileText className="h-4 w-4" aria-hidden="true" />{tender.tenderNumber ?? "Procurement notice"}</span>
+                      <span className={`rounded-full px-3 py-1 font-semibold ${tender.status === "Open" ? "bg-emerald-50 text-emerald-800" : "bg-zinc-100 text-zinc-600"}`}>{tender.status}</span>
+                    </div>
+                    <h3 className="mt-4 text-xl font-semibold tracking-tight"><Link className="hover:text-blue-800" href={`/tenders/${tender.slug}`}>{tender.title}</Link></h3>
+                    <p className="mt-3 text-sm leading-7 text-zinc-600">{tender.summary}</p>
+                    <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-zinc-100 pt-5">
+                      <span className="inline-flex items-center gap-2 text-xs text-zinc-500"><Calendar className="h-4 w-4" aria-hidden="true" />Closing date: {formatDate(tender.deadline)}</span>
+                      <Link href={`/tenders/${tender.slug}`} className="inline-flex items-center gap-2 rounded-lg text-sm font-semibold text-blue-800 hover:underline">Read notice & documents <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+                    </div>
+                  </article>
+                ))}
+                {!group.items.length ? <div className="rounded-2xl border border-dashed border-zinc-300 bg-zinc-50 p-7 text-sm leading-7 text-zinc-600">{group.id === "open-tenders" ? "There are no open tenders to display right now. Please check back for new procurement opportunities." : "No closed notices to display."}</div> : null}
+              </div>
+            </section>
+          ))}
+        </div>
+        <aside className="space-y-6 lg:pt-1">
+          <div className="rounded-2xl bg-slate-950 p-7 text-white"><FileText className="h-8 w-8 text-blue-300" aria-hidden="true" /><h2 className="mt-5 text-xl font-semibold">Supplier information</h2><p className="mt-3 text-sm leading-7 text-slate-300">Each tender notice contains the requirements and submission instructions for that opportunity.</p></div>
+          <div className="rounded-2xl border border-zinc-200 p-7"><h2 className="font-semibold">Before you submit</h2><ol className="mt-5 list-decimal space-y-4 pl-4 text-sm leading-7 text-zinc-600"><li>Read the full tender notice and check eligibility.</li><li>Download the tender documents where provided.</li><li>Prepare the required documents and follow the stated submission method and deadline.</li></ol></div>
+        </aside>
       </div>
     </PageShell>
   );
