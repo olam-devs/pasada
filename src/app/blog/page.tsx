@@ -24,7 +24,9 @@ export default async function BlogPage() {
         </p>
       </AnimatedSection>
 
-      <BlogCategoryFilter posts={posts} categories={categories} />
+      <div className="mt-6">
+        <BlogCategoryFilter posts={posts} categories={categories} />
+      </div>
     </PageShell>
   );
 }
