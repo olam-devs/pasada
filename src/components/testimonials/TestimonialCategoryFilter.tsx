@@ -1,15 +1,25 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { PasadaImage } from "@/components/ui/PasadaImage";
+import { Heart, HandHeart, Handshake, MessagesSquare, UsersRound } from "lucide-react";
 import { TestimonialQuoteTile } from "@/components/testimonials/TestimonialQuoteTile";
 import type { Testimonial, TestimonialCategory } from "@/lib/testimonials";
-import { testimonialCategoryImage } from "@/lib/media";
 import { cn } from "@/lib/cn";
 
 function matchCategory(t: Testimonial, slug: string) {
   return t.categorySlug === slug;
 }
+
+const symbols = {
+  people: { Icon: UsersRound, color: "bg-blue-50 text-blue-700" },
+  heart: { Icon: Heart, color: "bg-rose-50 text-rose-700" },
+  helping: { Icon: HandHeart, color: "bg-amber-50 text-amber-700" },
+  partnership: { Icon: Handshake, color: "bg-teal-50 text-teal-700" },
+  conversation: { Icon: MessagesSquare, color: "bg-violet-50 text-violet-700" },
+};
+const categorySymbols: Record<string, keyof typeof symbols> = {
+  clients: "people", caregivers: "heart", volunteers: "helping", partners: "partnership",
+};
 
 export function TestimonialCategoryFilter({
   items,
@@ -43,75 +53,39 @@ export function TestimonialCategoryFilter({
 
   return (
     <>
-      <p className="text-sm text-zinc-700">
+      <p className="mt-5 text-sm text-zinc-700">
         Select a category below to view quote cards from that group.{" "}
         <strong>All voices</strong> shows every testimonial mixed together.
       </p>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        <button
-          type="button"
-          onClick={() => selectCategory("all")}
-          className={cn(
-            "group overflow-hidden rounded-2xl border-2 text-left transition hover:-translate-y-0.5 hover:shadow-lg",
-            active === "all"
-              ? "border-black ring-2 ring-black"
-              : "border-[var(--primary)] hover:border-black",
-          )}
-        >
-          <div className="relative aspect-[4/3] bg-gradient-to-br from-red-50 via-white to-blue-50">
-            <div className="absolute inset-0 grid place-items-center p-6">
-              <span className="text-center text-lg font-semibold text-black">All voices</span>
-            </div>
-          </div>
-          <div
-            className={cn(
-              "px-4 py-3 text-sm font-semibold",
-              active === "all" ? "bg-black text-white" : "bg-white text-black",
-            )}
-          >
-            All testimonials
-          </div>
-        </button>
-
-        {categories.map((c) => {
-          const imageUrl = c.imageUrl ?? testimonialCategoryImage(c.slug);
+      <div aria-label="Testimonial categories" className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        {[{ _id: "all", slug: "all", title: "All voices", icon: "conversation" }, ...categories].map((c) => {
+          const symbol = symbols[c.icon as keyof typeof symbols] ?? symbols[categorySymbols[c.slug] ?? "conversation"];
+          const { Icon } = symbol;
           const selected = active === c.slug;
-          const count = items.filter((t) => matchCategory(t, c.slug)).length;
+          const count = c.slug === "all" ? items.length : items.filter((t) => matchCategory(t, c.slug)).length;
           return (
             <button
               key={c.slug}
               type="button"
+              aria-pressed={selected}
               onClick={() => selectCategory(c.slug)}
               className={cn(
-                "group overflow-hidden rounded-2xl border-2 text-left transition hover:-translate-y-0.5 hover:shadow-lg",
+                "group rounded-2xl border-2 bg-white p-4 text-left transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-700 motion-reduce:transform-none",
                 selected
-                  ? "border-black ring-2 ring-black"
-                  : "border-[var(--primary)] hover:border-black",
+                  ? "border-slate-900 bg-slate-50 ring-1 ring-slate-900"
+                  : "border-zinc-200 hover:border-slate-400",
               )}
             >
-              <div className="relative aspect-[4/3] bg-zinc-100">
-                <PasadaImage
-                  src={imageUrl}
-                  alt={c.title}
-                  fill
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                  sizes="(min-width: 1024px) 220px, 45vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
-                <span className="absolute bottom-3 left-3 right-3 text-base font-semibold text-white drop-shadow">
-                  {c.title}
+              <div className="flex items-start justify-between gap-2">
+                <span className={cn("grid h-12 w-12 place-items-center rounded-2xl", symbol.color)}>
+                  <Icon className="h-6 w-6" strokeWidth={1.7} aria-hidden="true" />
                 </span>
-                <span className="absolute right-3 top-3 rounded-full bg-white/95 px-2 py-0.5 text-xs font-semibold text-black">
+                <span className="rounded-full bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-600" aria-label={`${count} testimonials`}>
                   {count}
                 </span>
               </div>
-              <div
-                className={cn(
-                  "px-4 py-3 text-sm font-semibold",
-                  selected ? "bg-black text-white" : "bg-white text-black",
-                )}
-              >
+              <div className="mt-4 text-sm font-semibold text-slate-950">
                 {c.title}
               </div>
             </button>

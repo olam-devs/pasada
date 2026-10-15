@@ -11,6 +11,7 @@ export default async function ContactPage() {
       eyebrow="Contact"
       title="Reach out to PASADA"
       heroImageSrc={media.hero.contact}
+      heroImageAlt="Illustration of an open envelope and a conversation"
     >
       <AnimatedSection>
         <div className="grid gap-8 lg:grid-cols-2">

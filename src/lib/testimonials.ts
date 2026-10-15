@@ -2,7 +2,6 @@ import { groq } from "next-sanity";
 import { sanityClient } from "@/sanity/client";
 import { sanityConfigured } from "@/sanity/env";
 import { urlFor } from "@/lib/sanity-image";
-import { testimonialCategoryImage } from "@/lib/media";
 
 export type Testimonial = {
   _id: string;
@@ -21,7 +20,7 @@ export type TestimonialCategory = {
   title: string;
   slug: string;
   description?: string;
-  imageUrl?: string;
+  icon?: string;
 };
 
 const SAMPLE_CATEGORIES: TestimonialCategory[] = [
@@ -318,30 +317,15 @@ function mapCategory(row: {
   title: string;
   slug: string;
   description?: string;
-  image?: unknown;
+  icon?: string;
 }): TestimonialCategory {
-  const imageUrl = row.image
-    ? urlFor(row.image as Parameters<typeof urlFor>[0])
-        .width(800)
-        .height(600)
-        .fit("crop")
-        .url()
-    : undefined;
-
   return {
     _id: row._id,
     title: row.title,
     slug: row.slug,
     description: row.description,
-    imageUrl,
+    icon: row.icon,
   };
-}
-
-function withCategoryImages(categories: TestimonialCategory[]) {
-  return categories.map((c) => ({
-    ...c,
-    imageUrl: c.imageUrl ?? testimonialCategoryImage(c.slug),
-  }));
 }
 
 const listQuery = groq`
@@ -364,7 +348,7 @@ const categoriesQuery = groq`
     title,
     "slug": slug.current,
     description,
-    image
+    icon
   }
 `;
 
@@ -408,16 +392,14 @@ function mapRow(row: {
 }
 
 export async function getTestimonialCategories(): Promise<TestimonialCategory[]> {
-  if (!sanityConfigured) return withCategoryImages(SAMPLE_CATEGORIES);
+  if (!sanityConfigured) return SAMPLE_CATEGORIES;
   try {
     const rows = await sanityClient.fetch<Parameters<typeof mapCategory>[0][]>(
       categoriesQuery,
     );
-    return withCategoryImages(
-      rows?.length ? rows.map(mapCategory) : SAMPLE_CATEGORIES,
-    );
+    return rows?.length ? rows.map(mapCategory) : SAMPLE_CATEGORIES;
   } catch {
-    return withCategoryImages(SAMPLE_CATEGORIES);
+    return SAMPLE_CATEGORIES;
   }
 }
 
