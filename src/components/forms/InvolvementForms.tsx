@@ -123,7 +123,7 @@ export function InvolvementForms({
               />
             </label>
             <div className="sm:col-span-2">
-              <FormSubmit>Open volunteer application in email</FormSubmit>
+              <FormSubmit>Prepare volunteer application</FormSubmit>
             </div>
           </EmailDraftForm>
         </FormCard>
@@ -170,7 +170,7 @@ export function InvolvementForms({
               />
             </label>
             <div className="sm:col-span-2">
-              <FormSubmit>Open partnership inquiry in email</FormSubmit>
+              <FormSubmit>Prepare partnership inquiry</FormSubmit>
             </div>
           </EmailDraftForm>
         </FormCard>
@@ -179,7 +179,7 @@ export function InvolvementForms({
       {active === "donate" && (
         <FormCard
           title="Donation pledge form"
-          description="Prepare a donation pledge for our team. Review and send it from your email app; no payment is taken here."
+          description="Prepare a donation pledge for our team, then choose your preferred email service to review and send it."
         >
           <EmailDraftForm
             className="mt-6 grid gap-4 sm:grid-cols-2"
@@ -229,7 +229,7 @@ export function InvolvementForms({
               />
             </label>
             <div className="sm:col-span-2">
-              <FormSubmit>Open donation pledge in email</FormSubmit>
+              <FormSubmit>Prepare donation pledge</FormSubmit>
             </div>
           </EmailDraftForm>
         </FormCard>

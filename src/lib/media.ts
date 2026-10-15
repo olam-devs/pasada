@@ -5,8 +5,8 @@ export const media = {
     home: [
       "https://pasada.or.tz/uploads/service-1.jpg",
       "/brand/logo.jpg",
-      "https://pasada.or.tz/uploads/project-featured-photo-8.jpg",
-      "https://pasada.or.tz/uploads/service-3.jpg",
+      "/images/home-clinical-care.jpg",
+      "/images/home-outreach-vehicles.jpg",
       "https://pasada.or.tz/uploads/project-featured-photo-9.jpg",
     ],
     about: "/brand/logo.jpg",

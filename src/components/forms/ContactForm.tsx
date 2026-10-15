@@ -16,7 +16,7 @@ export function ContactForm({ recipient }: { recipient: string }) {
         <FormLabel>Message</FormLabel>
         <FormTextarea name="message" required rows={6} placeholder="Write your message here..." />
       </label>
-      <div className="sm:col-span-2"><FormSubmit>Open message in email app</FormSubmit></div>
+      <div className="sm:col-span-2"><FormSubmit>Prepare message & choose email</FormSubmit></div>
     </EmailDraftForm>
   );
 }

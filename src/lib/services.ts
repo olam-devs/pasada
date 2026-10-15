@@ -589,7 +589,7 @@ function filterServices(list: ServiceItem[], opts?: { featuredOnly?: boolean; li
 export async function getServices(opts?: { featuredOnly?: boolean; limit?: number }) {
   if (!sanityConfigured) return filterServices(SAMPLE, opts);
   try {
-    const rows = await sanityClient.fetch<Parameters<typeof mapRow>[0][]>(listQuery, {}, { next: { revalidate: 60 } });
+    const rows = await sanityClient.fetch<Parameters<typeof mapRow>[0][]>(listQuery, {}, { cache: "no-store" });
     if (!rows?.length) return filterServices(SAMPLE, opts);
     const list = rows.map((r) => mapRow(r, SAMPLE.find((sample) => sample.slug === r.slug)?.imageUrl));
     return filterServices(list, opts);
@@ -605,7 +605,7 @@ export async function getServiceBySlug(slug: string) {
     const row = await sanityClient.fetch<Parameters<typeof mapRow>[0] | null>(
       detailQuery,
       { slug },
-      { next: { revalidate: 60 } },
+      { cache: "no-store" },
     );
     if (row) return mapRow(row, sample?.imageUrl);
     return sample ?? null;

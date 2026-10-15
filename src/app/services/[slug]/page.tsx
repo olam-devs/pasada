@@ -3,6 +3,8 @@ import { PageShell } from "@/components/site/PageShell";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { DetailLayout } from "@/components/content/DetailLayout";
 import { ButtonLink } from "@/components/ui/Button";
+
+export const dynamic = "force-dynamic";
 import {
   getAllServiceSlugs,
   getServiceBySlug,

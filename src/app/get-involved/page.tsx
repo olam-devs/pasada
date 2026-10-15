@@ -17,8 +17,8 @@ export default async function GetInvolvedPage() {
       <AnimatedSection>
         <p className="max-w-none text-sm leading-7 text-zinc-800">
           Choose how you want to support PASADA. Complete the form for
-          volunteering, partnerships, or donations. Your email app will open with
-          a prepared message for you to review and send.
+          volunteering, partnerships, or donations. Then choose your email app,
+          Gmail or Outlook to review and send your prepared message.
         </p>
       </AnimatedSection>
 
