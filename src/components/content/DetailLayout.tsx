@@ -3,6 +3,7 @@ import { PasadaImage } from "@/components/ui/PasadaImage";
 import { PortableContent } from "@/components/content/PortableContent";
 import { ArrowLeft } from "lucide-react";
 import type { PortableTextBlock } from "@portabletext/react";
+import { imageIdentity } from "@/lib/media";
 
 export function DetailLayout({
   backHref,
@@ -27,7 +28,9 @@ export function DetailLayout({
   content?: PortableTextBlock[];
   children?: React.ReactNode;
 }) {
-  const gallery = galleryUrls?.filter((u) => u !== imageUrl) ?? [];
+  const gallery = [...new Map((galleryUrls ?? [])
+    .filter((url) => imageIdentity(url) !== imageIdentity(imageUrl))
+    .map((url) => [imageIdentity(url), url])).values()];
 
   return (
     <div>
@@ -47,12 +50,6 @@ export function DetailLayout({
 
       <p className="mt-6 max-w-none text-base leading-8 text-zinc-800">{summary}</p>
 
-      <div className="mt-8 overflow-hidden rounded-2xl border-2 border-[var(--primary)]">
-        <div className="relative aspect-[16/9] bg-zinc-100">
-          <PasadaImage src={imageUrl} alt={title} fill className="object-cover" sizes="1100px" priority />
-        </div>
-      </div>
-
       {videoUrl ? (
         <div className="mt-6 overflow-hidden rounded-2xl border-2 border-black">
           <video src={videoUrl} controls playsInline className="aspect-video w-full" poster={imageUrl} />
@@ -66,7 +63,7 @@ export function DetailLayout({
               key={url}
               className="relative aspect-[4/3] overflow-hidden rounded-xl border-2 border-[var(--primary)] bg-zinc-100"
             >
-              <PasadaImage src={url} alt="" fill className="object-cover" sizes="400px" />
+              <PasadaImage src={url} alt={`${title} — gallery photo`} fill className="object-contain" sizes="(min-width: 1024px) 400px, 90vw" />
             </div>
           ))}
         </div>

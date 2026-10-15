@@ -18,7 +18,8 @@ export function PasadaImage({
   className,
   ...props
 }: PasadaImageProps) {
-  const [current, setCurrent] = useState(src);
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+  const current = failedSrc === src ? fallbackSrc : src;
   const unoptimized = isPasadaCdn(current);
 
   return (
@@ -29,7 +30,7 @@ export function PasadaImage({
       unoptimized={unoptimized}
       className={cn(className)}
       onError={() => {
-        if (current !== fallbackSrc) setCurrent(fallbackSrc);
+        if (current !== fallbackSrc) setFailedSrc(src);
       }}
     />
   );

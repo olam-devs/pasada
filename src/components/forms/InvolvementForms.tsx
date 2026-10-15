@@ -10,6 +10,7 @@ import {
   FormTextarea,
 } from "@/components/ui/FormFields";
 import { HandHeart, Handshake, Heart } from "lucide-react";
+import { EmailDraftForm } from "@/components/forms/EmailDraftForm";
 
 type Tab = "volunteer" | "partner" | "donate";
 
@@ -86,28 +87,19 @@ export function InvolvementForms({
           title="Volunteer application"
           description="Share your details and how you would like to support PASADA programs."
         >
-          <form
+          <EmailDraftForm
             className="mt-6 grid gap-4 sm:grid-cols-2"
-            action={`mailto:${volunteerEmail}`}
-            method="post"
-            encType="text/plain"
+            recipient={volunteerEmail}
+            subject="Volunteer application — PASADA"
+            fields={[["name", "Full name"], ["phone", "Phone"], ["interest", "Area of interest"], ["message", "Skills, motivation and availability"]]}
           >
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Full name</FormLabel>
               <FormInput name="name" required placeholder="Your full name" />
             </label>
             <label className="grid gap-1.5 sm:col-span-1">
-              <FormLabel>Email</FormLabel>
-              <FormInput
-                name="email"
-                type="email"
-                required
-                placeholder="you@email.com"
-              />
-            </label>
-            <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Phone</FormLabel>
-              <FormInput name="phone" placeholder="+255..." />
+              <FormInput name="phone" type="tel" autoComplete="tel" placeholder="+255..." />
             </label>
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Area of interest</FormLabel>
@@ -131,9 +123,9 @@ export function InvolvementForms({
               />
             </label>
             <div className="sm:col-span-2">
-              <FormSubmit>Submit volunteer application</FormSubmit>
+              <FormSubmit>Open volunteer application in email</FormSubmit>
             </div>
-          </form>
+          </EmailDraftForm>
         </FormCard>
       )}
 
@@ -142,11 +134,11 @@ export function InvolvementForms({
           title="Partnership inquiry"
           description="Organizations and institutions can propose collaboration with PASADA."
         >
-          <form
+          <EmailDraftForm
             className="mt-6 grid gap-4 sm:grid-cols-2"
-            action={`mailto:${partnerEmail}`}
-            method="post"
-            encType="text/plain"
+            recipient={partnerEmail}
+            subject="Partnership inquiry — PASADA"
+            fields={[["organization", "Organization"], ["contact", "Contact person"], ["partnershipType", "Partnership type"], ["proposal", "Proposal summary"]]}
           >
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Organization name</FormLabel>
@@ -155,10 +147,6 @@ export function InvolvementForms({
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Contact person</FormLabel>
               <FormInput name="contact" required />
-            </label>
-            <label className="grid gap-1.5 sm:col-span-1">
-              <FormLabel>Email</FormLabel>
-              <FormInput name="email" type="email" required />
             </label>
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Partnership type</FormLabel>
@@ -182,34 +170,30 @@ export function InvolvementForms({
               />
             </label>
             <div className="sm:col-span-2">
-              <FormSubmit>Send partnership inquiry</FormSubmit>
+              <FormSubmit>Open partnership inquiry in email</FormSubmit>
             </div>
-          </form>
+          </EmailDraftForm>
         </FormCard>
       )}
 
       {active === "donate" && (
         <FormCard
           title="Donation pledge form"
-          description="Record your intended donation. Our team will follow up with payment details."
+          description="Prepare a donation pledge for our team. Review and send it from your email app; no payment is taken here."
         >
-          <form
+          <EmailDraftForm
             className="mt-6 grid gap-4 sm:grid-cols-2"
-            action={`mailto:${donateEmail}`}
-            method="post"
-            encType="text/plain"
+            recipient={donateEmail}
+            subject="Donation pledge — PASADA"
+            fields={[["donorName", "Full name"], ["phone", "Phone"], ["amount", "Donation amount (TZS)"], ["paymentMethod", "Preferred payment method"], ["dedication", "Dedication"], ["message", "Message"]]}
           >
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Full name</FormLabel>
               <FormInput name="donorName" required />
             </label>
             <label className="grid gap-1.5 sm:col-span-1">
-              <FormLabel>Email</FormLabel>
-              <FormInput name="email" type="email" required />
-            </label>
-            <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Phone</FormLabel>
-              <FormInput name="phone" />
+              <FormInput name="phone" type="tel" autoComplete="tel" />
             </label>
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Donation amount (TZS)</FormLabel>
@@ -245,9 +229,9 @@ export function InvolvementForms({
               />
             </label>
             <div className="sm:col-span-2">
-              <FormSubmit>Submit donation pledge</FormSubmit>
+              <FormSubmit>Open donation pledge in email</FormSubmit>
             </div>
-          </form>
+          </EmailDraftForm>
         </FormCard>
       )}
     </div>

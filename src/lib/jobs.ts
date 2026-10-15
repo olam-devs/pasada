@@ -105,9 +105,10 @@ export async function getJobs(): Promise<JobListing[]> {
 
   try {
     const rows = await sanityClient.fetch<JobListing[]>(jobsQuery);
-    return rows?.length ? rows : SAMPLE_JOBS;
-  } catch {
-    return SAMPLE_JOBS;
+    return rows ?? [];
+  } catch (error) {
+    console.error("Unable to load job openings", error);
+    return [];
   }
 }
 
@@ -119,9 +120,9 @@ export async function getJobBySlug(slug: string): Promise<JobListing | null> {
     const row = await sanityClient.fetch<JobListing | null>(jobBySlugQuery, {
       slug,
     });
-    return row ?? sample ?? null;
+    return row ?? null;
   } catch {
-    return sample ?? null;
+    return null;
   }
 }
 

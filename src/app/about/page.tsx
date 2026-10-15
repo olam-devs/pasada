@@ -4,6 +4,7 @@ import { PasadaImage } from "@/components/ui/PasadaImage";
 import { PortableContent } from "@/components/content/PortableContent";
 import { getAboutPage } from "@/lib/about";
 import { getSiteSettings } from "@/lib/settings";
+import { imageIdentity } from "@/lib/media";
 import {
   Eye,
   Handshake,
@@ -38,19 +39,6 @@ export default async function AboutPage() {
     >
       <div className="grid gap-10 lg:grid-cols-3">
         <div className="space-y-8 lg:col-span-2">
-          <AnimatedSection>
-            <div className="relative h-56 overflow-hidden rounded-3xl border-2 border-[var(--primary)] bg-zinc-100 sm:h-72">
-              <PasadaImage
-                src={about.mainImageUrl}
-                alt="PASADA community work"
-                fill
-                className="object-cover"
-                sizes="(min-width: 1024px) 700px, 92vw"
-                priority
-              />
-            </div>
-          </AnimatedSection>
-
           <AnimatedSection delay={0.05}>
             <PortableContent value={about.intro} />
           </AnimatedSection>
@@ -116,7 +104,7 @@ export default async function AboutPage() {
         </div>
 
         <aside className="space-y-4">
-          <AnimatedSection>
+          {imageIdentity(about.sideImageUrl) !== imageIdentity(about.mainImageUrl) ? <AnimatedSection>
             <div className="relative h-48 overflow-hidden rounded-2xl border-2 border-[var(--primary)]">
               <PasadaImage
                 src={about.sideImageUrl}
@@ -126,7 +114,7 @@ export default async function AboutPage() {
                 sizes="400px"
               />
             </div>
-          </AnimatedSection>
+          </AnimatedSection> : null}
 
           <AnimatedSection delay={0.05}>
             <div className="rounded-2xl border-2 border-[var(--primary)] bg-red-50 p-6">

@@ -17,8 +17,8 @@ export default async function GetInvolvedPage() {
       <AnimatedSection>
         <p className="max-w-none text-sm leading-7 text-zinc-800">
           Choose how you want to support PASADA. Complete the form for
-          volunteering, partnerships, or donations—all fields use high-contrast
-          styling so your responses are easy to read.
+          volunteering, partnerships, or donations. Your email app will open with
+          a prepared message for you to review and send.
         </p>
       </AnimatedSection>
 
@@ -40,7 +40,7 @@ export default async function GetInvolvedPage() {
               <div>
                 <h2 className="text-lg font-semibold text-black">Careers at PASADA</h2>
                 <p className="mt-2 max-w-xl text-sm leading-6 text-zinc-800">
-                  View open positions and apply online. Browse current opportunities
+                  View open positions and application instructions. Browse current opportunities
                   and contact us if you have questions about a role.
                 </p>
               </div>

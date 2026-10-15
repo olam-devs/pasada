@@ -58,7 +58,8 @@ export async function getSiteSettings(): Promise<SiteSettings> {
   if (!sanityConfigured) return defaults;
   try {
     const row = await sanityClient.fetch<Partial<SiteSettings> | null>(query);
-    return { ...defaults, ...row };
+    const saved = Object.fromEntries(Object.entries(row ?? {}).filter(([, value]) => value != null));
+    return { ...defaults, ...saved };
   } catch {
     return defaults;
   }

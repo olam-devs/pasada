@@ -13,8 +13,12 @@ type Testimonial = {
 
 export function TestimonialsCarousel({
   items,
+  title = "Testimonials",
+  subtitle = "Voices from the community",
 }: {
   items: Testimonial[];
+  title?: string;
+  subtitle?: string;
 }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
   const [selected, setSelected] = useState(0);
@@ -46,9 +50,9 @@ export function TestimonialsCarousel({
             <Quote className="h-5 w-5" aria-hidden="true" />
           </span>
           <div>
-            <div className="text-sm font-semibold">Testimonials</div>
+            <div className="text-sm font-semibold">{title}</div>
             <div className="text-xs text-zinc-600">
-              Voices from the community
+              {subtitle}
             </div>
           </div>
         </div>

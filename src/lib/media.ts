@@ -39,6 +39,16 @@ export function isLogoImage(url: string) {
   return url.includes("logo.jpg") || url.includes("/brand/logo");
 }
 
+/** Compare an asset rather than its different resized/cropped URLs. */
+export function imageIdentity(url: string) {
+  try {
+    const parsed = new URL(url, "https://pasada.local");
+    return `${parsed.origin}${parsed.pathname}`;
+  } catch {
+    return url;
+  }
+}
+
 export function testimonialCategoryImage(slug: string) {
   const map = media.testimonialCategories;
   return map[slug as keyof typeof map] ?? media.hero.services;
