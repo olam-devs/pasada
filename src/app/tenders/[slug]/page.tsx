@@ -9,7 +9,10 @@ import { cn } from "@/lib/cn";
 
 export async function generateStaticParams() {
   const tenders = await getTenders();
-  const slugs = new Set([...getAllTenderSlugs(), ...tenders.map((t) => t.slug)]);
+  const slugs = new Set([
+    ...getAllTenderSlugs(),
+    ...tenders.map((t) => t.slug),
+  ]);
   return [...slugs].map((slug) => ({ slug }));
 }
 
@@ -61,7 +64,9 @@ export default async function TenderDetailPage({
             {tender.status}
           </span>
           {tender.tenderNumber ? (
-            <span className="text-sm text-zinc-700">Ref: {tender.tenderNumber}</span>
+            <span className="text-sm text-zinc-700">
+              Ref: {tender.tenderNumber}
+            </span>
           ) : null}
           {tender.deadline ? (
             <span className="text-sm text-zinc-700">
@@ -81,14 +86,21 @@ export default async function TenderDetailPage({
           <p>Contact {contactEmail} for questions about this tender.</p>
         </DetailLayout>
 
-        <div className="mt-10 flex flex-wrap gap-3 rounded-2xl border-2 border-[var(--primary)] bg-red-50 p-6">
+        <div className="mt-10 flex flex-wrap gap-3 rounded-2xl border border-[var(--primary)] bg-red-50 p-6">
           {tender.documentUrl ? (
-            <ButtonLink href={tender.documentUrl} target="_blank" rel="noopener noreferrer">
+            <ButtonLink
+              href={tender.documentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Download className="h-4 w-4" aria-hidden="true" />
               Download tender document
             </ButtonLink>
           ) : null}
-          <ButtonLink href={`mailto:${contactEmail}?subject=Tender inquiry: ${encodeURIComponent(tender.title)}`} variant="secondary">
+          <ButtonLink
+            href={`mailto:${contactEmail}?subject=Tender inquiry: ${encodeURIComponent(tender.title)}`}
+            variant="secondary"
+          >
             Contact about this tender
           </ButtonLink>
         </div>

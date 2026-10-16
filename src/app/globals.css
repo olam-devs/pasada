@@ -5,16 +5,21 @@
   --foreground: #0a0a0a;
   --muted: #71717a;
   --card: #ffffff;
-  --border: rgba(24, 24, 27, 0.10);
+  --border: rgba(24, 24, 27, 0.1);
 
   /* Brand palette */
-  --primary: #dc2626; /* red: HIV awareness / key CTAs */
-  --primary-2: #b91c1c;
-  --brand-blue: #3867d6; /* PASADA blue (from existing site) */
-  --brand-blue-2: #1f4fbf;
-  --accent: #22c55e; /* supportive green accent */
-  --warning: #f59e0b; /* amber-500 */
-  --ring: rgba(220, 38, 38, 0.35);
+  --primary: #bd2939;
+  --primary-2: #9e1d2b;
+  --brand-maroon: #48131b;
+  --brand-gold: #ddb52e;
+  --brand-cream: #faf7f0;
+  --brand-blush: #fbf0f1;
+  /* Compatibility names for existing CMS-driven sections. */
+  --brand-blue: var(--brand-maroon);
+  --brand-blue-2: #6a202b;
+  --accent: var(--brand-gold);
+  --warning: #ad8115;
+  --ring: rgba(189, 41, 57, 0.32);
 }
 
 @theme inline {
@@ -27,8 +32,17 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
-    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family:
+    var(--font-sans),
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
 }
 
 /* smooth anchored section scroll */
@@ -39,11 +53,58 @@ html {
 /* subtle page background grid */
 .bg-grid {
   background-image: radial-gradient(
-    rgba(2, 132, 199, 0.14) 1px,
+    rgba(189, 41, 57, 0.12) 1px,
     transparent 1px
   );
   background-size: 28px 28px;
   background-position: -7px -7px;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.025em;
+}
+::selection {
+  background: #f2dce0;
+  color: #48131b;
+}
+.brand-topbar {
+  background: var(--brand-maroon);
+  color: white;
+}
+.brand-banner {
+  background: linear-gradient(115deg, #681d29, #48131b);
+}
+.section-kicker {
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #251b1d;
+}
+.hero-shade {
+  background: linear-gradient(
+    90deg,
+    rgba(35, 10, 16, 0.91),
+    rgba(35, 10, 16, 0.65) 46%,
+    rgba(35, 10, 16, 0.12)
+  );
+}
+@media (max-width: 767px) {
+  .hero-shade {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 10, 16, 0.85),
+      rgba(35, 10, 16, 0.55)
+    );
+  }
 }
 
 /* focus rings */
@@ -58,7 +119,9 @@ html {
   html {
     scroll-behavior: auto;
   }
-  *, ::before, ::after {
+  *,
+  ::before,
+  ::after {
     transition-duration: 0.001ms !important;
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;

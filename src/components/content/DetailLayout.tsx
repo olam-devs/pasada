@@ -28,9 +28,13 @@ export function DetailLayout({
   content?: PortableTextBlock[];
   children?: React.ReactNode;
 }) {
-  const gallery = [...new Map((galleryUrls ?? [])
-    .filter((url) => imageIdentity(url) !== imageIdentity(imageUrl))
-    .map((url) => [imageIdentity(url), url])).values()];
+  const gallery = [
+    ...new Map(
+      (galleryUrls ?? [])
+        .filter((url) => imageIdentity(url) !== imageIdentity(imageUrl))
+        .map((url) => [imageIdentity(url), url]),
+    ).values(),
+  ];
 
   return (
     <div>
@@ -43,16 +47,24 @@ export function DetailLayout({
       </Link>
 
       {badge ? (
-        <span className="mt-4 inline-block rounded-full border-2 border-[var(--primary)] px-3 py-1 text-xs font-semibold text-black">
+        <span className="mt-4 inline-block rounded-full border border-[var(--primary)] px-3 py-1 text-xs font-semibold text-black">
           {badge}
         </span>
       ) : null}
 
-      <p className="mt-6 max-w-none text-base leading-8 text-zinc-800">{summary}</p>
+      <p className="mt-6 max-w-none text-base leading-8 text-zinc-800">
+        {summary}
+      </p>
 
       {videoUrl ? (
-        <div className="mt-6 overflow-hidden rounded-2xl border-2 border-black">
-          <video src={videoUrl} controls playsInline className="aspect-video w-full" poster={imageUrl} />
+        <div className="mt-6 overflow-hidden rounded-2xl border border-zinc-200">
+          <video
+            src={videoUrl}
+            controls
+            playsInline
+            className="aspect-video w-full"
+            poster={imageUrl}
+          />
         </div>
       ) : null}
 
@@ -61,9 +73,15 @@ export function DetailLayout({
           {gallery.map((url) => (
             <div
               key={url}
-              className="relative aspect-[4/3] overflow-hidden rounded-xl border-2 border-[var(--primary)] bg-zinc-100"
+              className="relative aspect-[4/3] overflow-hidden rounded-xl border border-[var(--primary)] bg-zinc-100"
             >
-              <PasadaImage src={url} alt={`${title} — gallery photo`} fill className="object-contain" sizes="(min-width: 1024px) 400px, 90vw" />
+              <PasadaImage
+                src={url}
+                alt={`${title} — gallery photo`}
+                fill
+                className="object-contain"
+                sizes="(min-width: 1024px) 400px, 90vw"
+              />
             </div>
           ))}
         </div>
@@ -73,7 +91,9 @@ export function DetailLayout({
         {content?.length ? (
           <PortableContent value={content} />
         ) : (
-          <div className="space-y-4 text-base leading-8 text-zinc-800">{children}</div>
+          <div className="space-y-4 text-base leading-8 text-zinc-800">
+            {children}
+          </div>
         )}
       </div>
     </div>

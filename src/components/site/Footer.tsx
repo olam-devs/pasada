@@ -1,112 +1,132 @@
 import Link from "next/link";
+import Image from "next/image";
+import { Mail, MapPin, Phone, ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Heart, MapPin, Mail, Phone } from "lucide-react";
 
-const links = [
+const explore = [
   { href: "/about", label: "About PASADA" },
-  { href: "/services", label: "Services" },
-  { href: "/projects", label: "Projects" },
-  { href: "/get-involved", label: "Get involved" },
+  { href: "/services", label: "Our services" },
+  { href: "/projects", label: "Our projects" },
+  { href: "/testimonials", label: "Community voices" },
+  { href: "/blog", label: "News & stories" },
+];
+const involved = [
+  { href: "/get-involved", label: "Volunteer & partner" },
+  { href: "/donate", label: "Donate" },
   { href: "/jobs", label: "Careers" },
   { href: "/tenders", label: "Tenders" },
-  { href: "/contact", label: "Contact" },
-  { href: "/blog", label: "Blog" },
-  { href: "/whistleblower", label: "Whistle-blower / Tupe taarifa" },
-] as const;
+  { href: "/whistleblower", label: "Whistleblower / Tupe taarifa" },
+];
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-[var(--border)] bg-zinc-50">
-      <Container className="py-12">
-        <div className="grid gap-10 md:grid-cols-3">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--primary)] text-white">
-                <Heart className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <div className="leading-tight">
-                <div className="text-sm font-semibold text-black">PASADA (T)</div>
-                <div className="text-xs text-zinc-700">
-                  Pastoral Activities and Services for people with AIDS
-                </div>
-              </div>
+    <footer className="mt-auto bg-[#281015] text-white/75">
+      <Container className="py-14 sm:py-16">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-12">
+          <div>
+            <div className="relative h-24 w-24 bg-white">
+              <Image
+                src="/brand/logo.jpg"
+                alt="PASADA Tanzania"
+                fill
+                sizes="96px"
+                className="object-contain p-1"
+              />
             </div>
-            <p className="max-w-sm text-sm text-zinc-800">
-              A faith-based organization under the Roman Catholic Archdiocese of
-              Dar es Salaam, offering compassionate services to all individuals
-              without discrimination.
+            <p className="mt-5 text-sm leading-7">
+              Pastoral Activities and Services for people with AIDS. A
+              faith-based organisation under the Roman Catholic Archdiocese of
+              Dar es Salaam, serving all with dignity.
             </p>
           </div>
-
-          <div className="grid grid-cols-2 gap-8">
-            <div>
-              <div className="text-sm font-semibold text-black">Explore</div>
-              <ul className="mt-3 space-y-2 text-sm">
-                {links.slice(0, 4).map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="text-zinc-800 hover:text-[var(--primary)]"
-                    >
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <div className="text-sm font-semibold text-black">More</div>
-              <ul className="mt-3 space-y-2 text-sm">
-                {links.slice(4).map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="text-zinc-800 hover:text-[var(--primary)]"
-                    >
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-                <li>
+          <div>
+            <h2 className="text-base font-semibold text-white">Explore</h2>
+            <ul className="mt-5 space-y-3 text-sm">
+              {explore.map((item) => (
+                <li key={item.href}>
                   <Link
-                    href="/donate"
-                    className="text-zinc-800 hover:text-[var(--primary)]"
+                    href={item.href}
+                    className="inline-flex items-center gap-2 hover:text-white"
                   >
-                    Donate
+                    <ChevronRight
+                      className="h-3 w-3 text-[var(--brand-gold)]"
+                      aria-hidden="true"
+                    />
+                    {item.label}
                   </Link>
                 </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
           </div>
-
           <div>
-            <div className="text-sm font-semibold text-black">Contact</div>
-            <ul className="mt-3 space-y-2 text-sm text-zinc-800">
-              <li className="flex gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            <h2 className="text-base font-semibold text-white">Get involved</h2>
+            <ul className="mt-5 space-y-3 text-sm">
+              {involved.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center gap-2 hover:text-white"
+                  >
+                    <ChevronRight
+                      className="h-3 w-3 text-[var(--brand-gold)]"
+                      aria-hidden="true"
+                    />
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-base font-semibold text-white">Contact us</h2>
+            <ul className="mt-5 space-y-4 text-sm leading-6">
+              <li className="flex gap-3">
+                <MapPin
+                  className="mt-1 h-4 w-4 shrink-0 text-[var(--brand-gold)]"
+                  aria-hidden="true"
+                />
                 <span>Dar es Salaam, Tanzania</span>
               </li>
-              <li className="flex gap-2">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-                <a href="tel:+255222866618" className="hover:text-[var(--primary)]">
+              <li>
+                <a
+                  href="tel:+255222866618"
+                  className="inline-flex items-center gap-3 hover:text-white"
+                >
+                  <Phone
+                    className="h-4 w-4 shrink-0 text-[var(--brand-gold)]"
+                    aria-hidden="true"
+                  />
                   +255 22 286 6618
                 </a>
               </li>
-              <li className="flex gap-2">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              <li>
                 <a
                   href="mailto:info@pasada.or.tz"
-                  className="hover:text-[var(--primary)]"
+                  className="inline-flex items-center gap-3 hover:text-white"
                 >
+                  <Mail
+                    className="h-4 w-4 shrink-0 text-[var(--brand-gold)]"
+                    aria-hidden="true"
+                  />
                   info@pasada.or.tz
                 </a>
               </li>
             </ul>
+            <Link
+              href="/contact"
+              className="mt-5 inline-block text-sm font-semibold text-white underline decoration-[var(--brand-gold)] underline-offset-4"
+            >
+              Send us a message
+            </Link>
           </div>
         </div>
-
-        <div className="mt-10 border-t border-[var(--border)] pt-6 text-center text-xs text-zinc-700">
-          © 2026 PASADA (T). All rights reserved.
+        <div className="mt-12 flex flex-col justify-between gap-4 border-t border-white/15 pt-6 text-xs sm:flex-row">
+          <span>
+            © {new Date().getFullYear()} PASADA (T). All rights reserved.
+          </span>
+          <Link href="/privacy" className="hover:text-white">
+            Privacy policy
+          </Link>
         </div>
       </Container>
     </footer>

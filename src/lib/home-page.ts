@@ -16,18 +16,27 @@ export type HeroSlide = {
 export type HomePageContent = typeof homePageDefaults & { slides: HeroSlide[] };
 
 type HomePageRow = Partial<typeof homePageDefaults> & {
-  slides?: { _key: string; image?: SanityImageSource; alt?: string; fit?: "cover" | "contain" }[];
+  slides?: {
+    _key: string;
+    image?: SanityImageSource;
+    alt?: string;
+    fit?: "cover" | "contain";
+  }[];
 };
 
 export async function getHomePage(): Promise<HomePageContent> {
   const fallback = {
     ...homePageDefaults,
-    slides: media.hero.home.map((src, i): HeroSlide => ({
-      _key: `default-${i}`,
-      src,
-      alt: isLogoImage(src) ? "PASADA logo" : "PASADA community and health programs",
-      fit: isLogoImage(src) ? "contain" : "cover",
-    })),
+    slides: media.hero.home.map(
+      (src, i): HeroSlide => ({
+        _key: `default-${i}`,
+        src,
+        alt: isLogoImage(src)
+          ? "PASADA logo"
+          : "PASADA community and health programs",
+        fit: isLogoImage(src) ? "contain" : "cover",
+      }),
+    ),
   };
   if (!sanityConfigured) return fallback;
 
@@ -35,26 +44,33 @@ export async function getHomePage(): Promise<HomePageContent> {
     const row = await sanityClient.fetch<HomePageRow | null>(
       '*[_type == "homePage" && _id == "homePage"][0]',
       {},
-      { perspective: "published", next: { revalidate: 60 } },
+      { perspective: "published", cache: "no-store" },
     );
     if (!row) return fallback;
     const slides = row.slides?.flatMap((slide) => {
       if (!slide.image) return [];
-      const image = urlFor(slide.image).width(1200);
-      return [{
-        _key: slide._key,
-        src: slide.fit === "contain" ? image.url() : image.height(900).fit("crop").url(),
-        alt: slide.alt ?? "PASADA community and health programs",
-        fit: slide.fit ?? "cover",
-      }];
+      const image = urlFor(slide.image).width(1920);
+      return [
+        {
+          _key: slide._key,
+          src: image.url(),
+          alt: slide.alt ?? "PASADA community and health programs",
+          fit: slide.fit ?? "cover",
+        },
+      ];
     });
     // Sanity can return null for unset fields; retain the existing page defaults.
-    const values = Object.fromEntries(Object.entries(row).filter(([, value]) => value != null));
+    const values = Object.fromEntries(
+      Object.entries(row).filter(([, value]) => value != null),
+    );
     return {
       ...fallback,
       ...values,
       highlights: row.highlights ?? fallback.highlights,
-      slideInterval: row.slideInterval && row.slideInterval >= 2 ? row.slideInterval : fallback.slideInterval,
+      slideInterval:
+        row.slideInterval && row.slideInterval >= 2
+          ? row.slideInterval
+          : fallback.slideInterval,
       slides: slides?.length ? slides : fallback.slides,
     };
   } catch (error) {

@@ -37,12 +37,12 @@ export default async function TestimonialDetailPage({
         </Link>
 
         {t.category ? (
-          <span className="mt-4 inline-block rounded-full border-2 border-[var(--primary)] px-3 py-1 text-xs font-semibold text-black">
+          <span className="mt-4 inline-block rounded-full border border-[var(--primary)] px-3 py-1 text-xs font-semibold text-black">
             {t.category}
           </span>
         ) : null}
 
-        <div className="mt-8 rounded-3xl border-2 border-[var(--primary)] bg-gradient-to-br from-white to-red-50/50 p-8 sm:p-10">
+        <div className="mt-8 rounded-3xl border border-[var(--primary)] bg-gradient-to-br from-white to-red-50/50 p-8 sm:p-10">
           <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--primary)] text-white">
             <Quote className="h-6 w-6" aria-hidden="true" />
           </span>

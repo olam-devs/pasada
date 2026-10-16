@@ -21,14 +21,17 @@ export default async function WhistleblowerPage() {
       <AnimatedSection>
         <div className="max-w-none space-y-4">
           <p className="text-sm leading-7 text-zinc-800">
-            PASADA is committed to the highest standards of integrity, transparency
-            and accountability. If you have witnessed misconduct, fraud, abuse,
-            safeguarding concerns, or any breach of our code of conduct, you can
-            report it confidentially through either of the two channels below.
-            Reports are sent directly to PASADA leadership.
+            PASADA is committed to the highest standards of integrity,
+            transparency and accountability. If you have witnessed misconduct,
+            fraud, abuse, safeguarding concerns, or any breach of our code of
+            conduct, you can report it confidentially through either of the two
+            channels below. Reports are sent directly to PASADA leadership.
           </p>
-          <div className="flex items-start gap-3 rounded-2xl border-2 border-black bg-zinc-50 p-5">
-            <Lock className="mt-0.5 h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+          <div className="flex items-start gap-3 rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+            <Lock
+              className="mt-0.5 h-5 w-5 shrink-0 text-[var(--primary)]"
+              aria-hidden="true"
+            />
             <p className="text-sm leading-6 text-zinc-800">
               You may report anonymously. All reports are treated with strict
               confidentiality and reviewed by PASADA&apos;s leadership team.
@@ -37,8 +40,11 @@ export default async function WhistleblowerPage() {
         </div>
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          <div className="rounded-2xl border-2 border-[var(--primary)] bg-white p-6 shadow-sm">
-            <ShieldAlert className="h-6 w-6 text-[var(--primary)]" aria-hidden="true" />
+          <div className="rounded-2xl border border-[var(--primary)] bg-white p-6 shadow-sm">
+            <ShieldAlert
+              className="h-6 w-6 text-[var(--primary)]"
+              aria-hidden="true"
+            />
             <h2 className="mt-3 text-lg font-semibold text-black">Channel 1</h2>
             <p className="mt-2 text-sm leading-6 text-zinc-800">
               Submit your report via our first Tupe taarifa online form.
@@ -54,8 +60,11 @@ export default async function WhistleblowerPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border-2 border-[var(--primary)] bg-white p-6 shadow-sm">
-            <ShieldAlert className="h-6 w-6 text-[var(--primary)]" aria-hidden="true" />
+          <div className="rounded-2xl border border-[var(--primary)] bg-white p-6 shadow-sm">
+            <ShieldAlert
+              className="h-6 w-6 text-[var(--primary)]"
+              aria-hidden="true"
+            />
             <h2 className="mt-3 text-lg font-semibold text-black">Channel 2</h2>
             <p className="mt-2 text-sm leading-6 text-zinc-800">
               Submit your report via our second Tupe taarifa online form.
