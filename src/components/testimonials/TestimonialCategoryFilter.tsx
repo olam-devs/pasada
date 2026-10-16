@@ -1,7 +1,13 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { Heart, HandHeart, Handshake, MessagesSquare, UsersRound } from "lucide-react";
+import {
+  Heart,
+  HandHeart,
+  Handshake,
+  MessagesSquare,
+  UsersRound,
+} from "lucide-react";
 import { TestimonialQuoteTile } from "@/components/testimonials/TestimonialQuoteTile";
 import type { Testimonial, TestimonialCategory } from "@/lib/testimonials";
 import { cn } from "@/lib/cn";
@@ -11,14 +17,17 @@ function matchCategory(t: Testimonial, slug: string) {
 }
 
 const symbols = {
-  people: { Icon: UsersRound, color: "bg-blue-50 text-blue-700" },
+  people: { Icon: UsersRound, color: "bg-rose-50 text-rose-700" },
   heart: { Icon: Heart, color: "bg-rose-50 text-rose-700" },
   helping: { Icon: HandHeart, color: "bg-amber-50 text-amber-700" },
-  partnership: { Icon: Handshake, color: "bg-teal-50 text-teal-700" },
-  conversation: { Icon: MessagesSquare, color: "bg-violet-50 text-violet-700" },
+  partnership: { Icon: Handshake, color: "bg-rose-50 text-rose-700" },
+  conversation: { Icon: MessagesSquare, color: "bg-rose-50 text-rose-700" },
 };
 const categorySymbols: Record<string, keyof typeof symbols> = {
-  clients: "people", caregivers: "heart", volunteers: "helping", partners: "partnership",
+  clients: "people",
+  caregivers: "heart",
+  volunteers: "helping",
+  partners: "partnership",
 };
 
 export function TestimonialCategoryFilter({
@@ -42,7 +51,7 @@ export function TestimonialCategoryFilter({
   const activeLabel =
     active === "all"
       ? "All voices"
-      : categories.find((c) => c.slug === active)?.title ?? "Category";
+      : (categories.find((c) => c.slug === active)?.title ?? "Category");
 
   function selectCategory(slug: string) {
     setActive(slug);
@@ -58,12 +67,28 @@ export function TestimonialCategoryFilter({
         <strong>All voices</strong> shows every testimonial mixed together.
       </p>
 
-      <div aria-label="Testimonial categories" className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-        {[{ _id: "all", slug: "all", title: "All voices", icon: "conversation" }, ...categories].map((c) => {
-          const symbol = symbols[c.icon as keyof typeof symbols] ?? symbols[categorySymbols[c.slug] ?? "conversation"];
+      <div
+        aria-label="Testimonial categories"
+        className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5"
+      >
+        {[
+          {
+            _id: "all",
+            slug: "all",
+            title: "All voices",
+            icon: "conversation",
+          },
+          ...categories,
+        ].map((c) => {
+          const symbol =
+            symbols[c.icon as keyof typeof symbols] ??
+            symbols[categorySymbols[c.slug] ?? "conversation"];
           const { Icon } = symbol;
           const selected = active === c.slug;
-          const count = c.slug === "all" ? items.length : items.filter((t) => matchCategory(t, c.slug)).length;
+          const count =
+            c.slug === "all"
+              ? items.length
+              : items.filter((t) => matchCategory(t, c.slug)).length;
           return (
             <button
               key={c.slug}
@@ -71,17 +96,29 @@ export function TestimonialCategoryFilter({
               aria-pressed={selected}
               onClick={() => selectCategory(c.slug)}
               className={cn(
-                "group rounded-2xl border-2 bg-white p-4 text-left transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-700 motion-reduce:transform-none",
+                "group rounded-2xl border-2 bg-white p-4 text-left transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose-700 motion-reduce:transform-none",
                 selected
                   ? "border-slate-900 bg-slate-50 ring-1 ring-slate-900"
                   : "border-zinc-200 hover:border-slate-400",
               )}
             >
               <div className="flex items-start justify-between gap-2">
-                <span className={cn("grid h-12 w-12 place-items-center rounded-2xl", symbol.color)}>
-                  <Icon className="h-6 w-6" strokeWidth={1.7} aria-hidden="true" />
+                <span
+                  className={cn(
+                    "grid h-12 w-12 place-items-center rounded-2xl",
+                    symbol.color,
+                  )}
+                >
+                  <Icon
+                    className="h-6 w-6"
+                    strokeWidth={1.7}
+                    aria-hidden="true"
+                  />
                 </span>
-                <span className="rounded-full bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-600" aria-label={`${count} testimonials`}>
+                <span
+                  className="rounded-full bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-600"
+                  aria-label={`${count} testimonials`}
+                >
                   {count}
                 </span>
               </div>
@@ -115,8 +152,8 @@ export function TestimonialCategoryFilter({
 
         {filtered.length === 0 ? (
           <p className="mt-8 rounded-2xl bg-zinc-50 p-6 text-sm text-zinc-700 ring-1 ring-[var(--border)]">
-            No testimonials in this category yet. Try <strong>All voices</strong> or
-            another category.
+            No testimonials in this category yet. Try{" "}
+            <strong>All voices</strong> or another category.
           </p>
         ) : null}
       </div>

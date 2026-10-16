@@ -1,12 +1,10 @@
 import { cn } from "@/lib/cn";
 
 const fieldBase =
-  "w-full rounded-xl border-2 border-black bg-white px-3 text-base font-medium text-black placeholder:text-zinc-500 shadow-sm transition focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20";
+  "w-full rounded-xl border border-zinc-200 bg-white px-3 text-base font-medium text-black placeholder:text-zinc-500 shadow-sm transition focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20";
 
 export function FormLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="text-sm font-semibold text-black">{children}</span>
-  );
+  return <span className="text-sm font-semibold text-black">{children}</span>;
 }
 
 export function FormInput({

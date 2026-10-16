@@ -31,7 +31,7 @@ export function ContentCard({
     >
       <Link
         href={href}
-        className="group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-[var(--primary)] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+        className="group flex h-full flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-[0_4px_20px_rgba(40,15,20,0.04)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-lg"
       >
         <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
           <PasadaImage
@@ -48,11 +48,13 @@ export function ContentCard({
           ) : null}
         </div>
         <div className="flex flex-1 flex-col p-5 sm:p-6">
-          <h2 className="text-base font-semibold text-black group-hover:text-[var(--primary)]">
+          <h3 className="text-lg font-semibold leading-6 text-[var(--brand-maroon)] group-hover:text-[var(--primary)]">
             {title}
-          </h2>
-          <p className="mt-2 flex-1 text-sm leading-6 text-zinc-800">{excerpt}</p>
-          <div className="mt-4 text-sm font-semibold text-[var(--primary)]">
+          </h3>
+          <p className="mt-3 line-clamp-3 text-sm leading-7 text-zinc-600">
+            {excerpt}
+          </p>
+          <div className="mt-auto pt-5 text-sm font-semibold text-[var(--primary)]">
             {cta} →
           </div>
         </div>

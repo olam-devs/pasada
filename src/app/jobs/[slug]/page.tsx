@@ -19,7 +19,10 @@ export default async function JobDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [job, settings] = await Promise.all([getJobBySlug(slug), getSiteSettings()]);
+  const [job, settings] = await Promise.all([
+    getJobBySlug(slug),
+    getSiteSettings(),
+  ]);
   if (!job) notFound();
 
   const applyHref = `mailto:${job.applyEmail ?? settings.careersEmail}?subject=Application: ${encodeURIComponent(job.title)}`;
@@ -36,13 +39,13 @@ export default async function JobDetailPage({
         </Link>
 
         <div className="mt-6 flex flex-wrap gap-3 text-sm font-medium text-zinc-800">
-          <span className="rounded-full border-2 border-black px-3 py-1">
+          <span className="rounded-full border border-zinc-200 px-3 py-1">
             {job.department}
           </span>
-          <span className="rounded-full border-2 border-black px-3 py-1">
+          <span className="rounded-full border border-zinc-200 px-3 py-1">
             {job.location}
           </span>
-          <span className="rounded-full border-2 border-[var(--primary)] px-3 py-1 text-[var(--primary)]">
+          <span className="rounded-full border border-[var(--primary)] px-3 py-1 text-[var(--primary)]">
             {job.employmentType}
           </span>
         </div>
@@ -52,7 +55,7 @@ export default async function JobDetailPage({
         </p>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
-          <section className="rounded-2xl border-2 border-black bg-white p-6">
+          <section className="rounded-2xl border border-zinc-200 bg-white p-6">
             <h2 className="text-base font-semibold text-black">
               Responsibilities
             </h2>
@@ -62,7 +65,7 @@ export default async function JobDetailPage({
               ))}
             </ul>
           </section>
-          <section className="rounded-2xl border-2 border-black bg-white p-6">
+          <section className="rounded-2xl border border-zinc-200 bg-white p-6">
             <h2 className="text-base font-semibold text-black">Requirements</h2>
             <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-zinc-800">
               {job.requirements.map((item) => (
@@ -72,7 +75,7 @@ export default async function JobDetailPage({
           </section>
         </div>
 
-        <div className="mt-10 rounded-2xl border-2 border-[var(--primary)] bg-red-50 p-6">
+        <div className="mt-10 rounded-2xl border border-[var(--primary)] bg-red-50 p-6">
           <p className="text-sm text-zinc-800">
             Ready to apply? Send your CV and cover letter referencing this role.
           </p>

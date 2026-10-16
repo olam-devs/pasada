@@ -32,17 +32,20 @@ export default async function GetInvolvedPage() {
       </div>
 
       <AnimatedSection>
-        <section className="mt-14 rounded-2xl border-2 border-[var(--primary)] bg-gradient-to-br from-red-50 via-white to-blue-50 p-6 sm:p-8">
+        <section className="mt-14 rounded-2xl border border-[var(--primary)] bg-gradient-to-br from-red-50 via-white to-rose-50 p-6 sm:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="flex gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border-2 border-black bg-white text-[var(--primary)]">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-zinc-200 bg-white text-[var(--primary)]">
                 <Briefcase className="h-6 w-6" aria-hidden="true" />
               </span>
               <div>
-                <h2 className="text-lg font-semibold text-black">Careers at PASADA</h2>
+                <h2 className="text-lg font-semibold text-black">
+                  Careers at PASADA
+                </h2>
                 <p className="mt-2 max-w-xl text-sm leading-6 text-zinc-800">
-                  View open positions and application instructions. Browse current opportunities
-                  and contact us if you have questions about a role.
+                  View open positions and application instructions. Browse
+                  current opportunities and contact us if you have questions
+                  about a role.
                 </p>
               </div>
             </div>

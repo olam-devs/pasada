@@ -13,7 +13,10 @@ import {
 
 export async function generateStaticParams() {
   const services = await getServices();
-  const slugs = new Set([...getAllServiceSlugs(), ...services.map((s) => s.slug)]);
+  const slugs = new Set([
+    ...getAllServiceSlugs(),
+    ...services.map((s) => s.slug),
+  ]);
   return [...slugs].map((slug) => ({ slug }));
 }
 
@@ -27,7 +30,11 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   return (
-    <PageShell eyebrow="Services" title={service.title} heroImageSrc={service.imageUrl}>
+    <PageShell
+      eyebrow="Services"
+      title={service.title}
+      heroImageSrc={service.imageUrl}
+    >
       <AnimatedSection>
         <DetailLayout
           backHref="/services"
@@ -40,18 +47,20 @@ export default async function ServiceDetailPage({
           content={service.content}
         >
           <p>
-            PASADA delivers this service with dignity, confidentiality and respect
-            for every client—without discrimination and free of charge.
+            PASADA delivers this service with dignity, confidentiality and
+            respect for every client—without discrimination and free of charge.
           </p>
           <p>
-            Our team supports clients and families through counseling, education,
-            follow-up care and referrals, working closely with health facilities
-            and community stakeholders.
+            Our team supports clients and families through counseling,
+            education, follow-up care and referrals, working closely with health
+            facilities and community stakeholders.
           </p>
         </DetailLayout>
 
-        <div className="mt-12 rounded-2xl border-2 border-[var(--primary)] bg-red-50 p-6">
-          <p className="text-sm text-zinc-800">Need this service or have questions?</p>
+        <div className="mt-12 rounded-2xl border border-[var(--primary)] bg-red-50 p-6">
+          <p className="text-sm text-zinc-800">
+            Need this service or have questions?
+          </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <ButtonLink href="/contact">Contact us</ButtonLink>
             <ButtonLink href="/donate" variant="secondary">

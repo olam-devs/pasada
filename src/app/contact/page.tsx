@@ -17,12 +17,15 @@ export default async function ContactPage() {
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-4">
             <p className="text-sm leading-7 text-zinc-800">
-              Whether you want to donate, volunteer, partner, or learn more about
-              our services—contact us and we&apos;ll respond as soon as possible.
+              Whether you want to donate, volunteer, partner, or learn more
+              about our services—contact us and we&apos;ll respond as soon as
+              possible.
             </p>
 
-            <div className="rounded-2xl border-2 border-black bg-white p-6 shadow-sm">
-              <div className="text-sm font-semibold text-black">Quick contacts</div>
+            <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+              <div className="text-sm font-semibold text-black">
+                Quick contacts
+              </div>
               <div className="mt-3 space-y-2 text-sm text-zinc-800">
                 <div>
                   Email:{" "}
@@ -47,10 +50,13 @@ export default async function ContactPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border-2 border-black bg-white p-6 shadow-sm sm:p-8">
-            <div className="text-lg font-semibold text-black">Send a message</div>
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
+            <div className="text-lg font-semibold text-black">
+              Send a message
+            </div>
             <p className="mt-2 text-sm leading-6 text-zinc-800">
-              Tell us how we can help, then choose Gmail, Outlook or your device’s email app to review and send your message.
+              Tell us how we can help, then choose Gmail, Outlook or your
+              device’s email app to review and send your message.
             </p>
 
             <ContactForm recipient={settings.email} />

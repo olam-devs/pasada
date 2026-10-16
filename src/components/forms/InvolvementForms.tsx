@@ -42,7 +42,7 @@ function FormCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border-2 border-black bg-white p-6 shadow-sm sm:p-8">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
       <h2 className="text-lg font-semibold text-black">{title}</h2>
       <p className="mt-2 text-sm leading-6 text-zinc-800">{description}</p>
       {children}
@@ -91,7 +91,12 @@ export function InvolvementForms({
             className="mt-6 grid gap-4 sm:grid-cols-2"
             recipient={volunteerEmail}
             subject="Volunteer application — PASADA"
-            fields={[["name", "Full name"], ["phone", "Phone"], ["interest", "Area of interest"], ["message", "Skills, motivation and availability"]]}
+            fields={[
+              ["name", "Full name"],
+              ["phone", "Phone"],
+              ["interest", "Area of interest"],
+              ["message", "Skills, motivation and availability"],
+            ]}
           >
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Full name</FormLabel>
@@ -99,7 +104,12 @@ export function InvolvementForms({
             </label>
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Phone</FormLabel>
-              <FormInput name="phone" type="tel" autoComplete="tel" placeholder="+255..." />
+              <FormInput
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                placeholder="+255..."
+              />
             </label>
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Area of interest</FormLabel>
@@ -138,7 +148,12 @@ export function InvolvementForms({
             className="mt-6 grid gap-4 sm:grid-cols-2"
             recipient={partnerEmail}
             subject="Partnership inquiry — PASADA"
-            fields={[["organization", "Organization"], ["contact", "Contact person"], ["partnershipType", "Partnership type"], ["proposal", "Proposal summary"]]}
+            fields={[
+              ["organization", "Organization"],
+              ["contact", "Contact person"],
+              ["partnershipType", "Partnership type"],
+              ["proposal", "Proposal summary"],
+            ]}
           >
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Organization name</FormLabel>
@@ -185,7 +200,14 @@ export function InvolvementForms({
             className="mt-6 grid gap-4 sm:grid-cols-2"
             recipient={donateEmail}
             subject="Donation pledge — PASADA"
-            fields={[["donorName", "Full name"], ["phone", "Phone"], ["amount", "Donation amount (TZS)"], ["paymentMethod", "Preferred payment method"], ["dedication", "Dedication"], ["message", "Message"]]}
+            fields={[
+              ["donorName", "Full name"],
+              ["phone", "Phone"],
+              ["amount", "Donation amount (TZS)"],
+              ["paymentMethod", "Preferred payment method"],
+              ["dedication", "Dedication"],
+              ["message", "Message"],
+            ]}
           >
             <label className="grid gap-1.5 sm:col-span-1">
               <FormLabel>Full name</FormLabel>

@@ -46,14 +46,12 @@ export function TestimonialsCarousel({
     <div className="rounded-3xl bg-white p-6 ring-1 ring-[var(--border)] sm:p-8">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-50 text-emerald-900 ring-1 ring-emerald-100">
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-rose-50 text-rose-900 ring-1 ring-rose-100">
             <Quote className="h-5 w-5" aria-hidden="true" />
           </span>
           <div>
             <div className="text-sm font-semibold">{title}</div>
-            <div className="text-xs text-zinc-600">
-              {subtitle}
-            </div>
+            <div className="text-xs text-zinc-600">{subtitle}</div>
           </div>
         </div>
 
@@ -84,7 +82,11 @@ export function TestimonialsCarousel({
               key={`${t.name}-${idx}`}
               className="min-w-0 flex-[0_0_100%] pr-4 sm:flex-[0_0_70%] lg:flex-[0_0_50%]"
             >
-              <TestimonialQuoteTile quote={t.quote} name={t.name} role={t.role} />
+              <TestimonialQuoteTile
+                quote={t.quote}
+                name={t.name}
+                role={t.role}
+              />
             </div>
           ))}
         </div>
@@ -96,7 +98,7 @@ export function TestimonialsCarousel({
             key={i}
             type="button"
             className={`h-2.5 w-2.5 rounded-full ring-1 ring-[var(--border)] ${
-              i === selected ? "bg-emerald-700" : "bg-white"
+              i === selected ? "bg-rose-700" : "bg-white"
             }`}
             aria-label={`Go to testimonial ${i + 1}`}
             onClick={() => emblaApi?.scrollTo(i)}
@@ -106,4 +108,3 @@ export function TestimonialsCarousel({
     </div>
   );
 }
-
