@@ -8,6 +8,7 @@ Select **Homepage & slideshow** at the top of the Content menu. `/studiogo` open
 
 - **Slideshow** (first tab): images in display order and seconds between slides. Drag the handles, then Publish.
 - **Introduction**: badge, heading, introduction and button labels/destinations.
+- **Organisation & values**: introduction-section heading/link and mission, values and vision headings.
 - **Highlights & mission**: highlight cards and the homepage mission box.
 - **Services / Projects / Stories sections**: homepage headings and links.
 - **Support banner**: heading, description and buttons.

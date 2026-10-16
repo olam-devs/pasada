@@ -126,16 +126,16 @@ export default async function Home() {
                 </span>
               </div>
               <div>
-                <p className="section-kicker">Who we are</p>
+                <p className="section-kicker">{home.aboutEyebrow}</p>
                 <h2 id="who-we-are" className="section-title mt-3">
-                  Pastoral Activities and Services for people with AIDS
+                  {home.aboutTitle}
                 </h2>
                 <div className="my-5 h-1 w-12 bg-[var(--brand-gold)]" />
                 <div className="text-sm leading-7 text-zinc-600">
                   <PortableContent value={about.intro?.slice(0, 2)} />
                 </div>
-                <ButtonLink href="/about" className="mt-7">
-                  About PASADA
+                <ButtonLink href={home.aboutLinkHref} className="mt-7">
+                  {home.aboutLinkLabel}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </ButtonLink>
               </div>
@@ -204,8 +204,8 @@ export default async function Home() {
         <section className="py-16 lg:py-24">
           <Container>
             <SectionHeading
-              eyebrow="What guides us"
-              title="Our mission, vision and values"
+              eyebrow={home.valuesEyebrow}
+              title={home.valuesTitle}
             />
             <div className="mt-10 grid gap-6 md:grid-cols-2">
               <div className="rounded-lg border border-zinc-200 p-7 sm:p-9">
@@ -226,7 +226,7 @@ export default async function Home() {
                   aria-hidden="true"
                 />
                 <h3 className="mt-5 text-xl font-semibold text-[var(--brand-maroon)]">
-                  Our vision
+                  {home.visionTitle}
                 </h3>
                 <p className="mt-4 text-sm leading-7 text-zinc-600">
                   {about.visionText}
