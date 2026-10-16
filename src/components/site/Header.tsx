@@ -74,9 +74,15 @@ export function Header() {
       }
     };
     document.addEventListener("keydown", handleKey);
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
     return () => {
       document.body.style.overflow = previous;
       document.removeEventListener("keydown", handleKey);
+      desktop.removeEventListener("change", closeOnDesktop);
     };
   }, [open]);
   return (
@@ -113,7 +119,7 @@ export function Header() {
         </Container>
       </div>
       <header className="site-header sticky top-0 z-50 bg-white shadow-[0_3px_20px_rgba(55,18,22,0.06)]">
-        <Container className="flex h-[84px] items-center justify-between gap-5 sm:h-[94px]">
+        <Container className="flex h-[84px] items-center justify-between gap-3 sm:h-[94px] lg:px-6 xl:gap-5 xl:px-10">
           <Link
             href="/"
             aria-label="PASADA Tanzania home"
@@ -130,7 +136,7 @@ export function Header() {
           </Link>
           <nav
             aria-label="Main navigation"
-            className="hidden items-center gap-5 xl:flex"
+            className="hidden items-center gap-2.5 whitespace-nowrap lg:flex xl:gap-5"
           >
             {groups.map((item) =>
               item.children ? (
@@ -154,7 +160,7 @@ export function Header() {
                 >
                   <summary
                     className={cn(
-                      "flex cursor-pointer list-none items-center gap-1.5 py-5 text-[13px] font-semibold [&::-webkit-details-marker]:hidden",
+                      "flex cursor-pointer list-none items-center gap-1.5 py-5 text-xs font-semibold xl:text-[13px] [&::-webkit-details-marker]:hidden",
                       item.children.some((child) => isActive(child.href))
                         ? "text-[var(--primary)]"
                         : "text-zinc-800 hover:text-[var(--primary)]",
@@ -182,7 +188,7 @@ export function Header() {
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={cn(
-                    "border-b-2 py-5 text-[13px] font-semibold transition-colors",
+                    "border-b-2 py-5 text-xs font-semibold transition-colors xl:text-[13px]",
                     isActive(item.href)
                       ? "border-[var(--primary)] text-[var(--primary)]"
                       : "border-transparent text-zinc-800 hover:text-[var(--primary)]",
@@ -207,7 +213,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen(true)}
-              className="grid h-11 w-11 place-items-center rounded-lg border border-zinc-200 xl:hidden"
+              className="grid h-11 w-11 place-items-center rounded-lg border border-zinc-200 lg:hidden"
             >
               <Menu className="h-5 w-5" />
             </button>
@@ -215,7 +221,7 @@ export function Header() {
         </Container>
       </header>
       {open ? (
-        <div className="fixed inset-0 z-[80] xl:hidden">
+        <div className="fixed inset-0 z-[80] lg:hidden">
           <div
             className="absolute inset-0 bg-black/45"
             onClick={() => setOpen(false)}

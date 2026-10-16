@@ -108,13 +108,7 @@ export default async function Home() {
                 />
                 <div className="relative aspect-[5/4] overflow-hidden rounded-lg bg-[var(--brand-cream)]">
                   <PasadaImage
-                    src={
-                      about.mainImageUrl.includes(
-                        "pasada.or.tz/uploads/service-1.jpg",
-                      )
-                        ? "/images/home-clinical-care.jpg"
-                        : about.mainImageUrl
-                    }
+                  src={about.mainImageUrl}
                     alt="PASADA care and community services"
                     fill
                     sizes="(min-width:1024px) 50vw,100vw"

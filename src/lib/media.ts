@@ -20,7 +20,7 @@ export const media = {
     donate: "https://pasada.or.tz/uploads/service-7.jpg",
   },
   about: {
-    community: "https://pasada.or.tz/uploads/service-1.jpg",
+    community: "/images/pasada-building-clean.jpg",
     care: "https://pasada.or.tz/uploads/service-3.jpg",
   },
   placeholder: "/placeholder/hero.svg",
