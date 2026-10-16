@@ -63,23 +63,36 @@ export function HeroSlideshow({
               aria-hidden={i !== index}
               className="relative h-full min-w-0 flex-[0_0_100%]"
             >
-              <PasadaImage
-                src={slide.src}
-                alt={slide.alt}
-                fill
-                priority={i === 0}
-                sizes="100vw"
-                className={
-                  slide.fit === "contain"
-                    ? "bg-[var(--brand-cream)] object-contain p-10 md:pl-[53%] md:pr-16"
-                    : "object-cover object-center"
-                }
-              />
+              {slide.fit === "contain" ? (
+                <div className="absolute inset-0 mx-auto max-w-7xl">
+                  <div className="absolute bottom-24 right-5 aspect-square w-16 overflow-hidden rounded-xl bg-white shadow-xl min-[375px]:w-20 lg:bottom-auto lg:right-[4%] lg:top-1/2 lg:w-[28%] lg:max-w-[360px] lg:-translate-y-1/2 lg:rounded-2xl">
+                    <PasadaImage
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      priority={i === 0}
+                      sizes="(min-width: 1280px) 360px, (min-width: 1024px) 28vw, 80px"
+                      className="scale-110 object-contain"
+                    />
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <PasadaImage
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    priority={i === 0}
+                    sizes="100vw"
+                    className="object-cover object-center"
+                  />
+                  <div className="hero-shade pointer-events-none absolute inset-0" />
+                </>
+              )}
             </div>
           ))}
         </div>
       </div>
-      <div className="hero-shade pointer-events-none absolute inset-0" />
       <div className="relative mx-auto flex min-h-[610px] max-w-7xl items-center px-5 pb-24 pt-12 sm:min-h-[570px] sm:px-8 md:px-16">
         {children}
       </div>
