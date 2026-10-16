@@ -9,7 +9,7 @@ export const homePageDefaults = {
   heroPrimaryHref: "/donate",
   heroSecondaryLabel: "Volunteer with us",
   heroSecondaryHref: "/get-involved",
-  slideInterval: 5.5,
+  slideInterval: 3.5,
   aboutEyebrow: "Who we are",
   aboutTitle: "Pastoral Activities and Services for people with AIDS",
   aboutLinkLabel: "About PASADA",

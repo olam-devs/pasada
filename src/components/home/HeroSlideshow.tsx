@@ -7,7 +7,7 @@ import type { HeroSlide } from "@/lib/home-page";
 
 export function HeroSlideshow({
   slides,
-  intervalSeconds = 5.5,
+  intervalSeconds = 3.5,
   children,
 }: {
   slides: HeroSlide[];

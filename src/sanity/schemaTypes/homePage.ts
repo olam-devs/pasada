@@ -117,6 +117,7 @@ export const homePage = defineType({
     defineField({
       name: "slideInterval",
       title: "Seconds between slides",
+      description: "3.5 seconds is recommended for a brisk slideshow.",
       group: "slideshow",
       type: "number",
       validation: (rule) => rule.required().min(2).max(30),
