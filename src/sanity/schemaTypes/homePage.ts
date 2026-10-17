@@ -42,6 +42,7 @@ export const homePage = defineType({
   groups: [
     { name: "slideshow", title: "Slideshow", default: true },
     { name: "hero", title: "Introduction" },
+    { name: "partners", title: "Partner logos" },
     { name: "organisation", title: "Organisation & values" },
     { name: "highlights", title: "Highlights & mission" },
     { name: "services", title: "Services section" },
@@ -52,6 +53,36 @@ export const homePage = defineType({
   ],
   initialValue: homePageDefaults,
   fields: [
+    defineField({
+      name: "partners",
+      title: "Partners",
+      group: "partners",
+      type: "array",
+      description:
+        "Drag to reorder the homepage partner belt. Use original logos with a clear or white background. An empty list hides the section.",
+      of: [
+        {
+          type: "object",
+          name: "partnerLogo",
+          title: "Partner",
+          fields: [
+            defineField({
+              name: "name",
+              title: "Organisation / programme name",
+              type: "string",
+              validation: (r) => r.required(),
+            }),
+            defineField({
+              name: "logo",
+              title: "Logo",
+              type: "image",
+              validation: (r) => r.required(),
+            }),
+          ],
+          preview: { select: { title: "name", media: "logo" } },
+        },
+      ],
+    }),
     textField("heroEyebrow", "Intro badge text", "hero"),
     textField("aboutEyebrow", "Organisation section eyebrow", "organisation"),
     textField("aboutTitle", "Organisation section heading", "organisation"),

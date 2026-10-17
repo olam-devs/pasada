@@ -1,4 +1,5 @@
 import "server-only";
+import { defaultPartners, type Partner } from "@/lib/partners";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { sanityClient } from "@/sanity/client";
 import { sanityConfigured } from "@/sanity/env";
@@ -13,9 +14,13 @@ export type HeroSlide = {
   fit: "cover" | "contain";
 };
 
-export type HomePageContent = typeof homePageDefaults & { slides: HeroSlide[] };
+export type HomePageContent = typeof homePageDefaults & {
+  slides: HeroSlide[];
+  partners: Partner[];
+};
 
 type HomePageRow = Partial<typeof homePageDefaults> & {
+  partners?: { _key: string; name: string; logo?: SanityImageSource }[];
   slides?: {
     _key: string;
     image?: SanityImageSource;
@@ -27,6 +32,7 @@ type HomePageRow = Partial<typeof homePageDefaults> & {
 export async function getHomePage(): Promise<HomePageContent> {
   const fallback = {
     ...homePageDefaults,
+    partners: defaultPartners,
     slides: media.hero.home.map(
       (src, i): HeroSlide => ({
         _key: `default-${i}`,
@@ -66,6 +72,19 @@ export async function getHomePage(): Promise<HomePageContent> {
     return {
       ...fallback,
       ...values,
+      partners: row.partners
+        ? row.partners.flatMap((partner) =>
+            partner.logo && partner.name
+              ? [
+                  {
+                    _key: partner._key,
+                    name: partner.name,
+                    logoUrl: urlFor(partner.logo).width(480).fit("max").url(),
+                  },
+                ]
+              : [],
+          )
+        : fallback.partners,
       highlights: row.highlights ?? fallback.highlights,
       slideInterval:
         row.slideInterval && row.slideInterval >= 2

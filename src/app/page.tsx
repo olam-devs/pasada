@@ -8,6 +8,7 @@ import {
   Users,
   ShieldCheck,
 } from "lucide-react";
+import { PartnersBelt } from "@/components/home/PartnersBelt";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Container } from "@/components/ui/Container";
@@ -108,7 +109,7 @@ export default async function Home() {
                 />
                 <div className="relative aspect-[5/4] overflow-hidden rounded-lg bg-[var(--brand-cream)]">
                   <PasadaImage
-                  src={about.mainImageUrl}
+                    src={about.mainImageUrl}
                     alt="PASADA care and community services"
                     fill
                     sizes="(min-width:1024px) 50vw,100vw"
@@ -343,6 +344,8 @@ export default async function Home() {
             </div>
           </Container>
         </section>
+
+        <PartnersBelt partners={home.partners} />
 
         <section className="brand-banner py-14 text-white sm:py-16">
           <Container className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">

@@ -3,7 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
+import {
+  ChevronDown,
+  Mail,
+  Menu,
+  Phone,
+  X,
+} from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/cn";
 
@@ -88,7 +94,7 @@ export function Header() {
   return (
     <>
       <div className="brand-topbar">
-        <Container className="flex min-h-9 items-center justify-between gap-4 py-2 text-xs">
+        <Container className="flex min-h-9 items-center justify-between gap-2 py-1.5 text-[11px] sm:text-xs">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <a
               href="mailto:info@pasada.or.tz"
@@ -105,8 +111,8 @@ export function Header() {
               +255 22 286 6618
             </a>
           </div>
-          <div className="flex items-center gap-5">
-            <span className="hidden text-white/80 md:block">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <span className="hidden text-white/80 lg:block">
               Care. Hope. Dignity.
             </span>
             <Link
@@ -115,6 +121,45 @@ export function Header() {
             >
               Tupe taarifa
             </Link>
+            <nav
+              aria-label="Social media"
+              className="flex items-center gap-1 border-l border-white/25 pl-2 sm:pl-3"
+            >
+              <a
+                href="https://www.facebook.com/profile.php?id=100092012386881"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="PASADA on Facebook (opens in new tab)"
+                className="grid h-8 w-8 place-items-center rounded-full text-white/90 transition hover:bg-white/15 hover:text-[var(--brand-gold)]"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true"><path d="M13.5 22v-9h3l.5-3.5h-3.5V7.25c0-1.01.28-1.7 1.73-1.7H17V2.42A23.7 23.7 0 0 0 14.4 2c-2.58 0-4.4 1.57-4.4 4.46V9.5H7V13h3v9h3.5Z" /></svg>
+              </a>
+              <a
+                href="https://www.instagram.com/pasadatanzania/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="PASADA on Instagram (opens in new tab)"
+                className="grid h-8 w-8 place-items-center rounded-full text-white/90 transition hover:bg-white/15 hover:text-[var(--brand-gold)]"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg>
+              </a>
+              <a
+                href="https://twitter.com/PasadaTz"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="PASADA on X (opens in new tab)"
+                className="grid h-8 w-8 place-items-center rounded-full text-white/90 transition hover:bg-white/15 hover:text-[var(--brand-gold)]"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-3.5 w-3.5"
+                  aria-hidden="true"
+                >
+                  <path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.6 5.5 22H2.3l7.3-8.5L1.8 2h6.5l4.5 6.8L18.9 2Zm-1.1 18h1.7L7.3 3.9H5.5L17.8 20Z" />
+                </svg>
+              </a>
+            </nav>
           </div>
         </Container>
       </div>
@@ -136,7 +181,7 @@ export function Header() {
           </Link>
           <nav
             aria-label="Main navigation"
-            className="hidden items-center gap-2.5 whitespace-nowrap lg:flex xl:gap-5"
+            className="hidden items-center gap-2.5 whitespace-nowrap lg:flex xl:gap-4"
           >
             {groups.map((item) =>
               item.children ? (
@@ -160,7 +205,7 @@ export function Header() {
                 >
                   <summary
                     className={cn(
-                      "flex cursor-pointer list-none items-center gap-1.5 py-5 text-xs font-semibold xl:text-[13px] [&::-webkit-details-marker]:hidden",
+                      "flex cursor-pointer list-none items-center gap-1.5 py-5 text-sm font-semibold xl:text-base [&::-webkit-details-marker]:hidden",
                       item.children.some((child) => isActive(child.href))
                         ? "text-[var(--primary)]"
                         : "text-zinc-800 hover:text-[var(--primary)]",
@@ -175,7 +220,7 @@ export function Header() {
                         key={child.href}
                         href={child.href}
                         aria-current={isActive(child.href) ? "page" : undefined}
-                        className="block px-5 py-3 text-sm text-zinc-800 hover:bg-[var(--brand-cream)] hover:text-[var(--primary)]"
+                        className="block px-5 py-3 text-[15px] text-zinc-800 hover:bg-[var(--brand-cream)] hover:text-[var(--primary)]"
                       >
                         {child.label}
                       </Link>
@@ -188,7 +233,7 @@ export function Header() {
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={cn(
-                    "border-b-2 py-5 text-xs font-semibold transition-colors xl:text-[13px]",
+                    "border-b-2 py-5 text-sm font-semibold transition-colors xl:text-base",
                     isActive(item.href)
                       ? "border-[var(--primary)] text-[var(--primary)]"
                       : "border-transparent text-zinc-800 hover:text-[var(--primary)]",
@@ -265,7 +310,7 @@ export function Header() {
                   onClick={() => setOpen(false)}
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={cn(
-                    "block rounded-lg px-3 py-3.5 text-sm",
+                    "block rounded-lg px-3 py-3.5 text-base",
                     isActive(item.href)
                       ? "bg-[var(--brand-blush)] font-semibold text-[var(--primary)]"
                       : "text-zinc-800 hover:bg-zinc-50",

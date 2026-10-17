@@ -46,8 +46,11 @@ Contact and Get Involved forms prepare an encoded subject and message, then show
 
 ## Brand and homepage layout
 
-The layout follows the MDH reference's contact strip, desktop navigation, full-width slideshow, organisation introduction, service/project cards, mission and values, news, support banner and detailed footer. All content belongs to PASADA; no MDH copy, statistics, photos or partner logos are used.
+The layout follows the MDH reference's contact strip, desktop navigation, full-width slideshow, organisation introduction, service/project cards, mission and values, news, support banner and detailed footer. Organisation text and photos belong to PASADA; no MDH copy, statistics or photos are used. Partner marks are sourced as documented in public/partners/SOURCES.md.
 
 Colours in `src/app/globals.css` follow the PASADA logo: red `#bd2939`, deep maroon `#48131b`, gold `#ddb52e`, black and white, with cream and blush backgrounds. The header displays the original logo without distortion in a square 82px desktop / 72px phone area.
 
 The homepage introduction and vision/core values come from **About page**. Slideshow settings, headings, calls to action, highlights, mission summary and section labels remain in **Homepage & slideshow**. Featured service, project, story and testimonial entries still use their own content settings. Photo slides use their original proportions as the source for the responsive hero rather than an extra 4:3 crop; logos use **Show entire image**. The slideshow offers pause, next/previous and individual slide buttons, and honours reduced-motion preferences.
+
+Partner logos: Homepage & slideshow → Partner logos. Drag entries to reorder the belt; edit each name and image. An empty list hides it. Visitors can pause the strip or view every logo in a static grid. Reduced-motion preferences automatically use the grid.
+

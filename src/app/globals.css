@@ -127,3 +127,21 @@ h3 {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Partner logos stay intact and move as one continuous, pausable strip. */
+.partner-window { overflow: hidden; }
+.partner-track { display: flex; width: max-content; animation: partner-belt 72s linear infinite; }
+.partner-group { display: flex; flex: none; gap: 24px; padding-right: 24px; }
+.partner-card { width: 210px; min-height: 184px; flex: none; }
+.partner-track[data-paused="true"], .partner-window:hover .partner-track { animation-play-state: paused; }
+@keyframes partner-belt { to { transform: translateX(-50%); } }
+.partner-show-all .partner-track { width: 100%; animation: none; }
+.partner-show-all .partner-group { display: grid; width: 100%; padding: 0; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); }
+.partner-show-all .partner-card { width: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  .partner-window { padding-inline: 20px; max-width: 1280px; margin-inline: auto; }
+  .partner-track { width: 100%; animation: none; }
+  .partner-group { display: grid; width: 100%; padding: 0; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 16px; }
+  .partner-card { width: 100%; }
+  .partner-group[aria-hidden="true"], .partner-motion-control { display: none; }
+}
