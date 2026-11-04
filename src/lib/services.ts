@@ -3,6 +3,7 @@ import { sanityClient } from "@/sanity/client";
 import { sanityConfigured } from "@/sanity/env";
 import { urlFor } from "@/lib/sanity-image";
 import { media } from "@/lib/media";
+import { servicePhotos } from "@/lib/programme-photos";
 import type { PortableTextBlock } from "@portabletext/react";
 
 export type ServiceItem = {
@@ -591,7 +592,7 @@ export async function getServices(opts?: { featuredOnly?: boolean; limit?: numbe
   try {
     const rows = await sanityClient.fetch<Parameters<typeof mapRow>[0][]>(listQuery, {}, { cache: "no-store" });
     if (!rows?.length) return filterServices(SAMPLE, opts);
-    const list = rows.map((r) => mapRow(r, SAMPLE.find((sample) => sample.slug === r.slug)?.imageUrl));
+    const list = rows.map((r) => mapRow(r, servicePhotos[r.slug] ?? SAMPLE.find((sample) => sample.slug === r.slug)?.imageUrl));
     return filterServices(list, opts);
   } catch {
     return filterServices(SAMPLE, opts);
@@ -607,7 +608,7 @@ export async function getServiceBySlug(slug: string) {
       { slug },
       { cache: "no-store" },
     );
-    if (row) return mapRow(row, sample?.imageUrl);
+    if (row) return mapRow(row, servicePhotos[slug] ?? sample?.imageUrl);
     return sample ?? null;
   } catch {
     return sample ?? null;

@@ -50,8 +50,8 @@ export function ProjectStatusTabs({
             className={cn(
               "rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition",
               status === s
-                ? "border-black bg-black text-white"
-                : "border-black bg-white text-black hover:bg-zinc-50",
+                ? "border-[var(--brand-maroon)] bg-[var(--brand-maroon)] text-white shadow-sm"
+                : "border-[var(--primary)] bg-white text-[var(--brand-maroon)] hover:bg-[var(--brand-blush)]",
             )}
           >
             {s === "all" ? "All statuses" : s}
@@ -66,8 +66,8 @@ export function ProjectStatusTabs({
           className={cn(
             "rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition",
             category === "all"
-              ? "border-black bg-black text-white"
-              : "border-[var(--primary)] bg-white text-black hover:bg-red-50",
+              ? "border-[var(--brand-maroon)] bg-[var(--brand-maroon)] text-white shadow-sm"
+              : "border-[var(--primary)] bg-white text-[var(--brand-maroon)] hover:bg-[var(--brand-blush)]",
           )}
         >
           All categories
@@ -80,8 +80,8 @@ export function ProjectStatusTabs({
             className={cn(
               "rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition",
               category === c.slug
-                ? "border-black bg-black text-white"
-                : "border-[var(--primary)] bg-white text-black hover:bg-red-50",
+                ? "border-[var(--brand-maroon)] bg-[var(--brand-maroon)] text-white shadow-sm"
+                : "border-[var(--primary)] bg-white text-[var(--brand-maroon)] hover:bg-[var(--brand-blush)]",
             )}
           >
             {c.title}
@@ -99,6 +99,7 @@ export function ProjectStatusTabs({
             imageUrl={item.imageUrl}
             badge={item.badge}
             index={i}
+            iconKey={item.slug}
           />
         ))}
       </div>

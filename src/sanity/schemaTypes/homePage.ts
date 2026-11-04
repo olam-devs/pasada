@@ -35,6 +35,42 @@ function linkField(
   });
 }
 
+/** Optional text: the website default is shown until an editor fills it in. */
+function optionalText(
+  name: keyof typeof homePageDefaults,
+  title: string,
+  group: string,
+  multiline = false,
+) {
+  return defineField({
+    name,
+    title,
+    group,
+    type: multiline ? "text" : "string",
+    ...(multiline ? { rows: 3 } : {}),
+    description: `Leave empty to use: "${String(homePageDefaults[name])}"`,
+  });
+}
+
+function optionalPhoto(name: string, title: string, group: string, description: string) {
+  return defineField({
+    name,
+    title,
+    group,
+    type: "image",
+    options: { hotspot: true },
+    description,
+    fields: [
+      defineField({
+        name: "alt",
+        title: "Image description",
+        type: "string",
+        description: "Describe the photo for people using screen readers.",
+      }),
+    ],
+  });
+}
+
 export const homePage = defineType({
   name: "homePage",
   title: "Homepage",
@@ -46,6 +82,7 @@ export const homePage = defineType({
     { name: "organisation", title: "Organisation & values" },
     { name: "highlights", title: "Highlights & mission" },
     { name: "services", title: "Services section" },
+    { name: "banner", title: "Photo banner" },
     { name: "projects", title: "Projects section" },
     { name: "stories", title: "Stories section" },
     { name: "support", title: "Support banner" },
@@ -86,6 +123,12 @@ export const homePage = defineType({
     textField("heroEyebrow", "Intro badge text", "hero"),
     textField("aboutEyebrow", "Organisation section eyebrow", "organisation"),
     textField("aboutTitle", "Organisation section heading", "organisation"),
+    optionalPhoto(
+      "aboutInsetImage",
+      "Second photo (small, overlapping)",
+      "organisation",
+      "A colourful photo of people or activities, shown overlapping the main About photo. Leave empty to use the AIDS Day photo.",
+    ),
     textField("aboutLinkLabel", "About link label", "organisation"),
     linkField("aboutLinkHref", "About link destination", "organisation"),
     textField("valuesEyebrow", "Mission & values eyebrow", "organisation"),
@@ -196,6 +239,38 @@ export const homePage = defineType({
         },
       ],
     }),
+    defineField({
+      name: "stats",
+      title: "Impact figures (red strip)",
+      group: "highlights",
+      type: "array",
+      description:
+        "Up to four figures shown large in the red strip below the introduction. Leave empty to use the figures from the About page text.",
+      validation: (rule) => rule.max(4),
+      of: [
+        {
+          type: "object",
+          name: "homeStat",
+          title: "Figure",
+          fields: [
+            defineField({
+              name: "value",
+              title: "Figure",
+              type: "string",
+              description: "For example 1.5M+ or 29,401",
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "label",
+              title: "What it counts",
+              type: "string",
+              validation: (rule) => rule.required(),
+            }),
+          ],
+          preview: { select: { title: "value", subtitle: "label" } },
+        },
+      ],
+    }),
     textField("missionTitle", "Mission box heading", "highlights"),
     textField("missionText", "Mission box text", "highlights", true),
     textField("servicesEyebrow", "Section eyebrow", "services"),
@@ -208,6 +283,17 @@ export const homePage = defineType({
       "services",
     ),
     textField("servicesCardLabel", "Service card link label", "services"),
+    optionalPhoto(
+      "bannerImage",
+      "Banner photo",
+      "banner",
+      "A wide, colourful photo of PASADA's work, ideally at least 1600 pixels wide. Leave empty to use the community group photo.",
+    ),
+    optionalText("bannerEyebrow", "Banner eyebrow", "banner"),
+    optionalText("bannerTitle", "Banner heading", "banner"),
+    optionalText("bannerText", "Banner text", "banner", true),
+    optionalText("bannerLinkLabel", "Banner button label", "banner"),
+    optionalText("bannerLinkHref", "Banner button destination (for example /get-involved)", "banner"),
     textField("projectsEyebrow", "Section eyebrow", "projects"),
     textField("projectsTitle", "Section heading", "projects"),
     textField("projectsLinkLabel", "View projects button label", "projects"),
@@ -221,6 +307,12 @@ export const homePage = defineType({
     textField("storiesLinkLabel", "View stories button label", "stories"),
     linkField("storiesLinkHref", "View stories button destination", "stories"),
     textField("storiesCardLabel", "Story card link label", "stories"),
+    optionalPhoto(
+      "supportImage",
+      "Background photo",
+      "support",
+      "Shown behind a red overlay. Leave empty to use the outreach photo.",
+    ),
     textField("supportTitle", "Banner heading", "support"),
     textField("supportDescription", "Banner description", "support", true),
     textField("supportPrimaryLabel", "Primary button label", "support"),

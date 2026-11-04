@@ -8,11 +8,24 @@ Select **Homepage & slideshow** at the top of the Content menu. `/studiogo` open
 
 - **Slideshow** (first tab): images in display order and seconds between slides. Drag the handles, then Publish.
 - **Introduction**: badge, heading, introduction and button labels/destinations.
-- **Organisation & values**: introduction-section heading/link and mission, values and vision headings.
-- **Highlights & mission**: highlight cards and the homepage mission box.
+- **Organisation & values**: introduction-section heading/link, the small **second photo** that overlaps the main About photo, and mission, values and vision headings.
+- **Highlights & mission**: the four **impact figures** in the red strip (for example 1.5M+ / People tested for HIV), highlight cards and the homepage mission box. Keep the figures in step with the About page text.
 - **Services / Projects / Stories sections**: homepage headings and links.
-- **Support banner**: heading, description and buttons.
+- **Photo banner**: the wide photo strip after the services. Choose a colourful photo of people at work, at least 1600 pixels wide; edit its eyebrow, heading, text and button.
+- **Support banner**: background photo (shown under a red overlay), heading, description and buttons.
 - **Testimonials section**: heading, description, carousel labels and link.
+
+Empty photo and banner fields fall back to the website's built-in PASADA photos, so nothing breaks while they are blank.
+
+### Choosing and preparing photos
+
+Pick photos that show people and activity, with colourful or darker backgrounds. Photos dominated by white walls look flat on the white page; the site places them on a red or maroon frame, but a livelier photo always reads better. Before uploading, run new photos through the preparation script, which resizes them and adds contrast and colour (dark photos are also lightened slightly):
+
+```bash
+node scripts/enhance-photos.mjs --out prepared-photos path/to/photo1.jpg path/to/photo2.jpg
+```
+
+Then upload the files from `prepared-photos` in Studio. Each service or project uses its **Main image** for its card and page header, and its **Gallery** for extra photos on its page.
 
 For the slideshow, add photos from the image library or upload them, enter an image description, then drag slides to reorder. Choose **Show entire image** for logos. Once you publish a nonempty image list, it replaces the original slideshow. Until then, the original slides remain visible. Removing the image list restores the original slideshow.
 

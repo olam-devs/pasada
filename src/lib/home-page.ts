@@ -14,12 +14,22 @@ export type HeroSlide = {
   fit: "cover" | "contain";
 };
 
+export type HomePhoto = { src: string; alt: string };
+
 export type HomePageContent = typeof homePageDefaults & {
   slides: HeroSlide[];
   partners: Partner[];
+  aboutInset: HomePhoto;
+  banner: HomePhoto;
+  supportPhoto: HomePhoto;
 };
 
+type PhotoRow = SanityImageSource & { asset?: unknown; alt?: string };
+
 type HomePageRow = Partial<typeof homePageDefaults> & {
+  aboutInsetImage?: PhotoRow;
+  bannerImage?: PhotoRow;
+  supportImage?: PhotoRow;
   partners?: { _key: string; name: string; logo?: SanityImageSource }[];
   slides?: {
     _key: string;
@@ -29,9 +39,17 @@ type HomePageRow = Partial<typeof homePageDefaults> & {
   }[];
 };
 
+function photo(row: PhotoRow | undefined, fallback: HomePhoto, width: number): HomePhoto {
+  if (!row?.asset) return fallback;
+  return { src: urlFor(row).width(width).url(), alt: row.alt || fallback.alt };
+}
+
 export async function getHomePage(): Promise<HomePageContent> {
   const fallback = {
     ...homePageDefaults,
+    aboutInset: media.home.aboutInset,
+    banner: media.home.banner,
+    supportPhoto: media.home.support,
     partners: defaultPartners,
     slides: media.hero.home.map(
       (src, i): HeroSlide => ({
@@ -66,8 +84,9 @@ export async function getHomePage(): Promise<HomePageContent> {
       ];
     });
     // Sanity can return null for unset fields; retain the existing page defaults.
+    const { aboutInsetImage, bannerImage, supportImage, ...textRow } = row;
     const values = Object.fromEntries(
-      Object.entries(row).filter(([, value]) => value != null),
+      Object.entries(textRow).filter(([, value]) => value != null && value !== ""),
     );
     return {
       ...fallback,
@@ -86,11 +105,19 @@ export async function getHomePage(): Promise<HomePageContent> {
           )
         : fallback.partners,
       highlights: row.highlights ?? fallback.highlights,
+      stats: row.stats?.length ? row.stats : fallback.stats,
       slideInterval:
         row.slideInterval && row.slideInterval >= 2
           ? row.slideInterval
           : fallback.slideInterval,
       slides: slides?.length ? slides : fallback.slides,
+      bannerLinkHref:
+        row.bannerLinkHref && /^\/(?!\/)/.test(row.bannerLinkHref)
+          ? row.bannerLinkHref
+          : fallback.bannerLinkHref,
+      aboutInset: photo(aboutInsetImage, fallback.aboutInset, 900),
+      banner: photo(bannerImage, fallback.banner, 2000),
+      supportPhoto: photo(supportImage, fallback.supportPhoto, 2000),
     };
   } catch (error) {
     console.error("Unable to load homepage content from Sanity", error);

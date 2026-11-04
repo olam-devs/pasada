@@ -16,6 +16,7 @@ export function DetailLayout({
   videoUrl,
   content,
   children,
+  aside,
 }: {
   backHref: string;
   backLabel: string;
@@ -27,6 +28,8 @@ export function DetailLayout({
   videoUrl?: string;
   content?: PortableTextBlock[];
   children?: React.ReactNode;
+  /** Optional side panel (photo, facts, related links) shown beside the text on wide screens. */
+  aside?: React.ReactNode;
 }) {
   const gallery = [
     ...new Map(
@@ -36,7 +39,7 @@ export function DetailLayout({
     ).values(),
   ];
 
-  return (
+  const main = (
     <div>
       <Link
         href={backHref}
@@ -47,12 +50,12 @@ export function DetailLayout({
       </Link>
 
       {badge ? (
-        <span className="mt-4 inline-block rounded-full border border-[var(--primary)] px-3 py-1 text-xs font-semibold text-black">
+        <span className="mt-4 block w-fit rounded-full bg-[var(--brand-blush)] px-3 py-1 text-xs font-semibold text-[var(--brand-maroon)] ring-1 ring-[var(--primary)]/30">
           {badge}
         </span>
       ) : null}
 
-      <p className="mt-6 max-w-none text-base leading-8 text-zinc-800">
+      <p className="mt-6 max-w-none border-l-4 border-[var(--brand-gold)] pl-5 text-base leading-8 text-zinc-800 sm:text-lg sm:leading-8">
         {summary}
       </p>
 
@@ -73,7 +76,7 @@ export function DetailLayout({
           {gallery.map((url) => (
             <div
               key={url}
-              className="relative aspect-[4/3] overflow-hidden rounded-xl border border-[var(--primary)] bg-zinc-100"
+              className="relative aspect-[4/3] overflow-hidden rounded-xl border border-[var(--primary)]/40 bg-[var(--brand-blush)]"
             >
               <PasadaImage
                 src={url}
@@ -96,6 +99,14 @@ export function DetailLayout({
           </div>
         )}
       </div>
+    </div>
+  );
+
+  if (!aside) return main;
+  return (
+    <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
+      {main}
+      <aside className="mt-12 lg:mt-0">{aside}</aside>
     </div>
   );
 }
