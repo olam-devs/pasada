@@ -18,7 +18,7 @@ export const servicePhotos: Record<string, string> = {
   "provision-of-art": `${P}/art-medication.jpg`,
   "pmtct-screening": `${P}/mother-hands-baby.jpg`,
   "cervical-cancer-screening": `${P}/womens-health.jpg`,
-  "home-based-and-palliative-care": `${P}/caregiver-hands.jpg`,
+  "home-based-and-palliative-care": `${P}/home-based-care-clinician.jpg`,
   "psychosocial-support": `${P}/psychosocial-pasada-booth.jpg`,
   "capacity-development": `${P}/training-workshop.jpg`,
   "ovc-caregiver-support": `${P}/children-walking.jpg`,
