@@ -12,15 +12,16 @@ export const servicePhotos: Record<string, string> = {
   "community-sensitization": "/images/community-aids-day.jpg",
   "tb-hiv-services": "/images/community-tb-group.jpg",
   "case-management-services": "/images/home-clinical-care.jpg",
-  // Stand-in stock photos
-  "hiv-testing-and-counseling": `${P}/hiv-testing.jpg`,
+  // Stand-in stock photos. Programmes linked to HIV status use photos without
+  // recognisable faces, so no one shown could be taken for a PASADA client.
+  "hiv-testing-and-counseling": `${P}/hiv-test-samples.jpg`,
   "provision-of-art": `${P}/art-medication.jpg`,
-  "pmtct-screening": `${P}/mother-and-newborn.jpg`,
+  "pmtct-screening": `${P}/mother-hands-baby.jpg`,
   "cervical-cancer-screening": `${P}/womens-health.jpg`,
-  "home-based-and-palliative-care": `${P}/home-care.jpg`,
-  "psychosocial-support": `${P}/support-group.jpg`,
+  "home-based-and-palliative-care": `${P}/caregiver-hands.jpg`,
+  "psychosocial-support": `${P}/comforting-hands.jpg`,
   "capacity-development": `${P}/training-workshop.jpg`,
-  "ovc-caregiver-support": `${P}/caregivers-and-children.jpg`,
+  "ovc-caregiver-support": `${P}/children-walking.jpg`,
 };
 
 export const projectPhotos: Record<string, string> = {
