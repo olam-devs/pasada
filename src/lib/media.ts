@@ -1,15 +1,15 @@
 /** Curated PASADA media URLs (from pasada.or.tz/uploads). */
 export const media = {
-  logo: "/brand/logo.jpg",
+  logo: "/brand/pasada-logo.jpg",
   hero: {
     home: [
-      "/brand/logo.jpg",
+      "/brand/pasada-logo.jpg",
       "/images/home-clinical-care.jpg",
       "/images/home-outreach-vehicles.jpg",
       "https://pasada.or.tz/uploads/project-featured-photo-9.jpg",
       "https://pasada.or.tz/uploads/service-1.jpg",
     ],
-    about: "/brand/logo.jpg",
+    about: "/brand/pasada-logo.jpg",
     services: "https://pasada.or.tz/uploads/service-2.jpg",
     projects: "https://pasada.or.tz/uploads/project-featured-photo-10.jpg",
     blog: "/illustrations/stories.svg",

@@ -26,7 +26,7 @@ export function Footer() {
           <div>
             <div className="relative h-24 w-24 bg-white">
               <Image
-                src="/brand/logo.jpg"
+                src="/brand/pasada-logo.jpg"
                 alt="PASADA Tanzania"
                 fill
                 sizes="96px"

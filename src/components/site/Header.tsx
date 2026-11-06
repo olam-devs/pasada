@@ -265,7 +265,7 @@ export function Header() {
             className="relative block h-[72px] w-[72px] shrink-0 bg-white sm:h-[82px] sm:w-[82px]"
           >
             <Image
-              src="/brand/logo.jpg"
+              src="/brand/pasada-logo.jpg"
               alt="PASADA Tanzania"
               fill
               sizes="82px"
