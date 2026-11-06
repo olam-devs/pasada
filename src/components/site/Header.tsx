@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import {
   ChevronDown,
   Mail,
@@ -47,6 +47,100 @@ const groups = [
 const mobileLinks = groups.flatMap(
   (item) => item.children ?? [{ label: item.label, href: item.href }],
 );
+
+/**
+ * Desktop menu item with a dropdown. Opens when the pointer rests on it and
+ * closes shortly after it leaves; a click, tap or Enter also toggles it, so it
+ * works on touch screens and with a keyboard. Escape closes it.
+ */
+function NavDropdown({
+  label,
+  items,
+  active,
+  isActive,
+  pathname,
+}: {
+  label: string;
+  items: { label: string; href: string }[];
+  active: boolean;
+  isActive: (href: string) => boolean;
+  pathname: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const menuId = useId();
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+  };
+  const closeSoon = () => {
+    cancelClose();
+    closeTimer.current = setTimeout(() => setOpen(false), 180);
+  };
+  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => cancelClose, []);
+  return (
+    <div
+      className="relative"
+      onPointerEnter={(event) => {
+        if (event.pointerType !== "mouse") return;
+        cancelClose();
+        setOpen(true);
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === "mouse") closeSoon();
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && open) {
+          setOpen(false);
+          buttonRef.current?.focus();
+        }
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null))
+          setOpen(false);
+      }}
+    >
+      <button
+        ref={buttonRef}
+        type="button"
+        aria-expanded={open}
+        aria-controls={menuId}
+        onClick={() => setOpen((value) => !value)}
+        className={cn(
+          "flex cursor-pointer items-center gap-1.5 py-5 text-sm font-semibold xl:text-base",
+          active || open
+            ? "text-[var(--primary)]"
+            : "text-zinc-800 hover:text-[var(--primary)]",
+        )}
+      >
+        {label}
+        <ChevronDown
+          className={cn("h-3.5 w-3.5 transition-transform", open && "rotate-180")}
+          aria-hidden="true"
+        />
+      </button>
+      <div
+        id={menuId}
+        hidden={!open}
+        className="absolute left-0 top-full z-10 min-w-56 border-t-2 border-[var(--primary)] bg-white py-2 shadow-xl"
+      >
+        {items.map((child) => (
+          <Link
+            key={child.href}
+            href={child.href}
+            aria-current={isActive(child.href) ? "page" : undefined}
+            onClick={() => setOpen(false)}
+            className="block px-5 py-3 text-base text-zinc-800 hover:bg-[var(--brand-cream)] hover:text-[var(--primary)] aria-[current=page]:font-semibold aria-[current=page]:text-[var(--primary)]"
+          >
+            {child.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function Header() {
   const pathname = usePathname();
@@ -94,7 +188,7 @@ export function Header() {
   return (
     <>
       <div className="brand-topbar">
-        <Container className="flex min-h-9 items-center justify-between gap-2 py-1.5 text-[11px] sm:text-xs">
+        <Container className="flex min-h-9 items-center justify-between gap-2 py-1.5 text-[12px] sm:text-xs">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <a
               href="mailto:info@pasada.or.tz"
@@ -171,7 +265,7 @@ export function Header() {
             className="relative block h-[72px] w-[72px] shrink-0 bg-white sm:h-[82px] sm:w-[82px]"
           >
             <Image
-              src="/brand/logo.jpg"
+              src="/brand/pasada-logo.jpg"
               alt="PASADA Tanzania"
               fill
               sizes="82px"
@@ -185,48 +279,14 @@ export function Header() {
           >
             {groups.map((item) =>
               item.children ? (
-                <details
+                <NavDropdown
                   key={item.href}
-                  className="relative"
-                  onKeyDown={(event) => {
-                    if (event.key === "Escape") {
-                      event.currentTarget.open = false;
-                      event.currentTarget.querySelector("summary")?.focus();
-                    }
-                  }}
-                  onBlur={(event) => {
-                    if (
-                      !event.currentTarget.contains(
-                        event.relatedTarget as Node | null,
-                      )
-                    )
-                      event.currentTarget.open = false;
-                  }}
-                >
-                  <summary
-                    className={cn(
-                      "flex cursor-pointer list-none items-center gap-1.5 py-5 text-sm font-semibold xl:text-base [&::-webkit-details-marker]:hidden",
-                      item.children.some((child) => isActive(child.href))
-                        ? "text-[var(--primary)]"
-                        : "text-zinc-800 hover:text-[var(--primary)]",
-                    )}
-                  >
-                    {item.label}
-                    <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
-                  </summary>
-                  <div className="absolute left-0 top-full min-w-52 border-t-2 border-[var(--primary)] bg-white py-2 shadow-xl">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        aria-current={isActive(child.href) ? "page" : undefined}
-                        className="block px-5 py-3 text-[15px] text-zinc-800 hover:bg-[var(--brand-cream)] hover:text-[var(--primary)]"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                </details>
+                  label={item.label}
+                  items={item.children}
+                  active={item.children.some((child) => isActive(child.href))}
+                  isActive={isActive}
+                  pathname={pathname}
+                />
               ) : (
                 <Link
                   key={item.href}

@@ -16,7 +16,7 @@ export default async function ContactPage() {
       <AnimatedSection>
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-4">
-            <p className="text-sm leading-7 text-zinc-800">
+            <p className="text-body leading-7 text-zinc-800">
               Whether you want to donate, volunteer, partner, or learn more
               about our services—contact us and we&apos;ll respond as soon as
               possible.

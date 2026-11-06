@@ -54,7 +54,7 @@ export default async function AboutPage() {
                   <Target className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <h2 className="mt-4 text-lg font-semibold">Mission</h2>
-                <p className="mt-3 text-sm leading-7 text-white/85">
+                <p className="mt-3 text-body leading-7 text-white/85">
                   {about.missionText}
                 </p>
               </div>

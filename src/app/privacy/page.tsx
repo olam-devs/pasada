@@ -10,7 +10,7 @@ export default function PrivacyPage() {
     >
       <AnimatedSection>
       <div className="prose prose-zinc max-w-none">
-        <p className="text-sm leading-7 text-zinc-700">
+        <p className="text-body leading-7 text-zinc-700">
           This is a placeholder privacy policy page for the redesigned site. It
           should be replaced with PASADA’s official policy.
         </p>

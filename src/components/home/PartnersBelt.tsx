@@ -54,7 +54,7 @@ export function PartnersBelt({ partners }: { partners: Partner[] }) {
             <h2 id="partners-heading" className="section-title mt-3">
               Our partners
             </h2>
-            <p className="mt-4 text-sm leading-7 text-zinc-600">
+            <p className="mt-4 text-body leading-7 text-zinc-600">
               Partnerships that support our work in health and community
               wellbeing.
             </p>

@@ -26,14 +26,14 @@ export function Footer() {
           <div>
             <div className="relative h-24 w-24 bg-white">
               <Image
-                src="/brand/logo.jpg"
+                src="/brand/pasada-logo.jpg"
                 alt="PASADA Tanzania"
                 fill
                 sizes="96px"
                 className="object-contain p-1"
               />
             </div>
-            <p className="mt-5 text-sm leading-7">
+            <p className="mt-5 text-body leading-7">
               Pastoral Activities and Services for people with AIDS. A
               faith-based organisation under the Roman Catholic Archdiocese of
               Dar es Salaam, serving all with dignity.

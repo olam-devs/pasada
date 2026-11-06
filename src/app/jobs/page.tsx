@@ -45,7 +45,7 @@ export default async function JobsPage() {
                     {job.title}
                   </Link>
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-zinc-600">
+                <p className="mt-3 text-body leading-7 text-zinc-600">
                   {job.summary}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-zinc-500">
@@ -84,7 +84,7 @@ export default async function JobsPage() {
                 <h3 className="mt-4 font-semibold">
                   No vacancies to display right now
                 </h3>
-                <p className="mt-2 text-sm leading-7 text-zinc-600">
+                <p className="mt-2 text-body leading-7 text-zinc-600">
                   Please check back for new opportunities to join the PASADA
                   team.
                 </p>
@@ -96,14 +96,14 @@ export default async function JobsPage() {
           <div className="rounded-2xl bg-slate-950 p-7 text-white">
             <Briefcase className="h-8 w-8 text-red-300" aria-hidden="true" />
             <h2 className="mt-5 text-xl font-semibold">Work with purpose</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-300">
+            <p className="mt-3 text-body leading-7 text-slate-300">
               Help deliver compassionate care and strengthen community wellbeing
               through your work.
             </p>
           </div>
           <div className="rounded-2xl border border-zinc-200 p-7">
             <h2 className="font-semibold">How to apply</h2>
-            <ol className="mt-5 list-decimal space-y-4 pl-4 text-sm leading-7 text-zinc-600">
+            <ol className="mt-5 list-decimal space-y-4 pl-4 text-body leading-7 text-zinc-600">
               <li>
                 Open a role and review its responsibilities and requirements.
               </li>

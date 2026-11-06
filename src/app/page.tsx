@@ -65,7 +65,7 @@ function SectionHeading({
       <h2 className={`section-title mt-3 ${light ? "!text-white" : ""}`}>{title}</h2>
       <div className="mx-auto mt-5 h-1 w-12 bg-[var(--brand-gold)]" />
       {description ? (
-        <p className={`mt-5 text-sm leading-7 ${light ? "text-white/80" : "text-zinc-600"}`}>
+        <p className={`mt-5 text-body leading-7 ${light ? "text-white/80" : "text-zinc-600"}`}>
           {description}
         </p>
       ) : null}
@@ -104,15 +104,15 @@ export default async function Home() {
           slides={home.slides}
           intervalSeconds={home.slideInterval}
         >
-          <div className="max-w-[690px] text-white">
-            <p className="mb-5 flex items-center gap-3 text-xs font-semibold leading-6 tracking-[.1em] text-white/90">
+          <div className="hero-text max-w-[600px] text-white">
+            <p className="mb-4 flex items-center gap-3 text-xs font-semibold leading-6 tracking-[.1em] text-white/90">
               <span className="h-px w-8 shrink-0 bg-[var(--brand-gold)]" />
               {home.heroEyebrow}
             </p>
-            <h1 className="text-balance text-[2.05rem] font-bold leading-[1.13] tracking-tight sm:text-5xl lg:text-[3.25rem]">
+            <h1 className="text-balance text-[1.8rem] font-bold leading-[1.15] tracking-tight sm:text-[2.35rem] lg:text-[2.6rem]">
               {home.heroTitle}
             </h1>
-            <p className="mt-6 max-w-[570px] text-sm leading-7 text-white/90 sm:text-base sm:leading-8">
+            <p className="mt-5 max-w-[540px] text-body leading-7 text-white/90 sm:text-base sm:leading-8">
               {home.heroDescription}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -183,7 +183,7 @@ export default async function Home() {
                   {home.aboutTitle}
                 </h2>
                 <div className="my-5 h-1 w-12 bg-[var(--brand-gold)]" />
-                <div className="text-sm leading-7 text-zinc-600">
+                <div className="text-body leading-7 text-zinc-600">
                   <PortableContent value={about.intro?.slice(0, 2)} />
                 </div>
                 <ButtonLink href={home.aboutLinkHref} className="mt-7">
@@ -320,7 +320,7 @@ export default async function Home() {
               >
                 {home.bannerTitle}
               </h2>
-              <p className="mt-5 text-sm leading-7 text-white/85 sm:text-base sm:leading-8">
+              <p className="mt-5 text-body leading-7 text-white/85 sm:text-base sm:leading-8">
                 {home.bannerText}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -356,7 +356,7 @@ export default async function Home() {
                   </span>
                   <div>
                     <h3 className="text-xl font-semibold">{home.missionTitle}</h3>
-                    <p className="mt-2 text-sm leading-7 text-white/85">{home.missionText}</p>
+                    <p className="mt-2 text-body leading-7 text-white/85">{home.missionText}</p>
                   </div>
                 </div>
                 <div className="relative my-7 h-px bg-white/20" />
@@ -366,7 +366,7 @@ export default async function Home() {
                   </span>
                   <div>
                     <h3 className="text-xl font-semibold">{home.visionTitle}</h3>
-                    <p className="mt-2 text-sm leading-7 text-white/85">{about.visionText}</p>
+                    <p className="mt-2 text-body leading-7 text-white/85">{about.visionText}</p>
                   </div>
                 </div>
               </div>
@@ -472,7 +472,7 @@ export default async function Home() {
                   {home.testimonialsEyebrow}
                 </p>
                 <h2 className="section-title mt-3 !text-white">{home.testimonialsTitle}</h2>
-                <p className="mt-5 text-sm leading-7 text-white/80">
+                <p className="mt-5 text-body leading-7 text-white/80">
                   {home.testimonialsDescription}
                 </p>
                 <Link
@@ -518,7 +518,7 @@ export default async function Home() {
               <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
                 {home.supportTitle}
               </h2>
-              <p className="mt-4 text-sm leading-7 text-white/85">
+              <p className="mt-4 text-body leading-7 text-white/85">
                 {home.supportDescription}
               </p>
             </div>

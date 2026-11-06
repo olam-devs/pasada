@@ -20,7 +20,7 @@ export default async function WhistleblowerPage() {
     >
       <AnimatedSection>
         <div className="max-w-none space-y-4">
-          <p className="text-sm leading-7 text-zinc-800">
+          <p className="text-body leading-7 text-zinc-800">
             PASADA is committed to the highest standards of integrity,
             transparency and accountability. If you have witnessed misconduct,
             fraud, abuse, safeguarding concerns, or any breach of our code of
