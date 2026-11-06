@@ -5,6 +5,7 @@ import { PortableContent } from "@/components/content/PortableContent";
 import { getAboutPage } from "@/lib/about";
 import { getSiteSettings } from "@/lib/settings";
 import { imageIdentity } from "@/lib/media";
+import { programmeIcon } from "@/lib/programme-icons";
 import {
   Eye,
   Handshake,
@@ -48,25 +49,21 @@ export default async function AboutPage() {
 
           <AnimatedSection delay={0.1}>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-[var(--primary)] bg-gradient-to-br from-red-50 to-white p-6 shadow-sm">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--primary)] text-white">
+              <div className="brand-vivid relative overflow-hidden rounded-2xl p-6 text-white shadow-[0_16px_36px_rgba(34,28,28,0.2)]">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-[var(--brand-gold)] ring-1 ring-white/20">
                   <Target className="h-5 w-5" aria-hidden="true" />
                 </div>
-                <h2 className="mt-4 text-lg font-semibold text-black">
-                  Mission
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-zinc-800">
+                <h2 className="mt-4 text-lg font-semibold">Mission</h2>
+                <p className="mt-3 text-sm leading-7 text-white/85">
                   {about.missionText}
                 </p>
               </div>
-              <div className="rounded-2xl border border-zinc-200 bg-gradient-to-br from-rose-50 to-white p-6 shadow-sm">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-blue)] text-white">
+              <div className="brand-gold-band relative overflow-hidden rounded-2xl p-6 shadow-[0_16px_36px_rgba(34,28,28,0.15)]">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--primary)] text-white">
                   <Eye className="h-5 w-5" aria-hidden="true" />
                 </div>
-                <h2 className="mt-4 text-lg font-semibold text-black">
-                  Vision
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-zinc-800 italic">
+                <h2 className="mt-4 text-lg font-semibold">Vision</h2>
+                <p className="mt-3 text-base leading-8 text-[var(--ink)]/85 italic">
                   &ldquo;{about.visionText}&rdquo;
                 </p>
               </div>
@@ -104,14 +101,22 @@ export default async function AboutPage() {
 
           {about.focusAreas.length ? (
             <AnimatedSection delay={0.2}>
-              <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6">
-                <div className="text-sm font-semibold text-black">
+              <div className="brand-tint rounded-2xl border border-[var(--brand-gold)]/30 p-6">
+                <div className="text-sm font-semibold text-[var(--ink)]">
                   What we focus on
                 </div>
-                <ul className="mt-3 grid gap-2 text-sm text-zinc-800 sm:grid-cols-2">
-                  {about.focusAreas.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
+                <ul className="mt-4 grid gap-3 text-sm text-zinc-800 sm:grid-cols-2">
+                  {about.focusAreas.map((item) => {
+                    const Icon = programmeIcon(item.toLowerCase().replace(/\s+/g, "-"));
+                    return (
+                      <li key={item} className="flex items-center gap-3">
+                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[var(--primary)] text-white">
+                          <Icon className="h-4 w-4" aria-hidden="true" />
+                        </span>
+                        {item}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </AnimatedSection>
@@ -122,12 +127,12 @@ export default async function AboutPage() {
           {imageIdentity(about.sideImageUrl) !==
           imageIdentity(about.mainImageUrl) ? (
             <AnimatedSection>
-              <div className="relative h-48 overflow-hidden rounded-2xl border border-[var(--primary)]">
+              <div className="photo-frame relative h-56 overflow-hidden rounded-2xl shadow-lg ring-4 ring-[var(--brand-gold)]/40">
                 <PasadaImage
                   src={about.sideImageUrl}
-                  alt="PASADA care services"
+                  alt="PASADA staff and volunteers in the community"
                   fill
-                  className="object-cover"
+                  className="photo-vivid object-cover"
                   sizes="400px"
                 />
               </div>

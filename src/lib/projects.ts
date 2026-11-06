@@ -3,6 +3,7 @@ import { sanityClient } from "@/sanity/client";
 import { sanityConfigured } from "@/sanity/env";
 import { urlFor } from "@/lib/sanity-image";
 import { media } from "@/lib/media";
+import { projectPhotos } from "@/lib/programme-photos";
 import type { PortableTextBlock } from "@portabletext/react";
 
 export type ProjectItem = {
@@ -319,7 +320,14 @@ export async function getProjects(opts?: { featuredOnly?: boolean; limit?: numbe
   try {
     const rows = await sanityClient.fetch<Parameters<typeof mapRow>[0][]>(listQuery);
     if (!rows?.length) return filterProjects(SAMPLE, opts);
-    const list = rows.map((r, i) => mapRow(r, SAMPLE[i % SAMPLE.length]?.imageUrl));
+    const list = rows.map((r, i) =>
+      mapRow(
+        r,
+        projectPhotos[r.slug] ??
+          SAMPLE.find((sample) => sample.slug === r.slug)?.imageUrl ??
+          SAMPLE[i % SAMPLE.length]?.imageUrl,
+      ),
+    );
     return filterProjects(list, opts);
   } catch {
     return filterProjects(SAMPLE, opts);
@@ -334,7 +342,7 @@ export async function getProjectBySlug(slug: string) {
       detailQuery,
       { slug },
     );
-    if (row) return mapRow(row);
+    if (row) return mapRow(row, projectPhotos[slug] ?? sample?.imageUrl);
     return sample ?? null;
   } catch {
     return sample ?? null;

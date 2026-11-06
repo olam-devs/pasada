@@ -43,7 +43,7 @@ export function HeroSlideshow({
     <section
       aria-label="PASADA highlights"
       aria-roledescription="carousel"
-      className="relative isolate overflow-hidden bg-[var(--brand-maroon)]"
+      className="brand-vivid relative isolate overflow-hidden"
       onMouseEnter={() => setInteracting(true)}
       onMouseLeave={() => setInteracting(false)}
       onFocusCapture={() => setInteracting(true)}

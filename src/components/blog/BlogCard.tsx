@@ -16,29 +16,29 @@ export function BlogCard({ post, index }: { post: BlogPost; index: number }) {
     >
       <Link
         href={`/blog/${post.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--primary)] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-[0_10px_30px_rgba(34,28,28,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_40px_rgba(34,28,28,0.16)]"
       >
-        <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
+        <div className="photo-frame relative aspect-[16/10] overflow-hidden">
           <PasadaImage
             src={post.imageUrl}
             alt=""
             fill
-            className="object-cover transition duration-500 group-hover:scale-105"
+            className="photo-vivid object-cover transition duration-500 group-hover:scale-105"
             sizes="(min-width: 1024px) 380px, 90vw"
           />
           {post.category ? (
-            <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-black ring-1 ring-black/10">
+            <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-[var(--primary)] px-3 py-1 text-xs font-semibold text-white shadow-sm">
               <Tag className="h-3 w-3" aria-hidden="true" />
               {post.category}
             </span>
           ) : null}
         </div>
         <div className="flex flex-1 flex-col p-5">
-          <div className="flex items-center gap-2 text-xs font-medium text-zinc-600">
+          <div className="flex items-center gap-2 text-xs font-semibold text-[var(--primary)]">
             <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
             {post.publishedAt}
           </div>
-          <h2 className="mt-2 text-base font-semibold text-black group-hover:text-[var(--primary)]">
+          <h2 className="mt-2 text-base font-semibold text-[var(--ink)] group-hover:text-[var(--primary)]">
             {post.title}
           </h2>
           <p className="mt-2 flex-1 text-sm leading-6 text-zinc-800">

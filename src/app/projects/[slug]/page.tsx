@@ -9,6 +9,7 @@ import {
   getProjects,
 } from "@/lib/projects";
 import { cn } from "@/lib/cn";
+import { ProgrammeAside } from "@/components/content/ProgrammeAside";
 
 export async function generateStaticParams() {
   const projects = await getProjects();
@@ -25,8 +26,19 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const [project, projects] = await Promise.all([
+    getProjectBySlug(slug),
+    getProjects(),
+  ]);
   if (!project) notFound();
+  const related = projects.filter((p) => p.slug !== project.slug).slice(0, 5);
+  const focus = project.tag ?? project.category;
+  const facts = [
+    { label: "Status", value: project.status },
+    ...(project.partner ? [{ label: "Partner", value: project.partner }] : []),
+    ...(project.duration ? [{ label: "Duration", value: project.duration }] : []),
+    ...(focus ? [{ label: "Focus", value: focus }] : []),
+  ];
 
   return (
     <PageShell
@@ -35,7 +47,7 @@ export default async function ProjectDetailPage({
       heroImageSrc={project.imageUrl}
     >
       <AnimatedSection>
-        <div className="mb-2 flex flex-wrap items-center gap-2">
+        <div className="mb-2 flex flex-wrap items-center gap-2 lg:hidden">
           <span
             className={cn(
               "inline-block rounded-full px-3 py-1 text-xs font-semibold ring-1",
@@ -68,6 +80,15 @@ export default async function ProjectDetailPage({
           galleryUrls={project.galleryUrls}
           videoUrl={project.videoUrl}
           content={project.content}
+          aside={
+            <ProgrammeAside
+              facts={facts}
+              linksTitle="Other projects"
+              links={related.map((p) => ({ href: `/projects/${p.slug}`, title: p.title, key: p.slug }))}
+              allHref="/projects"
+              allLabel="All projects"
+            />
+          }
         >
           <p>
             This project reflects PASADA&apos;s commitment to compassionate,
@@ -81,12 +102,18 @@ export default async function ProjectDetailPage({
           </p>
         </DetailLayout>
 
-        <div className="mt-12 rounded-2xl border border-[var(--primary)] bg-red-50 p-6">
-          <p className="text-sm text-zinc-800">
+        <div className="brand-vivid relative mt-12 overflow-hidden rounded-2xl p-7 text-white shadow-[0_20px_45px_rgba(34,28,28,0.22)] sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-9">
+          <span className="brand-rings -right-24 -top-32 h-72 w-72" aria-hidden="true" />
+          <p className="relative text-xl font-semibold">
             Interested in partnering on this program?
           </p>
-          <div className="mt-4">
-            <ButtonLink href="/contact">Contact PASADA</ButtonLink>
+          <div className="relative mt-5 shrink-0 sm:mt-0">
+            <ButtonLink
+              href="/contact"
+              className="bg-white text-[var(--primary-2)] hover:bg-[var(--brand-cream)]"
+            >
+              Contact PASADA
+            </ButtonLink>
           </div>
         </div>
       </AnimatedSection>
