@@ -9,7 +9,7 @@ const P = "/images/programmes";
 
 export const servicePhotos: Record<string, string> = {
   // Real PASADA photos
-  "community-sensitization": "/images/community-aids-day.jpg",
+  "community-sensitization": `${P}/community-sensitization-health-talk.jpg`,
   "tb-hiv-services": "/images/community-tb-group.jpg",
   "case-management-services": "/images/home-clinical-care.jpg",
   // Stand-in stock photos. Programmes linked to HIV status use photos without
@@ -20,7 +20,7 @@ export const servicePhotos: Record<string, string> = {
   "cervical-cancer-screening": `${P}/womens-health.jpg`,
   "home-based-and-palliative-care": `${P}/home-based-care-clinician.jpg`,
   "psychosocial-support": `${P}/psychosocial-pasada-booth.jpg`,
-  "capacity-development": `${P}/training-workshop.jpg`,
+  "capacity-development": `${P}/capacity-development-school-talk.jpg`,
   "ovc-caregiver-support": `${P}/children-walking.jpg`,
 };
 
@@ -31,7 +31,8 @@ export const projectPhotos: Record<string, string> = {
   // Stand-in stock photos
   "afya-jumuishi-mdh": `${P}/community-health-check.jpg`,
   "slf-ovc-support": `${P}/slf-ovc-children.jpg`,
-  "achieve-pact": `${P}/health-education.jpg`,
+  "achieve-pact": `${P}/achieve-pact-award.jpg`,
   "achieve-ecd": `${P}/newborn-care.jpg`,
-  "ready-reppsi": `${P}/training-workshop.jpg`,
+  "ready-reppsi": `${P}/ready-reppsi-training.jpg`,
+  "kizazi-hodari-deloitte": `${P}/kizazi-hodari-families.jpg`,
 };
