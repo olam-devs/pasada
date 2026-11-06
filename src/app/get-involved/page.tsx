@@ -16,7 +16,7 @@ export default async function GetInvolvedPage() {
       heroImageAlt="Illustration of hands supporting a heart together"
     >
       <AnimatedSection>
-        <p className="max-w-none text-sm leading-7 text-zinc-800">
+        <p className="max-w-none text-body leading-7 text-zinc-800">
           Choose how you want to support PASADA. Complete the form for
           volunteering, partnerships, or donations. Then choose your email app,
           Gmail or Outlook to review and send your prepared message.

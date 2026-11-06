@@ -21,7 +21,7 @@ export function TestimonialQuoteTile({
       transition={{ duration: 0.3, delay: index * 0.04 }}
       className="h-full rounded-2xl bg-zinc-50 p-5 ring-1 ring-[var(--border)] sm:p-6"
     >
-      <p className="text-sm leading-7 text-zinc-800">&ldquo;{quote}&rdquo;</p>
+      <p className="text-body leading-7 text-zinc-800">&ldquo;{quote}&rdquo;</p>
       <div className="mt-4 text-sm font-semibold text-black">{name}</div>
       {role ? (
         <div className="mt-0.5 text-xs text-zinc-600">{role}</div>

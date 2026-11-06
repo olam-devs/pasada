@@ -71,7 +71,7 @@ export function ContentCard({
             {title}
           </h3>
           <div className="flex-1">
-            <p className="mt-3 line-clamp-3 text-sm leading-7 text-zinc-600">
+            <p className="mt-3 line-clamp-3 text-body leading-7 text-zinc-600">
               {excerpt.replace(/\*\*/g, "")}
             </p>
           </div>

@@ -84,7 +84,7 @@ export function HeroSlideshow({
                     fill
                     priority={i === 0}
                     sizes="100vw"
-                    className="object-cover object-center"
+                    className="hero-photo object-cover object-center"
                   />
                   <div className="hero-shade pointer-events-none absolute inset-0" />
                 </>

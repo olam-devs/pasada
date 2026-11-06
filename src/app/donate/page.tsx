@@ -15,7 +15,7 @@ export default async function DonatePage() {
       <AnimatedSection>
         <div className="grid gap-8 lg:grid-cols-3">
           <div className="space-y-4 lg:col-span-2">
-            <p className="text-sm leading-7 text-zinc-700">
+            <p className="text-body leading-7 text-zinc-700">
               Your donation helps PASADA provide compassionate services and
               support to people infected and affected by HIV and AIDS—especially
               the poorest and most vulnerable.

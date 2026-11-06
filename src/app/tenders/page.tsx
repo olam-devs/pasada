@@ -85,7 +85,7 @@ export default async function TendersPage() {
                         {tender.title}
                       </Link>
                     </h3>
-                    <p className="mt-3 text-sm leading-7 text-zinc-600">
+                    <p className="mt-3 text-body leading-7 text-zinc-600">
                       {tender.summary}
                     </p>
                     <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-zinc-100 pt-5">
@@ -104,7 +104,7 @@ export default async function TendersPage() {
                   </article>
                 ))}
                 {!group.items.length ? (
-                  <div className="rounded-2xl border border-dashed border-zinc-300 bg-zinc-50 p-7 text-sm leading-7 text-zinc-600">
+                  <div className="rounded-2xl border border-dashed border-zinc-300 bg-zinc-50 p-7 text-body leading-7 text-zinc-600">
                     {group.id === "open-tenders"
                       ? "There are no open tenders to display right now. Please check back for new procurement opportunities."
                       : "No closed notices to display."}
@@ -118,14 +118,14 @@ export default async function TendersPage() {
           <div className="rounded-2xl bg-slate-950 p-7 text-white">
             <FileText className="h-8 w-8 text-rose-300" aria-hidden="true" />
             <h2 className="mt-5 text-xl font-semibold">Supplier information</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-300">
+            <p className="mt-3 text-body leading-7 text-slate-300">
               Each tender notice contains the requirements and submission
               instructions for that opportunity.
             </p>
           </div>
           <div className="rounded-2xl border border-zinc-200 p-7">
             <h2 className="font-semibold">Before you submit</h2>
-            <ol className="mt-5 list-decimal space-y-4 pl-4 text-sm leading-7 text-zinc-600">
+            <ol className="mt-5 list-decimal space-y-4 pl-4 text-body leading-7 text-zinc-600">
               <li>Read the full tender notice and check eligibility.</li>
               <li>Download the tender documents where provided.</li>
               <li>

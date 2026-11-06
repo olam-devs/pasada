@@ -33,6 +33,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Text sizes one step larger than Tailwind's defaults, for easier reading
+   (closer to the reference sites, without going as large as THPS). */
+@theme {
+  --text-xs: 0.8125rem; /* 13px (default 12px): labels, badges */
+  --text-sm: 0.9375rem; /* 15px (default 14px): supporting text, buttons */
+  --text-base: 1.0625rem; /* 17px (default 16px): menu, article text */
+  --text-lg: 1.1875rem; /* 19px (default 18px): card titles */
+  --text-body: 1rem; /* 16px: main reading paragraphs */
+  --text-body--line-height: 1.75;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -127,7 +138,7 @@ h3 {
 }
 .section-kicker {
   color: var(--primary);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -138,21 +149,29 @@ h3 {
   line-height: 1.2;
   color: var(--ink);
 }
-/* Dark, neutral shade over slideshow photos so white text stays readable. */
+/* Slideshow photos: brightened a little, with a shade only behind the text so
+   the rest of the photo stays bright. The text also carries a soft shadow. */
+.hero-photo {
+  filter: brightness(1.14) saturate(1.1) contrast(1.03);
+}
 .hero-shade {
   background: linear-gradient(
     90deg,
-    rgba(26, 20, 20, 0.88),
-    rgba(26, 20, 20, 0.6) 46%,
-    rgba(26, 20, 20, 0.08)
+    rgba(26, 20, 20, 0.72),
+    rgba(26, 20, 20, 0.45) 38%,
+    rgba(26, 20, 20, 0.1) 64%,
+    rgba(26, 20, 20, 0) 80%
   );
+}
+.hero-text {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
 }
 @media (max-width: 767px) {
   .hero-shade {
     background: linear-gradient(
       90deg,
-      rgba(26, 20, 20, 0.82),
-      rgba(26, 20, 20, 0.55)
+      rgba(26, 20, 20, 0.66),
+      rgba(26, 20, 20, 0.38)
     );
   }
 }
