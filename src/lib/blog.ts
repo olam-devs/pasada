@@ -27,7 +27,7 @@ export type BlogPostDetail = BlogPost & {
 const SAMPLE_POSTS: BlogPostDetail[] = [
   {
     _id: "sample-1",
-    title: "PASADA Women's Day Celebration 2023",
+    title: "PASADA Women's Day Celebration",
     slug: "womens-day-2023",
     excerpt:
       "Celebrating achievements and advancing dignity, health and opportunity for women and girls—through community outreach and supportive services.",
@@ -90,7 +90,7 @@ const SAMPLE_POSTS: BlogPostDetail[] = [
   },
   {
     _id: "sample-2",
-    title: "PASADA AIDS Day 2022",
+    title: "PASADA AIDS Day",
     slug: "aids-day-2022",
     excerpt:
       "Solidarity, education and advocacy toward a world free from stigma and discrimination—strengthening community understanding and support.",
@@ -164,7 +164,7 @@ const SAMPLE_POSTS: BlogPostDetail[] = [
   },
   {
     _id: "sample-3",
-    title: "Tanzania Health Summit 2023",
+    title: "Tanzania Health Summit",
     slug: "health-summit-2023",
     excerpt:
       "A milestone gathering that strengthened collaboration, practical solutions, and community-centered approaches to public health.",

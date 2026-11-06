@@ -4,7 +4,6 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { DetailLayout } from "@/components/content/DetailLayout";
 import { ButtonLink } from "@/components/ui/Button";
 import { getAllBlogSlugs, getBlogPostBySlug, getBlogPosts } from "@/lib/blog";
-import { Calendar } from "lucide-react";
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -39,11 +38,6 @@ export default async function BlogPostPage({
       heroImageSrc={post.imageUrl}
     >
       <AnimatedSection>
-        <div className="mb-2 flex items-center gap-2 text-sm text-zinc-700">
-          <Calendar className="h-4 w-4" aria-hidden="true" />
-          {post.publishedAt}
-        </div>
-
         <DetailLayout
           backHref="/blog"
           backLabel="All stories"
