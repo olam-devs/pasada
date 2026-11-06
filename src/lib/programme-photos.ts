@@ -30,7 +30,7 @@ export const projectPhotos: Record<string, string> = {
   "glra-integrated-tb": "/images/community-tb-group.jpg",
   // Stand-in stock photos
   "afya-jumuishi-mdh": `${P}/community-health-check.jpg`,
-  "slf-ovc-support": `${P}/community-meeting.jpg`,
+  "slf-ovc-support": `${P}/slf-ovc-children.jpg`,
   "achieve-pact": `${P}/health-education.jpg`,
   "achieve-ecd": `${P}/newborn-care.jpg`,
   "ready-reppsi": `${P}/training-workshop.jpg`,
