@@ -112,7 +112,7 @@ export function Header() {
             </a>
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
-            <span className="hidden text-white/80 lg:block">
+            <span className="hidden text-white lg:block">
               Care. Hope. Dignity.
             </span>
             <Link
@@ -281,7 +281,7 @@ export function Header() {
             className="absolute inset-y-0 right-0 w-[min(90vw,380px)] overflow-y-auto bg-white p-6 shadow-2xl"
           >
             <div className="mb-6 flex items-center justify-between border-b border-zinc-200 pb-4">
-              <span className="font-semibold text-[var(--brand-maroon)]">
+              <span className="font-semibold text-[var(--ink)]">
                 PASADA Tanzania
               </span>
               <button
@@ -322,7 +322,7 @@ export function Header() {
             </nav>
             <a
               href="tel:+255222866618"
-              className="mt-6 inline-flex items-center gap-2 text-sm text-[var(--brand-maroon)]"
+              className="mt-6 inline-flex items-center gap-2 text-sm text-[var(--ink)]"
             >
               <Phone className="h-4 w-4" />
               +255 22 286 6618

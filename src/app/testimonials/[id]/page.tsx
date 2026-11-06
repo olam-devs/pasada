@@ -30,7 +30,7 @@ export default async function TestimonialDetailPage({
       <AnimatedSection>
         <Link
           href="/testimonials"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-blue)] hover:underline"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--ink)] hover:underline"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           All testimonials

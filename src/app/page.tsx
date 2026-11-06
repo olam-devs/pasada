@@ -116,7 +116,10 @@ export default async function Home() {
               {home.heroDescription}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href={home.heroPrimaryHref} className="text-sm">
+              <ButtonLink
+                href={home.heroPrimaryHref}
+                className="bg-white text-sm text-[var(--primary-2)] hover:bg-[var(--brand-cream)]"
+              >
                 {home.heroPrimaryLabel}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </ButtonLink>
@@ -165,7 +168,7 @@ export default async function Home() {
                     className="photo-vivid object-cover"
                   />
                 </div>
-                <div className="absolute bottom-8 left-0 rounded-xl bg-[var(--brand-gold)] px-5 py-4 text-[var(--brand-maroon)] shadow-lg sm:bottom-12 sm:left-5">
+                <div className="absolute bottom-8 left-0 rounded-xl bg-[var(--brand-gold)] px-5 py-4 text-[var(--ink)] shadow-lg sm:bottom-12 sm:left-5">
                   <div className="text-3xl font-extrabold leading-none sm:text-4xl">
                     {FOUNDED}
                   </div>
@@ -192,9 +195,9 @@ export default async function Home() {
           </Container>
         </section>
 
-        {/* Impact figures and approach, on vivid brand colour. */}
+        {/* Impact figures and approach, on flame gold. */}
         <section
-          className="brand-vivid relative overflow-hidden text-white"
+          className="brand-gold-band relative overflow-hidden"
           aria-label="PASADA at a glance"
         >
           <Rings />
@@ -202,16 +205,16 @@ export default async function Home() {
             <dl className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
               {stats.map((s) => (
                 <div key={s._key} className="flex flex-col-reverse text-center">
-                  <dt className="mt-2 text-xs font-semibold uppercase tracking-[.14em] text-white/85">
+                  <dt className="mt-2 text-xs font-bold uppercase tracking-[.14em] text-[var(--ink)]/80">
                     {s.label}
                   </dt>
-                  <dd className="text-4xl font-extrabold tracking-tight text-[var(--brand-gold)] sm:text-5xl">
+                  <dd className="text-4xl font-extrabold tracking-tight text-[var(--primary-2)] sm:text-5xl">
                     {s.value}
                   </dd>
                 </div>
               ))}
             </dl>
-            <div className="mt-12 grid gap-8 border-t border-white/20 pt-10 md:grid-cols-3 md:gap-10">
+            <div className="mt-12 grid gap-8 border-t border-[var(--ink)]/15 pt-10 md:grid-cols-3 md:gap-10">
               {home.highlights.map((item) => {
                 const Icon =
                   item.icon === "community"
@@ -221,16 +224,16 @@ export default async function Home() {
                       : Stethoscope;
                 return (
                   <div key={item._key} className="flex items-start gap-4">
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/12 ring-1 ring-white/20">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[var(--primary)] text-white shadow-md">
                       <Icon
-                        className="h-6 w-6 text-[var(--brand-gold)]"
+                        className="h-6 w-6"
                         strokeWidth={1.7}
                         aria-hidden="true"
                       />
                     </span>
                     <div>
                       <h3 className="text-lg font-semibold">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-6 text-white/80">
+                      <p className="mt-1 text-sm leading-6 text-[var(--ink)]/80">
                         {item.description}
                       </p>
                     </div>
@@ -283,21 +286,25 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Photo banner: real PASADA photo blended into maroon. */}
+        {/* Photo banner: real PASADA photo washed in PASADA red (duotone). */}
         <section
-          className="relative isolate overflow-hidden bg-[var(--brand-maroon)] text-white"
+          className="relative isolate overflow-hidden bg-[var(--primary-2)] text-white"
           aria-labelledby="community-banner"
         >
-          <div className="absolute inset-0 lg:left-[38%]">
+          <div className="absolute inset-0">
             <PasadaImage
               src={home.banner.src}
               alt={home.banner.alt}
               fill
-              sizes="(min-width:1024px) 62vw, 100vw"
-              className="photo-vivid object-cover"
+              sizes="100vw"
+              className="photo-duotone object-cover"
             />
             <div
-              className="absolute inset-0 bg-[rgba(72,19,27,0.78)] lg:bg-transparent lg:bg-gradient-to-r lg:from-[var(--brand-maroon)] lg:via-[rgba(72,19,27,0.35)] lg:to-transparent"
+              className="absolute inset-0 bg-[var(--primary)] mix-blend-multiply"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-0 bg-[rgba(127,14,32,0.55)] lg:bg-transparent lg:bg-gradient-to-r lg:from-[rgba(127,14,32,0.88)] lg:via-[rgba(127,14,32,0.4)] lg:to-transparent"
               aria-hidden="true"
             />
           </div>
@@ -317,7 +324,10 @@ export default async function Home() {
                 {home.bannerText}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href={home.bannerLinkHref}>
+                <ButtonLink
+                  href={home.bannerLinkHref}
+                  className="bg-white text-[var(--primary-2)] hover:bg-[var(--brand-cream)]"
+                >
                   {home.bannerLinkLabel}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </ButtonLink>
@@ -338,7 +348,7 @@ export default async function Home() {
           <Container>
             <SectionHeading eyebrow={home.valuesEyebrow} title={home.valuesTitle} />
             <div className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-              <div className="brand-vivid relative overflow-hidden rounded-2xl p-8 text-white shadow-[0_20px_45px_rgba(72,19,27,0.25)] sm:p-10">
+              <div className="brand-vivid relative overflow-hidden rounded-2xl p-8 text-white shadow-[0_20px_45px_rgba(34,28,28,0.25)] sm:p-10">
                 <span className="brand-rings -bottom-40 -right-32 h-80 w-80" aria-hidden="true" />
                 <div className="relative flex gap-4">
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/15 ring-1 ring-white/20">
@@ -363,7 +373,7 @@ export default async function Home() {
               <div>
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="h-5 w-5 text-[var(--primary)]" aria-hidden="true" />
-                  <h3 className="text-lg font-semibold text-[var(--brand-maroon)]">
+                  <h3 className="text-lg font-semibold text-[var(--ink)]">
                     Our core values
                   </h3>
                   <span className="h-px flex-1 bg-gradient-to-r from-[var(--brand-gold)] to-transparent" />
@@ -374,13 +384,13 @@ export default async function Home() {
                     return (
                       <div
                         key={value.title}
-                        className="flex gap-4 rounded-xl border-b-4 border-[var(--brand-gold)] bg-white p-5 shadow-[0_8px_24px_rgba(72,19,27,0.07)]"
+                        className="flex gap-4 rounded-xl border-b-4 border-[var(--brand-gold)] bg-white p-5 shadow-[0_8px_24px_rgba(34,28,28,0.07)]"
                       >
                         <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[var(--brand-blush)] text-[var(--primary)]">
                           <Icon className="h-5 w-5" aria-hidden="true" />
                         </span>
                         <div>
-                          <h4 className="text-sm font-semibold text-[var(--brand-maroon)]">
+                          <h4 className="text-sm font-semibold text-[var(--ink)]">
                             {value.title}
                           </h4>
                           {value.description ? (
@@ -451,8 +461,8 @@ export default async function Home() {
           </section>
         ) : null}
 
-        {/* Testimonials on deep maroon. */}
-        <section className="brand-banner relative overflow-hidden py-16 text-white lg:py-24">
+        {/* Testimonials on charcoal (the logo's black). */}
+        <section className="brand-dark relative overflow-hidden py-16 text-white lg:py-24">
           <Rings />
           <Container className="relative">
             <div className="grid items-center gap-10 lg:grid-cols-5">
@@ -467,7 +477,7 @@ export default async function Home() {
                 </p>
                 <Link
                   href={home.testimonialsLinkHref}
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)] hover:text-white"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)] underline-offset-4 hover:underline"
                 >
                   {home.testimonialsLinkLabel}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -500,7 +510,7 @@ export default async function Home() {
             className="-z-10 object-cover"
           />
           <div
-            className="absolute inset-0 -z-10 bg-gradient-to-r from-[rgba(189,41,57,0.95)] via-[rgba(130,28,42,0.92)] to-[rgba(72,19,27,0.82)]"
+            className="absolute inset-0 -z-10 bg-gradient-to-r from-[rgba(209,26,47,0.95)] via-[rgba(176,20,42,0.9)] to-[rgba(127,14,32,0.8)]"
             aria-hidden="true"
           />
           <Container className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
@@ -515,7 +525,7 @@ export default async function Home() {
             <div className="flex shrink-0 flex-wrap gap-3">
               <ButtonLink
                 href={home.supportPrimaryHref}
-                className="bg-white text-[var(--brand-maroon)] hover:bg-[var(--brand-cream)]"
+                className="bg-white text-[var(--primary-2)] hover:bg-[var(--brand-cream)]"
               >
                 {home.supportPrimaryLabel}
               </ButtonLink>

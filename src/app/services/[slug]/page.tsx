@@ -76,7 +76,7 @@ export default async function ServiceDetailPage({
           </p>
         </DetailLayout>
 
-        <div className="brand-vivid relative mt-12 overflow-hidden rounded-2xl p-7 text-white shadow-[0_20px_45px_rgba(72,19,27,0.22)] sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-9">
+        <div className="brand-vivid relative mt-12 overflow-hidden rounded-2xl p-7 text-white shadow-[0_20px_45px_rgba(34,28,28,0.22)] sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-9">
           <span className="brand-rings -right-24 -top-32 h-72 w-72" aria-hidden="true" />
           <div className="relative">
             <p className="text-xl font-semibold">Need this service or have questions?</p>
@@ -87,7 +87,7 @@ export default async function ServiceDetailPage({
           <div className="relative mt-5 flex shrink-0 flex-wrap gap-3 sm:mt-0">
             <ButtonLink
               href="/contact"
-              className="bg-white text-[var(--brand-maroon)] hover:bg-[var(--brand-cream)]"
+              className="bg-white text-[var(--primary-2)] hover:bg-[var(--brand-cream)]"
             >
               Contact us
             </ButtonLink>

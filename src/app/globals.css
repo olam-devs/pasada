@@ -7,19 +7,23 @@
   --card: #ffffff;
   --border: rgba(24, 24, 27, 0.1);
 
-  /* Brand palette */
-  --primary: #bd2939;
-  --primary-2: #9e1d2b;
-  --brand-maroon: #48131b;
-  --brand-gold: #ddb52e;
-  --brand-cream: #faf7f0;
-  --brand-blush: #fbf0f1;
-  /* Compatibility names for existing CMS-driven sections. */
-  --brand-blue: var(--brand-maroon);
-  --brand-blue-2: #6a202b;
+  /* Brand palette, taken from the PASADA logo. */
+  --primary: #d11a2f; /* logo red: buttons, links, colour sections */
+  --primary-2: #a8132a; /* deeper red: hover states and gradient ends */
+  --primary-deep: #7f0e20; /* darkest red: only at the far end of gradients */
+  --brand-gold: #f2b705; /* flame gold: highlights and the figures strip */
+  --brand-gold-soft: #fff4cf;
+  --brand-orange: #ee7d1b; /* flame orange: small accents only */
+  --ink: #221c1c; /* logo black: headings, body text, footer */
+  --brand-cream: #fff8f0; /* warm off-white section background */
+  --brand-blush: #fdeef0; /* pale red tint for chips and icon backs */
+  /* Older names kept so nothing breaks; they now point at the new palette. */
+  --brand-maroon: var(--ink);
+  --brand-blue: var(--ink);
+  --brand-blue-2: var(--primary-2);
   --accent: var(--brand-gold);
-  --warning: #ad8115;
-  --ring: rgba(189, 41, 57, 0.32);
+  --warning: #b07d00;
+  --ring: rgba(209, 26, 47, 0.32);
 }
 
 @theme inline {
@@ -53,7 +57,7 @@ html {
 /* subtle page background grid */
 .bg-grid {
   background-image: radial-gradient(
-    rgba(189, 41, 57, 0.12) 1px,
+    rgba(209, 26, 47, 0.12) 1px,
     transparent 1px
   );
   background-size: 28px 28px;
@@ -66,34 +70,47 @@ h3 {
   letter-spacing: -0.025em;
 }
 ::selection {
-  background: #f2dce0;
-  color: #48131b;
+  background: #fcd5da;
+  color: var(--ink);
 }
 .brand-topbar {
-  background: var(--brand-maroon);
+  background: var(--primary);
   color: white;
 }
+/* Deep red block: section headers, page banners. */
 .brand-banner {
-  background: linear-gradient(115deg, #681d29, #48131b);
+  background: linear-gradient(115deg, #c2172d, #9a1127 60%, var(--primary-deep));
 }
-/* Vivid red-to-maroon block used for impact figures and feature cards. */
+/* Bright red block with a soft gold glow: feature cards and calls to action. */
 .brand-vivid {
   background:
-    radial-gradient(circle at 85% 15%, rgba(221, 181, 46, 0.22), transparent 38%),
-    linear-gradient(120deg, #bd2939 0%, #8e1f2c 45%, #48131b 100%);
+    radial-gradient(circle at 85% 15%, rgba(242, 183, 5, 0.22), transparent 38%),
+    linear-gradient(120deg, #e0263b 0%, var(--primary) 45%, var(--primary-2) 100%);
+}
+/* Flame-gold block with dark text: impact figures. */
+.brand-gold-band {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.35), transparent 40%),
+    linear-gradient(120deg, #f7c52b, var(--brand-gold) 55%, #eaa400);
+  color: var(--ink);
+}
+/* Charcoal block (the logo's black): testimonials and footer. */
+.brand-dark {
+  background: linear-gradient(120deg, #2b2323, var(--ink));
+  color: white;
 }
 /* Soft tinted section background so white cards stand out. */
 .brand-tint {
   background:
-    radial-gradient(circle at 0% 0%, rgba(189, 41, 57, 0.07), transparent 40%),
-    radial-gradient(circle at 100% 100%, rgba(221, 181, 46, 0.12), transparent 42%),
+    radial-gradient(circle at 0% 0%, rgba(209, 26, 47, 0.06), transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(242, 183, 5, 0.14), transparent 42%),
     var(--brand-cream);
 }
 /* Decorative rings, echoing the logo's circle. */
 .brand-rings {
   position: absolute;
   border-radius: 9999px;
-  border: 48px solid rgba(255, 255, 255, 0.05);
+  border: 48px solid rgba(255, 255, 255, 0.07);
   pointer-events: none;
 }
 /* Photos: a little more contrast and colour so pale clinic shots don't wash out. */
@@ -102,7 +119,11 @@ h3 {
 }
 /* Coloured backing behind photos, so white-walled pictures never sit on white. */
 .photo-frame {
-  background: linear-gradient(135deg, #48131b, #bd2939);
+  background: linear-gradient(135deg, var(--primary-2), var(--primary));
+}
+/* Red duotone for the community banner: the photo is shown in shades of PASADA red. */
+.photo-duotone {
+  filter: grayscale(1) contrast(1.15) brightness(1.05);
 }
 .section-kicker {
   color: var(--primary);
@@ -115,22 +136,23 @@ h3 {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 700;
   line-height: 1.2;
-  color: #251b1d;
+  color: var(--ink);
 }
+/* Dark, neutral shade over slideshow photos so white text stays readable. */
 .hero-shade {
   background: linear-gradient(
     90deg,
-    rgba(35, 10, 16, 0.91),
-    rgba(35, 10, 16, 0.65) 46%,
-    rgba(35, 10, 16, 0.12)
+    rgba(26, 20, 20, 0.88),
+    rgba(26, 20, 20, 0.6) 46%,
+    rgba(26, 20, 20, 0.08)
   );
 }
 @media (max-width: 767px) {
   .hero-shade {
     background: linear-gradient(
       90deg,
-      rgba(35, 10, 16, 0.85),
-      rgba(35, 10, 16, 0.55)
+      rgba(26, 20, 20, 0.82),
+      rgba(26, 20, 20, 0.55)
     );
   }
 }

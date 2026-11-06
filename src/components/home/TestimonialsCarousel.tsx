@@ -43,7 +43,7 @@ export function TestimonialsCarousel({
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <div className="rounded-3xl bg-white p-6 text-zinc-900 shadow-[0_24px_50px_rgba(20,5,8,0.25)] ring-1 ring-[var(--border)] sm:p-8">
+    <div className="rounded-3xl bg-white p-6 text-zinc-900 shadow-[0_24px_50px_rgba(0,0,0,0.3)] ring-1 ring-[var(--border)] sm:p-8">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-rose-50 text-rose-900 ring-1 ring-rose-100">

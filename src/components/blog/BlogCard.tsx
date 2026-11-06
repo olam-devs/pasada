@@ -16,7 +16,7 @@ export function BlogCard({ post, index }: { post: BlogPost; index: number }) {
     >
       <Link
         href={`/blog/${post.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-[0_10px_30px_rgba(72,19,27,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_40px_rgba(72,19,27,0.16)]"
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-[0_10px_30px_rgba(34,28,28,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_40px_rgba(34,28,28,0.16)]"
       >
         <div className="photo-frame relative aspect-[16/10] overflow-hidden">
           <PasadaImage
@@ -27,7 +27,7 @@ export function BlogCard({ post, index }: { post: BlogPost; index: number }) {
             sizes="(min-width: 1024px) 380px, 90vw"
           />
           {post.category ? (
-            <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-[var(--brand-maroon)]/90 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/20">
+            <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-[var(--primary)] px-3 py-1 text-xs font-semibold text-white shadow-sm">
               <Tag className="h-3 w-3" aria-hidden="true" />
               {post.category}
             </span>
@@ -38,7 +38,7 @@ export function BlogCard({ post, index }: { post: BlogPost; index: number }) {
             <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
             {post.publishedAt}
           </div>
-          <h2 className="mt-2 text-base font-semibold text-[var(--brand-maroon)] group-hover:text-[var(--primary)]">
+          <h2 className="mt-2 text-base font-semibold text-[var(--ink)] group-hover:text-[var(--primary)]">
             {post.title}
           </h2>
           <p className="mt-2 flex-1 text-sm leading-6 text-zinc-800">

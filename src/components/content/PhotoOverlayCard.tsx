@@ -21,7 +21,7 @@ export function PhotoOverlayCard({
   return (
     <Link
       href={href}
-      className="photo-frame group relative isolate flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl text-white shadow-[0_16px_40px_rgba(72,19,27,0.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_rgba(72,19,27,0.28)] sm:aspect-[5/6]"
+      className="photo-frame group relative isolate flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl text-white shadow-[0_16px_40px_rgba(34,28,28,0.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_rgba(34,28,28,0.28)] sm:aspect-[5/6]"
     >
       <PasadaImage
         src={imageUrl}
@@ -31,11 +31,11 @@ export function PhotoOverlayCard({
         className="photo-vivid -z-10 object-cover transition duration-700 group-hover:scale-105"
       />
       <div
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-[rgba(40,10,16,0.95)] via-[rgba(40,10,16,0.45)] to-transparent"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-[rgba(26,20,20,0.92)] via-[rgba(26,20,20,0.4)] to-transparent"
         aria-hidden="true"
       />
       {badge ? (
-        <span className="absolute left-4 top-4 rounded-full bg-[var(--brand-gold)] px-3 py-1 text-xs font-bold text-[var(--brand-maroon)] shadow">
+        <span className="absolute left-4 top-4 rounded-full bg-[var(--brand-gold)] px-3 py-1 text-xs font-bold text-[var(--ink)] shadow">
           {badge}
         </span>
       ) : null}

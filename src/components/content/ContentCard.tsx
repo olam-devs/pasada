@@ -36,7 +36,7 @@ export function ContentCard({
     >
       <Link
         href={href}
-        className="group flex h-full flex-col overflow-hidden rounded-xl border border-zinc-200/80 bg-white shadow-[0_10px_30px_rgba(72,19,27,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_40px_rgba(72,19,27,0.16)]"
+        className="group flex h-full flex-col overflow-hidden rounded-xl border border-zinc-200/80 bg-white shadow-[0_10px_30px_rgba(34,28,28,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_40px_rgba(34,28,28,0.16)]"
       >
         <div className="relative">
           <div className="photo-frame relative aspect-[16/10] overflow-hidden">
@@ -48,18 +48,18 @@ export function ContentCard({
               sizes="(min-width: 1024px) 380px, 90vw"
             />
             <div
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[rgba(72,19,27,0.45)] to-transparent"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[rgba(26,20,20,0.35)] to-transparent"
               aria-hidden="true"
             />
             {badge ? (
-              <span className="absolute left-3 top-3 rounded-full bg-[var(--brand-maroon)]/90 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/20 backdrop-blur-sm">
+              <span className="absolute left-3 top-3 rounded-full bg-[var(--primary)] px-3 py-1 text-xs font-semibold text-white shadow-sm">
                 {badge}
               </span>
             ) : null}
           </div>
           {Icon ? (
             <span
-              className="absolute -bottom-6 right-5 grid h-12 w-12 place-items-center rounded-xl bg-[var(--primary)] text-white shadow-lg ring-4 ring-white transition group-hover:bg-[var(--brand-maroon)]"
+              className="absolute -bottom-6 right-5 grid h-12 w-12 place-items-center rounded-xl bg-[var(--primary)] text-white shadow-lg ring-4 ring-white transition group-hover:bg-[var(--primary-2)]"
               aria-hidden="true"
             >
               <Icon className="h-6 w-6" strokeWidth={1.8} />
@@ -67,7 +67,7 @@ export function ContentCard({
           ) : null}
         </div>
         <div className={`flex flex-1 flex-col p-5 sm:p-6 ${Icon ? "pt-7" : ""}`}>
-          <h3 className="text-lg font-semibold leading-snug text-[var(--brand-maroon)] group-hover:text-[var(--primary)]">
+          <h3 className="text-lg font-semibold leading-snug text-[var(--ink)] group-hover:text-[var(--primary)]">
             {title}
           </h3>
           <div className="flex-1">

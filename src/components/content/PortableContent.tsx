@@ -57,7 +57,7 @@ const components = {
         return (
           <a
             href={href}
-            className="font-medium text-[var(--brand-blue)] underline"
+            className="font-medium text-[var(--ink)] underline"
             target={value?.openInNewTab ? "_blank" : undefined}
             rel={value?.openInNewTab ? "noopener noreferrer" : undefined}
           >
@@ -66,7 +66,7 @@ const components = {
         );
       }
       return (
-        <Link href={href} className="font-medium text-[var(--brand-blue)] underline">
+        <Link href={href} className="font-medium text-[var(--ink)] underline">
           {children}
         </Link>
       );

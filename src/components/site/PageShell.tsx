@@ -29,7 +29,7 @@ export function PageShell({
         {photo && heroImageSrc ? (
           <section
             aria-label={eyebrow ?? title}
-            className="relative isolate overflow-hidden bg-[var(--brand-maroon)] text-white"
+            className="relative isolate overflow-hidden bg-[var(--primary-2)] text-white"
           >
             <div className="absolute inset-0 -z-10 md:left-[42%]">
               <PasadaImage
@@ -41,7 +41,7 @@ export function PageShell({
                 className="photo-vivid object-cover object-center"
               />
               <div
-                className="absolute inset-0 bg-[rgba(72,19,27,0.8)] md:bg-transparent md:bg-gradient-to-r md:from-[var(--brand-maroon)] md:via-[rgba(72,19,27,0.5)] md:to-[rgba(72,19,27,0.22)]"
+                className="absolute inset-0 bg-[rgba(168,19,42,0.82)] md:bg-transparent md:bg-gradient-to-r md:from-[var(--primary-2)] md:via-[rgba(168,19,42,0.55)] md:to-[rgba(168,19,42,0.12)]"
                 aria-hidden="true"
               />
             </div>
@@ -71,7 +71,7 @@ export function PageShell({
               </div>
             </Container>
             <div
-              className="h-1.5 bg-gradient-to-r from-[var(--brand-gold)] via-[var(--primary)] to-[var(--brand-maroon)]"
+              className="h-1.5 bg-gradient-to-r from-[var(--brand-gold)] via-[var(--primary)] to-[var(--ink)]"
               aria-hidden="true"
             />
           </section>
@@ -132,7 +132,7 @@ export function PageShell({
             ) : null}
           </Container>
           <div
-            className="h-1.5 bg-gradient-to-r from-[var(--brand-gold)] via-[var(--primary)] to-[var(--brand-maroon)]"
+            className="h-1.5 bg-gradient-to-r from-[var(--brand-gold)] via-[var(--primary)] to-[var(--ink)]"
             aria-hidden="true"
           />
         </section>

@@ -20,7 +20,7 @@ const involved = [
 
 export function Footer() {
   return (
-    <footer className="mt-auto bg-[#281015] text-white/75">
+    <footer className="mt-auto bg-[var(--ink)] text-white/75">
       <Container className="py-14 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-12">
           <div>

@@ -41,8 +41,8 @@ export function CategoryGrid({
           onClick={() => setActive("all")}
           className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition ${
             active === "all"
-              ? "border-[var(--brand-maroon)] bg-[var(--brand-maroon)] text-white shadow-sm"
-              : "border-[var(--primary)] bg-white text-[var(--brand-maroon)] hover:bg-[var(--brand-blush)]"
+              ? "border-[var(--primary)] bg-[var(--primary)] text-white shadow-sm"
+              : "border-[var(--primary)] bg-white text-[var(--ink)] hover:bg-[var(--brand-blush)]"
           }`}
         >
           {allLabel}
@@ -54,8 +54,8 @@ export function CategoryGrid({
             onClick={() => setActive(c.slug)}
             className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition ${
               active === c.slug
-                ? "border-[var(--brand-maroon)] bg-[var(--brand-maroon)] text-white shadow-sm"
-                : "border-[var(--primary)] bg-white text-[var(--brand-maroon)] hover:bg-[var(--brand-blush)]"
+                ? "border-[var(--primary)] bg-[var(--primary)] text-white shadow-sm"
+                : "border-[var(--primary)] bg-white text-[var(--ink)] hover:bg-[var(--brand-blush)]"
             }`}
           >
             {c.title}

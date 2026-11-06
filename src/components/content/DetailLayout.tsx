@@ -43,14 +43,14 @@ export function DetailLayout({
     <div>
       <Link
         href={backHref}
-        className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-blue)] hover:underline"
+        className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--ink)] hover:underline"
       >
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
         {backLabel}
       </Link>
 
       {badge ? (
-        <span className="mt-4 block w-fit rounded-full bg-[var(--brand-blush)] px-3 py-1 text-xs font-semibold text-[var(--brand-maroon)] ring-1 ring-[var(--primary)]/30">
+        <span className="mt-4 block w-fit rounded-full bg-[var(--brand-blush)] px-3 py-1 text-xs font-semibold text-[var(--ink)] ring-1 ring-[var(--primary)]/30">
           {badge}
         </span>
       ) : null}

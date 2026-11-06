@@ -64,7 +64,7 @@ export function PartnersBelt({ partners }: { partners: Partner[] }) {
               type="button"
               onClick={() => setShowAll((value) => !value)}
               aria-pressed={showAll}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-zinc-200 px-4 text-sm font-semibold text-[var(--brand-maroon)] hover:bg-[var(--brand-cream)]"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-zinc-200 px-4 text-sm font-semibold text-[var(--ink)] hover:bg-[var(--brand-cream)]"
             >
               <Grid2X2 className="h-4 w-4" aria-hidden="true" />
               {showAll ? "Show moving strip" : "View all partners"}
@@ -76,7 +76,7 @@ export function PartnersBelt({ partners }: { partners: Partner[] }) {
                 aria-label={
                   paused ? "Play partner strip" : "Pause partner strip"
                 }
-                className="partner-motion-control grid h-11 w-11 place-items-center rounded-full border border-zinc-200 text-[var(--brand-maroon)] hover:bg-[var(--brand-cream)]"
+                className="partner-motion-control grid h-11 w-11 place-items-center rounded-full border border-zinc-200 text-[var(--ink)] hover:bg-[var(--brand-cream)]"
               >
                 {paused ? (
                   <Play className="h-4 w-4" aria-hidden="true" />

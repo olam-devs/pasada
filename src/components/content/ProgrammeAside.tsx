@@ -22,7 +22,7 @@ export function ProgrammeAside({
   return (
     <div className="space-y-7 lg:sticky lg:top-28">
       {facts.length ? (
-        <div className="brand-vivid relative overflow-hidden rounded-2xl p-6 text-white shadow-[0_16px_36px_rgba(72,19,27,0.2)]">
+        <div className="brand-vivid relative overflow-hidden rounded-2xl p-6 text-white shadow-[0_16px_36px_rgba(34,28,28,0.2)]">
           <span className="brand-rings -bottom-40 -right-28 h-72 w-72" aria-hidden="true" />
           <p className="relative text-xs font-bold uppercase tracking-[.16em] text-[var(--brand-gold)]">
             At a glance
@@ -43,9 +43,9 @@ export function ProgrammeAside({
       {links.length ? (
         <nav
           aria-label={linksTitle}
-          className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-[0_10px_30px_rgba(72,19,27,0.06)]"
+          className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-[0_10px_30px_rgba(34,28,28,0.06)]"
         >
-          <p className="text-sm font-semibold text-[var(--brand-maroon)]">{linksTitle}</p>
+          <p className="text-sm font-semibold text-[var(--ink)]">{linksTitle}</p>
           <ul className="mt-3 space-y-1">
             {links.map((link) => {
               const Icon = programmeIcon(link.key);
@@ -53,7 +53,7 @@ export function ProgrammeAside({
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="group flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-700 transition hover:bg-[var(--brand-blush)] hover:text-[var(--brand-maroon)]"
+                    className="group flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-700 transition hover:bg-[var(--brand-blush)] hover:text-[var(--ink)]"
                   >
                     <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[var(--brand-blush)] text-[var(--primary)] transition group-hover:bg-[var(--primary)] group-hover:text-white">
                       <Icon className="h-4 w-4" aria-hidden="true" />

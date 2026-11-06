@@ -49,7 +49,7 @@ export default async function AboutPage() {
 
           <AnimatedSection delay={0.1}>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="brand-vivid relative overflow-hidden rounded-2xl p-6 text-white shadow-[0_16px_36px_rgba(72,19,27,0.2)]">
+              <div className="brand-vivid relative overflow-hidden rounded-2xl p-6 text-white shadow-[0_16px_36px_rgba(34,28,28,0.2)]">
                 <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-[var(--brand-gold)] ring-1 ring-white/20">
                   <Target className="h-5 w-5" aria-hidden="true" />
                 </div>
@@ -58,12 +58,12 @@ export default async function AboutPage() {
                   {about.missionText}
                 </p>
               </div>
-              <div className="brand-banner relative overflow-hidden rounded-2xl p-6 text-white shadow-[0_16px_36px_rgba(72,19,27,0.2)]">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-[var(--brand-gold)] ring-1 ring-white/20">
+              <div className="brand-gold-band relative overflow-hidden rounded-2xl p-6 shadow-[0_16px_36px_rgba(34,28,28,0.15)]">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--primary)] text-white">
                   <Eye className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <h2 className="mt-4 text-lg font-semibold">Vision</h2>
-                <p className="mt-3 text-base leading-8 text-white/90 italic">
+                <p className="mt-3 text-base leading-8 text-[var(--ink)]/85 italic">
                   &ldquo;{about.visionText}&rdquo;
                 </p>
               </div>
@@ -102,7 +102,7 @@ export default async function AboutPage() {
           {about.focusAreas.length ? (
             <AnimatedSection delay={0.2}>
               <div className="brand-tint rounded-2xl border border-[var(--brand-gold)]/30 p-6">
-                <div className="text-sm font-semibold text-[var(--brand-maroon)]">
+                <div className="text-sm font-semibold text-[var(--ink)]">
                   What we focus on
                 </div>
                 <ul className="mt-4 grid gap-3 text-sm text-zinc-800 sm:grid-cols-2">
