@@ -8,6 +8,7 @@ website then uses that instead. Mapping: `src/lib/programme-photos.ts`.
 
 | File | Source |
 | --- | --- |
+| `psychosocial-pasada-booth.jpg` | PASADA (supplied November 2026): PASADA staff talking with a visitor at the PASADA exhibition stand; also uploaded to Sanity as the Psychosocial support main image |
 | `slf-ovc-children.jpg` | PASADA (supplied November 2026): pupils at an SLF-supported school; also uploaded to Sanity as the SLF (OVC Support) main image |
 | `lab-technician.jpg` | PASADA's Sanity media library (laboratory), contrast and colour lifted with `scripts/enhance-photos.mjs` |
 | `../community-aids-day.jpg` | PASADA's Sanity media library ("Siku ya Ukimwi duniani"), lifted the same way |
