@@ -9,7 +9,7 @@ Select **Homepage & slideshow** at the top of the Content menu. `/studiogo` open
 - **Slideshow** (first tab): images in display order and seconds between slides. Drag the handles, then Publish.
 - **Introduction**: badge, heading, introduction and button labels/destinations.
 - **Organisation & values**: introduction-section heading/link, the small **second photo** that overlaps the main About photo, and mission, values and vision headings.
-- **Highlights & mission**: the four **impact figures** in the red strip (for example 1.5M+ / People tested for HIV), highlight cards and the homepage mission box. Keep the figures in step with the About page text.
+- **Highlights & mission**: the three highlight cards in the gold band and the homepage mission box. Reach figures (people tested, clients on care and so on) are not on the homepage; publish them in the annual reports under **Resources (PDFs)**.
 - **Services / Projects / Stories sections**: homepage headings and links.
 - **Photo banner**: the wide photo strip after the services. Choose a colourful photo of people at work, at least 1600 pixels wide; edit its eyebrow, heading, text and button.
 - **Support banner**: background photo (shown under a red overlay), heading, description and buttons.

@@ -105,7 +105,6 @@ export async function getHomePage(): Promise<HomePageContent> {
           )
         : fallback.partners,
       highlights: row.highlights ?? fallback.highlights,
-      stats: row.stats?.length ? row.stats : fallback.stats,
       slideInterval:
         row.slideInterval && row.slideInterval >= 2
           ? row.slideInterval
