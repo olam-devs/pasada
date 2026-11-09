@@ -42,6 +42,9 @@
   --text-lg: 1.1875rem; /* 19px (default 18px): card titles */
   --text-body: 1rem; /* 16px: main reading paragraphs */
   --text-body--line-height: 1.75;
+  /* Widest the page content gets (1760px): fills large screens with only a
+     slim margin either side, instead of a narrow column in the middle. */
+  --container-site: 110rem;
 }
 
 body {
@@ -208,7 +211,7 @@ h3 {
 .partner-show-all .partner-group { display: grid; width: 100%; padding: 0; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); }
 .partner-show-all .partner-card { width: 100%; }
 @media (prefers-reduced-motion: reduce) {
-  .partner-window { padding-inline: 20px; max-width: 1280px; margin-inline: auto; }
+  .partner-window { padding-inline: 20px; max-width: var(--container-site); margin-inline: auto; }
   .partner-track { width: 100%; animation: none; }
   .partner-group { display: grid; width: 100%; padding: 0; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 16px; }
   .partner-card { width: 100%; }

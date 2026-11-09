@@ -140,8 +140,8 @@ export default async function Home() {
           aria-labelledby="who-we-are"
         >
           <Container>
-            <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-              <div className="relative mx-auto w-full max-w-xl pb-16 pl-5 pr-8 pt-5 sm:pb-20 sm:pl-7 sm:pr-14 sm:pt-7 lg:mx-0">
+            <div className="grid items-start gap-14 lg:grid-cols-2 lg:gap-20">
+              <div className="relative mx-auto w-full max-w-xl pb-16 pl-5 pr-8 pt-5 sm:pb-20 sm:pl-7 sm:pr-14 sm:pt-7 lg:mx-0 2xl:max-w-[44rem]">
                 <div
                   className="brand-vivid absolute bottom-28 left-0 right-4 top-0 rounded-2xl sm:right-9"
                   aria-hidden="true"
@@ -420,7 +420,6 @@ export default async function Home() {
                   title={item.title}
                   excerpt={item.summary}
                   imageUrl={item.imageUrl}
-                  badge={item.tag ?? item.category}
                 />
               ))}
             </div>

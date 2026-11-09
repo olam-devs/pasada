@@ -64,7 +64,7 @@ export function HeroSlideshow({
               className="relative h-full min-w-0 flex-[0_0_100%]"
             >
               {slide.fit === "contain" ? (
-                <div className="absolute inset-0 mx-auto max-w-7xl">
+                <div className="absolute inset-0 mx-auto max-w-site">
                   <div className="absolute bottom-24 right-5 aspect-square w-16 overflow-hidden rounded-xl bg-white shadow-xl min-[375px]:w-20 lg:bottom-auto lg:right-[4%] lg:top-1/2 lg:w-[28%] lg:max-w-[360px] lg:-translate-y-1/2 lg:rounded-2xl">
                     <PasadaImage
                       src={slide.src}
@@ -93,7 +93,7 @@ export function HeroSlideshow({
           ))}
         </div>
       </div>
-      <div className="relative mx-auto flex min-h-[610px] max-w-7xl items-center px-5 pb-24 pt-12 sm:min-h-[570px] sm:px-8 md:px-16">
+      <div className="relative mx-auto flex min-h-[610px] max-w-site items-center px-5 pb-24 pt-12 sm:min-h-[570px] sm:px-8 md:px-16 2xl:px-20">
         {children}
       </div>
       {slides.length > 1 ? (

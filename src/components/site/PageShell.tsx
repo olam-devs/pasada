@@ -29,28 +29,32 @@ export function PageShell({
         {photo && heroImageSrc ? (
           <section
             aria-label={eyebrow ?? title}
-            className="relative isolate overflow-hidden bg-[var(--primary-2)] text-white"
+            className="relative isolate flex flex-col overflow-hidden bg-[var(--primary-2)] text-white md:block"
           >
-            <div className="absolute inset-0 -z-10 md:left-[42%]">
-              <PasadaImage
-                src={heroImageSrc}
-                alt={heroImageAlt || `${eyebrow ?? title} at PASADA`}
-                fill
-                priority
-                sizes="(min-width:768px) 58vw, 100vw"
-                className="photo-vivid object-cover object-center"
-              />
+            {/* The red never covers the photo. On wide screens the photo sits on the right
+                in its own slanted panel with a gold edge; on phones it is a strip under the title. */}
+            <div className="relative order-2 h-48 border-t-4 border-[var(--brand-gold)] sm:h-60 md:absolute md:inset-y-0 md:left-1/2 md:right-0 md:-z-10 md:h-auto md:border-0 lg:left-[48%]">
               <div
-                className="absolute inset-0 bg-[rgba(168,19,42,0.82)] md:bg-transparent md:bg-gradient-to-r md:from-[var(--primary-2)] md:via-[rgba(168,19,42,0.55)] md:to-[rgba(168,19,42,0.12)]"
+                className="absolute inset-0 hidden bg-[var(--brand-gold)] [clip-path:polygon(9%_0,100%_0,100%_100%,0_100%)] md:block"
                 aria-hidden="true"
               />
+              <div className="absolute inset-0 md:left-2.5 md:[clip-path:polygon(9%_0,100%_0,100%_100%,0_100%)]">
+                <PasadaImage
+                  src={heroImageSrc}
+                  alt={heroImageAlt || `${eyebrow ?? title} at PASADA`}
+                  fill
+                  priority
+                  sizes="(min-width:768px) 52vw, 100vw"
+                  className="photo-vivid object-cover object-center"
+                />
+              </div>
             </div>
             <div
               className="pointer-events-none absolute -left-24 -top-40 h-96 w-96 rounded-full border-[35px] border-white/[.04]"
               aria-hidden="true"
             />
-            <Container className="relative py-14 sm:py-16 md:py-20">
-              <div className="max-w-xl">
+            <Container className="relative order-1 py-10 sm:py-12 md:py-20">
+              <div className="max-w-xl md:max-w-[44%] 2xl:max-w-xl">
                 <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[.15em] text-[var(--brand-gold)]">
                   <span className="h-px w-8 bg-[var(--brand-gold)]" aria-hidden="true" />
                   {eyebrow ?? "PASADA Tanzania"}
@@ -71,7 +75,7 @@ export function PageShell({
               </div>
             </Container>
             <div
-              className="h-1.5 bg-gradient-to-r from-[var(--brand-gold)] via-[var(--primary)] to-[var(--ink)]"
+              className="order-3 h-1.5 bg-gradient-to-r from-[var(--brand-gold)] via-[var(--primary)] to-[var(--ink)]"
               aria-hidden="true"
             />
           </section>

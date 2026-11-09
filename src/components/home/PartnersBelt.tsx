@@ -89,7 +89,7 @@ export function PartnersBelt({ partners }: { partners: Partner[] }) {
         </div>
       </Container>
       <div
-        className={`partner-window mt-8 ${showAll ? "partner-show-all mx-auto max-w-7xl px-5 sm:px-8 lg:px-10" : ""}`}
+        className={`partner-window mt-8 ${showAll ? "partner-show-all mx-auto max-w-site px-5 sm:px-8 lg:px-12 2xl:px-20" : ""}`}
       >
         <div className="partner-track" data-paused={paused}>
           <PartnerCards partners={partners} />

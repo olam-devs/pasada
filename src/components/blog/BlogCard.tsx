@@ -24,7 +24,7 @@ export function BlogCard({ post, index }: { post: BlogPost; index: number }) {
             alt=""
             fill
             className="photo-vivid object-cover transition duration-500 group-hover:scale-105"
-            sizes="(min-width: 1024px) 380px, 90vw"
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 90vw"
           />
           {post.category ? (
             <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-[var(--primary)] px-3 py-1 text-xs font-semibold text-white shadow-sm">
