@@ -32,7 +32,7 @@ export default async function ResourceSectionPage({
   const items = all.filter((item) => item.kind === section.kind);
   return (
     <PageShell eyebrow="Resources" title={section.title}>
-      <p className="max-w-2xl text-base leading-8 text-zinc-600">
+      <p className="text-base leading-8 text-zinc-600">
         {section.description} Choose View to read a document in your browser,
         or Download to save it.
       </p>

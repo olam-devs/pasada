@@ -15,7 +15,7 @@ export default async function ResourcesPage() {
   const latest = items.slice(0, 5);
   return (
     <PageShell eyebrow="Resources" title="Publications, newsletters and annual reports">
-      <p className="max-w-2xl text-base leading-8 text-zinc-600">
+      <p className="text-base leading-8 text-zinc-600">
         Read and download PASADA&apos;s research, newsletters and yearly reports.
         Every document is a PDF you can open in your browser or save.
       </p>
