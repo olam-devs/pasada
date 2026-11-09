@@ -12,6 +12,7 @@ website then uses that instead. Mapping: `src/lib/programme-photos.ts`.
 | `community-sensitization-health-talk.jpg` | PASADA (supplied November 2026): a health talk in a clinic waiting area; Community sensitization main image in Sanity |
 | `achieve-pact-award.jpg` | PASADA (supplied November 2026): Pact's award to PASADA for the ACHIEVE project, centred on a blurred copy of itself so it fits wide spaces; ACHIEVE - PACT main image in Sanity |
 | `kizazi-hodari-families.jpg` | PASADA (supplied November 2026): caregivers and children holding their cards; small original (669px) enlarged to 1338px; Kizazi Hodari main image in Sanity |
+| `kizazi-hodari-slide.jpg` | The same photo for the homepage slideshow (slide 3): top kept, sides extended with a soft blurred copy so the whole group stays visible on wide screens |
 | `ready-reppsi-training.jpg` | PASADA (supplied November 2026): a community training session; Ready-REPPSI main image in Sanity |
 | `../stories/aids-day-pasada-team.jpg` | PASADA (supplied November 2026): PASADA staff with AIDS Day placards; PASADA AIDS Day story main image in Sanity |
 | `home-based-care-clinician.jpg` | PASADA (supplied November 2026): a PASADA clinician at her desk with a blood-pressure cuff; also uploaded to Sanity as the Home-based and palliative care main image |
