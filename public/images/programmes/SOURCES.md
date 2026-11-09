@@ -16,7 +16,7 @@ website then uses that instead. Mapping: `src/lib/programme-photos.ts`.
 | `../stories/aids-day-pasada-team.jpg` | PASADA (supplied November 2026): PASADA staff with AIDS Day placards; PASADA AIDS Day story main image in Sanity |
 | `ovc-school-children.jpg` | PASADA (supplied November 2026): primary-school pupils holding up drinks and snacks; Support to OVC and caregivers main image in Sanity |
 | `home-based-care-clinician.jpg` | PASADA (supplied November 2026): a PASADA clinician at her desk with a blood-pressure cuff; also uploaded to Sanity as the Home-based and palliative care main image |
-| `home-based-care-clinician-slide.jpg` | The same photo for the homepage slideshow (slide 3): photo on the right, left side filled with a soft blend of its own edge colours so her face stays clear of the headline |
+| `home-based-care-clinician-slide.jpg` | The same photo for the homepage slideshow (slide 5): photo on the right, left side filled with a soft blend of its own edge colours so her face stays clear of the headline |
 | `psychosocial-pasada-booth.jpg` | PASADA (supplied November 2026): PASADA staff talking with a visitor at the PASADA exhibition stand; also uploaded to Sanity as the Psychosocial support main image |
 | `slf-ovc-children.jpg` | PASADA (supplied November 2026): pupils at an SLF-supported school; also uploaded to Sanity as the SLF (OVC Support) main image |
 | `lab-technician.jpg` | PASADA's Sanity media library (laboratory), contrast and colour lifted with `scripts/enhance-photos.mjs` |
