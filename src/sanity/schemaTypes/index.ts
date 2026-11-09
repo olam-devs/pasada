@@ -10,6 +10,7 @@ import { post } from "@/sanity/schemaTypes/post";
 import { category } from "@/sanity/schemaTypes/category";
 import { job } from "@/sanity/schemaTypes/job";
 import { tender } from "@/sanity/schemaTypes/tender";
+import { resource } from "@/sanity/schemaTypes/resource";
 import { projectCategory } from "@/sanity/schemaTypes/projectCategory";
 import { serviceCategory } from "@/sanity/schemaTypes/serviceCategory";
 import { testimonialCategory } from "@/sanity/schemaTypes/testimonialCategory";
@@ -30,4 +31,5 @@ export const schemaTypes = [
   post,
   job,
   tender,
+  resource,
 ];

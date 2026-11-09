@@ -9,6 +9,7 @@ const explore = [
   { href: "/projects", label: "Our projects" },
   { href: "/testimonials", label: "Community voices" },
   { href: "/blog", label: "News & stories" },
+  { href: "/resources", label: "Publications & reports" },
 ];
 const involved = [
   { href: "/get-involved", label: "Volunteer & partner" },

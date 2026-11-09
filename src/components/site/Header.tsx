@@ -33,6 +33,15 @@ const groups = [
   },
   { label: "News & stories", href: "/blog" },
   {
+    label: "Resources",
+    href: "/resources",
+    children: [
+      { label: "Publications", href: "/resources/publications" },
+      { label: "Newsletters", href: "/resources/newsletters" },
+      { label: "Annual reports", href: "/resources/annual-reports" },
+    ],
+  },
+  {
     label: "Get involved",
     href: "/get-involved",
     children: [
@@ -275,7 +284,7 @@ export function Header() {
           </Link>
           <nav
             aria-label="Main navigation"
-            className="hidden items-center gap-2.5 whitespace-nowrap lg:flex xl:gap-4"
+            className="hidden items-center gap-2 whitespace-nowrap lg:flex xl:gap-4"
           >
             {groups.map((item) =>
               item.children ? (
@@ -307,7 +316,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="/donate"
-              className="rounded-full bg-[var(--primary)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[var(--primary-2)]"
+              className="rounded-full bg-[var(--primary)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[var(--primary-2)] lg:px-4 xl:px-5"
             >
               Donate
             </Link>

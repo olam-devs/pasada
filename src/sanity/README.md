@@ -37,6 +37,10 @@ Select **Services page → Services main picture** to change the photo in the co
 
 For a specific service's card/detail picture, select **Services → the service → Main image**. This updates that service's image on the homepage, Services list and service detail page.
 
+## Publications, newsletters and annual reports
+
+Open **Resources (PDFs)**, choose **Publications**, **Newsletters** or **Annual reports**, and create a new entry. Upload the PDF and press **Publish**; it appears on `/resources` and its own page within a minute, newest first. Only the PDF is required: the website uses the file name as the title and the upload date as the date unless you fill them in. Authors and journal show for publications. A cover picture is optional; without one the page shows a document icon. Visitors get **View** (opens the PDF in the browser) and **Download**.
+
 ## Publishing
 
 Click **Publish** to make content available to the public website. Homepage settings, service pictures and the Services overview read current published content on each page request; refresh after publishing. Other content revalidates on a 60-second interval. Draft changes stay in Studio until published. No rebuild is needed for routine content edits.
