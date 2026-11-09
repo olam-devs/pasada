@@ -23,6 +23,12 @@ website then uses that instead. Mapping: `src/lib/programme-photos.ts`.
 | `../community-aids-day.jpg` | PASADA's Sanity media library ("Siku ya Ukimwi duniani"), lifted the same way |
 | `../community-tb-group.jpg` | pasada.or.tz (GLRA project photo), lifted the same way |
 
+## Licence not confirmed
+
+| File | Source |
+| --- | --- |
+| `cervical-cancer-screening.jpg` | Supplied by Jackson (November 2026) as a small web image (333 x 391): a hand holding a magnifying glass over a uterus illustration on pink. It looks like a stock photo, so confirm PASADA may use it, or replace it. Corner mark removed, background evened out and widened, enlarged to 1800px and brightened; Cervical cancer screening main image in Sanity |
+
 ## Free stock photos
 
 All are free for commercial use without attribution under the
@@ -45,7 +51,7 @@ with PASADA's own photos (taken with written consent) as soon as possible.
 | `hiv-test-samples.jpg` | HIV testing and counselling | Towfiqu barbhuiya | [Pexels](https://www.pexels.com/photo/blood-samples-for-hiv-test-10963257/) | Blood sample tubes labelled "HIV-Test" | None |
 | `art-medication.jpg` | Provision of ART | Kampus Production | [Pexels](https://www.pexels.com/photo/a-person-holding-medicine-pills-7551642/) | A hand holding two tablets | None |
 | `mother-hands-baby.jpg` | PMTCT screening | William Fortunato | [Pexels](https://www.pexels.com/photo/black-mother-comforting-child-lying-on-bed-6393246/) | A mother's hand resting on her baby | None |
-| `womens-health.jpg` | Cervical cancer screening | Joseph Oti Nyametease | [Pexels](https://www.pexels.com/photo/healthcare-professionals-conducting-an-ultrasound-29941469/) | Nurses examining a woman patient | Nurses; patient partly |
+| `womens-health.jpg` | Spare (Cervical cancer screening now uses `cervical-cancer-screening.jpg`) | Joseph Oti Nyametease | [Pexels](https://www.pexels.com/photo/healthcare-professionals-conducting-an-ultrasound-29941469/) | Nurses examining a woman patient | Nurses; patient partly |
 | `caregiver-hands.jpg` | Spare (Home-based care now uses a PASADA photo) | Kwaku Griffin | [Pexels](https://www.pexels.com/photo/a-pair-of-hands-of-people-holding-14346824/) | A caregiver holding an elderly person's hand | None |
 | `comforting-hands.jpg` | Spare (Psychosocial support now uses a PASADA photo) | Kindel Media | [Pexels](https://www.pexels.com/photo/a-close-up-shot-of-people-holding-hands-8172603/) | One hand comforting another | None |
 | `training-workshop.jpg` | Spare (Capacity development and Ready-REPPSI now use PASADA photos) | Ufoma Ojo | [Unsplash](https://unsplash.com/photos/three-adults-sitting-in-row-MDcaad-_hv0) | Young adults at a workshop | Yes |
