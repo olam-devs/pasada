@@ -94,7 +94,6 @@ export default async function Home() {
     getBlogPosts({ featuredOnly: true, limit: settings.maxFeaturedPosts }),
     getTestimonials({ featuredOnly: true, limit: 6 }),
   ]);
-  const stats = home.stats.slice(0, 4);
 
   return (
     <div className="flex min-h-full flex-col">
@@ -195,26 +194,15 @@ export default async function Home() {
           </Container>
         </section>
 
-        {/* Impact figures and approach, on flame gold. */}
+        {/* Approach highlights, on flame gold. Reach figures live in the annual
+            reports (Resources), since PASADA updates them over time. */}
         <section
           className="brand-gold-band relative overflow-hidden"
           aria-label="PASADA at a glance"
         >
           <Rings />
           <Container className="relative py-14 lg:py-16">
-            <dl className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
-              {stats.map((s) => (
-                <div key={s._key} className="flex flex-col-reverse text-center">
-                  <dt className="mt-2 text-xs font-bold uppercase tracking-[.14em] text-[var(--ink)]/80">
-                    {s.label}
-                  </dt>
-                  <dd className="text-4xl font-extrabold tracking-tight text-[var(--primary-2)] sm:text-5xl">
-                    {s.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <div className="mt-12 grid gap-8 border-t border-[var(--ink)]/15 pt-10 md:grid-cols-3 md:gap-10">
+            <div className="grid gap-8 md:grid-cols-3 md:gap-10">
               {home.highlights.map((item) => {
                 const Icon =
                   item.icon === "community"

@@ -239,38 +239,6 @@ export const homePage = defineType({
         },
       ],
     }),
-    defineField({
-      name: "stats",
-      title: "Impact figures (red strip)",
-      group: "highlights",
-      type: "array",
-      description:
-        "Up to four figures shown large in the red strip below the introduction. Leave empty to use the figures from the About page text.",
-      validation: (rule) => rule.max(4),
-      of: [
-        {
-          type: "object",
-          name: "homeStat",
-          title: "Figure",
-          fields: [
-            defineField({
-              name: "value",
-              title: "Figure",
-              type: "string",
-              description: "For example 1.5M+ or 29,401",
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              name: "label",
-              title: "What it counts",
-              type: "string",
-              validation: (rule) => rule.required(),
-            }),
-          ],
-          preview: { select: { title: "value", subtitle: "label" } },
-        },
-      ],
-    }),
     textField("missionTitle", "Mission box heading", "highlights"),
     textField("missionText", "Mission box text", "highlights", true),
     textField("servicesEyebrow", "Section eyebrow", "services"),

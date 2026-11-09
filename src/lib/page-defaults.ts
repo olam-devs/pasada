@@ -40,13 +40,6 @@ export const homePageDefaults = {
       icon: "compassion",
     },
   ],
-  // Figures from the About page text; editors can update them in Sanity.
-  stats: [
-    { _type: "homeStat", _key: "tested", value: "1.5M+", label: "People tested for HIV" },
-    { _type: "homeStat", _key: "care", value: "29,401", label: "Clients on care and treatment" },
-    { _type: "homeStat", _key: "orphans", value: "67,105+", label: "Orphans supported" },
-    { _type: "homeStat", _key: "facilities", value: "25", label: "Facilities in 3 regions" },
-  ],
   missionTitle: "Mission",
   missionText:
     "Quality, caring, compassionate services for those infected and affected—especially the poorest and neediest.",
