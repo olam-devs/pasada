@@ -75,7 +75,6 @@ export default async function ProjectDetailPage({
           backLabel="All projects"
           title={project.title}
           summary={project.summary}
-          badge={project.tag ?? project.category}
           imageUrl={project.imageUrl}
           galleryUrls={project.galleryUrls}
           videoUrl={project.videoUrl}

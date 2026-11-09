@@ -97,7 +97,7 @@ const SAMPLE_POSTS: BlogPostDetail[] = [
     publishedAt: "2022-12-01",
     category: "Awareness",
     categorySlug: "awareness",
-    imageUrl: "https://pasada.or.tz/uploads/service-1.jpg",
+    imageUrl: "/images/stories/aids-day-pasada-team.jpg",
     galleryUrls: ["https://pasada.or.tz/uploads/service-1.jpg"],
     sortOrder: 2,
     featured: true,

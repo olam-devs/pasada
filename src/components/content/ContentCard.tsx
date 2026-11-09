@@ -45,7 +45,7 @@ export function ContentCard({
               alt=""
               fill
               className="photo-vivid object-cover transition duration-500 group-hover:scale-105"
-              sizes="(min-width: 1024px) 380px, 90vw"
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 90vw"
             />
             <div
               className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[rgba(26,20,20,0.35)] to-transparent"

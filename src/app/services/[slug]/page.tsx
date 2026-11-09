@@ -46,7 +46,6 @@ export default async function ServiceDetailPage({
           backLabel="All services"
           title={service.title}
           summary={service.summary}
-          badge={service.category}
           imageUrl={service.imageUrl}
           galleryUrls={service.galleryUrls}
           content={service.content}
