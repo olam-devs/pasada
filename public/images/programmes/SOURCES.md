@@ -14,6 +14,7 @@ website then uses that instead. Mapping: `src/lib/programme-photos.ts`.
 | `kizazi-hodari-families.jpg` | PASADA (supplied November 2026): caregivers and children holding their cards; small original (669px) enlarged to 1338px; Kizazi Hodari main image in Sanity |
 | `ready-reppsi-training.jpg` | PASADA (supplied November 2026): a community training session; Ready-REPPSI main image in Sanity |
 | `../stories/aids-day-pasada-team.jpg` | PASADA (supplied November 2026): PASADA staff with AIDS Day placards; PASADA AIDS Day story main image in Sanity |
+| `../stories/womens-day-pasada-stall.jpg` | PASADA (supplied November 2026): PASADA's International Women's Day stall ("Tusaidiane PASADA, 8 March") with tie-dye cloth, soap and crafts; brightened with `scripts/enhance-photos.mjs`; PASADA Women's Day Celebration main image in Sanity |
 | `ovc-school-children.jpg` | PASADA (supplied November 2026): primary-school pupils holding up drinks and snacks; Support to OVC and caregivers main image in Sanity |
 | `home-based-care-clinician.jpg` | PASADA (supplied November 2026): a PASADA clinician at her desk with a blood-pressure cuff; also uploaded to Sanity as the Home-based and palliative care main image |
 | `home-based-care-clinician-slide.jpg` | The same photo for the homepage slideshow (slide 5): photo on the right, left side filled with a soft blend of its own edge colours so her face stays clear of the headline |
