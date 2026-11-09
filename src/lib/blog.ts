@@ -34,8 +34,8 @@ const SAMPLE_POSTS: BlogPostDetail[] = [
     publishedAt: "2023-03-08",
     category: "Events",
     categorySlug: "events",
-    imageUrl: "https://pasada.or.tz/uploads/service-5.jpg",
-    galleryUrls: ["https://pasada.or.tz/uploads/service-5.jpg"],
+    imageUrl: "/images/stories/womens-day-pasada-stall.jpg",
+    galleryUrls: ["/images/stories/womens-day-pasada-stall.jpg"],
     sortOrder: 1,
     featured: true,
     content: [
