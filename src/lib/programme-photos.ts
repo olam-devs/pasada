@@ -17,7 +17,7 @@ export const servicePhotos: Record<string, string> = {
   "hiv-testing-and-counseling": `${P}/hiv-test-samples.jpg`,
   "provision-of-art": `${P}/art-medication.jpg`,
   "pmtct-screening": `${P}/mother-hands-baby.jpg`,
-  "cervical-cancer-screening": `${P}/womens-health.jpg`,
+  "cervical-cancer-screening": `${P}/cervical-cancer-screening.jpg`,
   "home-based-and-palliative-care": `${P}/home-based-care-clinician.jpg`,
   "psychosocial-support": `${P}/psychosocial-pasada-booth.jpg`,
   "capacity-development": `${P}/capacity-development-school-talk.jpg`,
