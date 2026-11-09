@@ -21,7 +21,7 @@ export const servicePhotos: Record<string, string> = {
   "home-based-and-palliative-care": `${P}/home-based-care-clinician.jpg`,
   "psychosocial-support": `${P}/psychosocial-pasada-booth.jpg`,
   "capacity-development": `${P}/capacity-development-school-talk.jpg`,
-  "ovc-caregiver-support": `${P}/children-walking.jpg`,
+  "ovc-caregiver-support": `${P}/ovc-school-children.jpg`,
 };
 
 export const projectPhotos: Record<string, string> = {

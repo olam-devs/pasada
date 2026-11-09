@@ -15,6 +15,7 @@ website then uses that instead. Mapping: `src/lib/programme-photos.ts`.
 | `kizazi-hodari-slide.jpg` | The same photo for the homepage slideshow (slide 3): top kept, sides extended with a soft blurred copy so the whole group stays visible on wide screens |
 | `ready-reppsi-training.jpg` | PASADA (supplied November 2026): a community training session; Ready-REPPSI main image in Sanity |
 | `../stories/aids-day-pasada-team.jpg` | PASADA (supplied November 2026): PASADA staff with AIDS Day placards; PASADA AIDS Day story main image in Sanity |
+| `ovc-school-children.jpg` | PASADA (supplied November 2026): primary-school pupils holding up drinks and snacks; Support to OVC and caregivers main image in Sanity |
 | `home-based-care-clinician.jpg` | PASADA (supplied November 2026): a PASADA clinician at her desk with a blood-pressure cuff; also uploaded to Sanity as the Home-based and palliative care main image |
 | `psychosocial-pasada-booth.jpg` | PASADA (supplied November 2026): PASADA staff talking with a visitor at the PASADA exhibition stand; also uploaded to Sanity as the Psychosocial support main image |
 | `slf-ovc-children.jpg` | PASADA (supplied November 2026): pupils at an SLF-supported school; also uploaded to Sanity as the SLF (OVC Support) main image |
@@ -48,7 +49,7 @@ with PASADA's own photos (taken with written consent) as soon as possible.
 | `caregiver-hands.jpg` | Spare (Home-based care now uses a PASADA photo) | Kwaku Griffin | [Pexels](https://www.pexels.com/photo/a-pair-of-hands-of-people-holding-14346824/) | A caregiver holding an elderly person's hand | None |
 | `comforting-hands.jpg` | Spare (Psychosocial support now uses a PASADA photo) | Kindel Media | [Pexels](https://www.pexels.com/photo/a-close-up-shot-of-people-holding-hands-8172603/) | One hand comforting another | None |
 | `training-workshop.jpg` | Spare (Capacity development and Ready-REPPSI now use PASADA photos) | Ufoma Ojo | [Unsplash](https://unsplash.com/photos/three-adults-sitting-in-row-MDcaad-_hv0) | Young adults at a workshop | Yes |
-| `children-walking.jpg` | Support to OVC and caregivers | Xavier Messina | [Pexels](https://www.pexels.com/photo/back-view-of-kids-walking-on-pathway-between-green-trees-12429862/) | Three children walking hand in hand, seen from behind, Garoua, Cameroon (cropped to remove a car's number plate) | None |
+| `children-walking.jpg` | Spare (Support to OVC now uses a PASADA photo) | Xavier Messina | [Pexels](https://www.pexels.com/photo/back-view-of-kids-walking-on-pathway-between-green-trees-12429862/) | Three children walking hand in hand, seen from behind, Garoua, Cameroon (cropped to remove a car's number plate) | None |
 | `community-health-check.jpg` | Afya Jumuishi project | Lagos Food Bank Initiative | [Pexels](https://www.pexels.com/photo/doctor-measuring-blood-pressure-8248293/) | Older woman having her blood pressure taken | Yes |
 | `community-meeting.jpg` | Spare (SLF OVC support now uses a PASADA photo) | illustrate Digital Ug | [Pexels](https://www.pexels.com/photo/faces-and-smiles-28102680/) | Community meeting, Kitgum, Uganda | Small, distant |
 | `health-education.jpg` | Spare (ACHIEVE-PACT now uses a PASADA photo) | Lagos Food Bank Initiative | [Pexels](https://www.pexels.com/photo/doctor-educating-elderly-women-8248290/) | Health worker speaking to a group of women | Yes |
